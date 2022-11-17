@@ -1,0 +1,25 @@
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+DEBUG: (function: runSpecific) FitDiagnostics.cc: 318 -- Fit B-only, status = 0, numBadNLL = 0, covariance quality = -1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=-1
+DEBUG: (function: improveOnce) CascadeMinimizer.cc: 217 -- Minimization ended with latest status != 0 or 1
+INFO: (function: anyParameterAtBoundaries) utils.cc: 1039 -- Found parameter Background_fail_LOW_bin_1-1 at boundary (within ~1sigma): 1.61247e+06+/-9.67766e+07
+INFO: (function: anyParameterAtBoundaries) utils.cc: 1039 -- Found parameter Background_fail_LOW_bin_2-1 at boundary (within ~1sigma): 183141+/-1.17111e+08
+INFO: (function: anyParameterAtBoundaries) utils.cc: 1039 -- Found parameter Background_fail_LOW_bin_3-1 at boundary (within ~1sigma): 34768+/-1.19355e+08
+INFO: (function: anyParameterAtBoundaries) utils.cc: 1039 -- Found parameter Background_fail_LOW_bin_4-1 at boundary (within ~1sigma): 8191.45+/-1.19508e+08
+INFO: (function: anyParameterAtBoundaries) utils.cc: 1039 -- Found parameter Background_fail_LOW_bin_5-1 at boundary (within ~1sigma): 2007.98+/-1.14255e+08
+INFO: (function: anyParameterAtBoundaries) utils.cc: 1039 -- Found parameter Background_fail_LOW_bin_6-1 at boundary (within ~1sigma): 557.707+/-4.68206e+07
+INFO: (function: anyParameterAtBoundaries) utils.cc: 1039 -- Found parameter Background_fail_SIG_bin_1-1 at boundary (within ~1sigma): 173.524+/-1.19446e+08
+INFO: (function: anyParameterAtBoundaries) utils.cc: 1039 -- Found parameter Background_fail_SIG_bin_2-1 at boundary (within ~1sigma): 1.437+/-1.08091e+08
+INFO: (function: minimize) CascadeMinimizer.cc: 480 -- After fit, some parameters are found at the boundary (within ~1sigma)

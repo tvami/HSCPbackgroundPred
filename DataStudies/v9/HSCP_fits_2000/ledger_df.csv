@@ -1,0 +1,11 @@
+,process,region,binning,color,process_type,scale,variation,source_filename,source_histname,alias,title,combine_idx,direction,syst_type,shapes,variation_alias,lnN
+0,data_obs,fail,binning,1,DATA,2.0,nominal,.//HSCP_Data.root,hfail,Data,Data,,,,,,
+1,Signal,fail,binning,2,SIGNAL,2.0,lumi,.//HSCP_Signal.root,hfail,Signal,Signal,,,lnN,,,1.018
+2,Signal,fail,binning,2,SIGNAL,2.0,pileup,.//HSCP_Signal.root,hfail_PUsyst_up,Signal,Signal,,Up,shapes,1.0,PUsyst,
+3,Signal,fail,binning,2,SIGNAL,2.0,pileup,.//HSCP_Signal.root,hfail_PUsyst_down,Signal,Signal,,Down,shapes,1.0,PUsyst,
+4,Signal,fail,binning,2,SIGNAL,2.0,nominal,.//HSCP_Signal.root,hfail,Signal,Signal,,,,,,
+5,data_obs,pass,binning,1,DATA,2.0,nominal,.//HSCP_Data.root,hpass,Data,Data,,,,,,
+6,Signal,pass,binning,2,SIGNAL,2.0,lumi,.//HSCP_Signal.root,hpass,Signal,Signal,,,lnN,,,1.018
+7,Signal,pass,binning,2,SIGNAL,2.0,pileup,.//HSCP_Signal.root,hpass_PUsyst_up,Signal,Signal,,Up,shapes,1.0,PUsyst,
+8,Signal,pass,binning,2,SIGNAL,2.0,pileup,.//HSCP_Signal.root,hpass_PUsyst_down,Signal,Signal,,Down,shapes,1.0,PUsyst,
+9,Signal,pass,binning,2,SIGNAL,2.0,nominal,.//HSCP_Signal.root,hpass,Signal,Signal,,,,,,

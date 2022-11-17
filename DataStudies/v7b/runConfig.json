@@ -1,0 +1,84 @@
+{
+  "BINNING": {
+    "binning": {
+      "X": {
+        "BINS": [
+          0.0, 
+          0.05, 
+          0.1, 
+          0.15, 
+          0.2, 
+          0.25, 
+          0.3, 
+          0.4, 
+          1.0
+        ], 
+        "MAX": 1.0, 
+        "MIN": 0.0, 
+        "NAME": "Ias", 
+        "SIGEND": 1.0, 
+        "SIGSTART": 0.25, 
+        "TITLE": "G_{I}^{Strips}"
+      }, 
+      "Y": {
+        "MAX": 1.0, 
+        "MIN": 0.0, 
+        "NAME": "ProbQ", 
+        "NBINS": 1, 
+        "TITLE": "F_{I}^{Pixels}"
+      }
+    }
+  }, 
+  "GLOBAL": {
+    "FILE": "HSCP_$process.root", 
+    "HIST": "h$region", 
+    "path": "./"
+  }, 
+  "NAME": "NotRelevantString", 
+  "OPTIONS": {}, 
+  "PROCESSES": {
+    "Signal": {
+      "COLOR": 2, 
+      "LOC": ".//HSCP_$process.root:h$region", 
+      "NAME": "Signal", 
+      "SCALE": 2.0, 
+      "SYSTEMATICS": [
+        "lumi"
+      ], 
+      "TITLE": "Signal", 
+      "TYPE": "SIGNAL", 
+      "VARIATION": "nominal"
+    }, 
+    "data_obs": {
+      "ALIAS": "Data", 
+      "COLOR": 1, 
+      "LOC": ".//HSCP_$process.root:h$region", 
+      "NAME": "data_obs", 
+      "SCALE": 2.0, 
+      "SYSTEMATICS": [], 
+      "TITLE": "Data", 
+      "TYPE": "DATA", 
+      "VARIATION": "nominal"
+    }
+  }, 
+  "REGIONS": {
+    "fail": {
+      "BINNING": "binning", 
+      "PROCESSES": [
+        "Signal"
+      ]
+    }, 
+    "pass": {
+      "BINNING": "binning", 
+      "PROCESSES": [
+        "Signal"
+      ]
+    }
+  }, 
+  "SYSTEMATICS": {
+    "lumi": {
+      "CODE": 0, 
+      "VAL": 1.018
+    }
+  }
+}
