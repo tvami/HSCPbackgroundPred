@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/ammitra/2DAlphabet.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "binningFloatFix"]
+	remote = origin
+	merge = refs/heads/binningFloatFix

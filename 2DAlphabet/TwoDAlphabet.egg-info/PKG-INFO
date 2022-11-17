@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: TwoDAlphabet
+Version: 2.0
+Summary: Framework for performing 2D binned-likelihood fits with one background derived from a transfer function.
+Home-page: https://github.com/lcorcodilos/2DAlphabet
+Author: Lucas Corcodilos
+Author-email: corcodilos.lucas@gmail.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN

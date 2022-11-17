@@ -1,0 +1,11 @@
+# pack-refs with: peeled fully-peeled sorted 
+050978e720da2c00793f33dafc07f121c02ec8fb refs/remotes/origin/binningFloatFix
+313e78e906a59af38e2fee38e1a84ff0f98b1926 refs/remotes/origin/bprime-mods
+50bb971de484dd78960b4343cc3b0fe287382658 refs/remotes/origin/bstar
+3221594e48a6a99ecb7f48babcfc8e3b6e49efdb refs/remotes/origin/dev
+c13f1f9a123d525d58845e692fe7f099236fd564 refs/remotes/origin/failBinTransform
+80dda5a1da71b9749ead456ce2d61b177dade688 refs/remotes/origin/master
+b9a1dcf0081bc735b7fd2e794cbcfb0ccf166ca3 refs/remotes/origin/recovery
+9da73ecb039e63de4f916b9007b0e172b43b4e1f refs/remotes/origin/refactor
+429ef2130a1d6290d5a7c8190de10450deaed57a refs/tags/Published
+^b7498a5e2829bc4d3bc0124157e369935c5e6694
