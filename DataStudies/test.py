@@ -336,15 +336,15 @@ def test_FTest(poly1, poly2, signal=''):
     plot_FTest(base_fstat,nRpfs1,nRpfs2,nBins)
 
 if __name__ == "__main__":
-    make_workspace()
-    perform_fit('gluino-1800','0x0',extra='--robustHesse 1')
+    #make_workspace()
+    #perform_fit('gluino-1800','0x0',extra='--robustHesse 1')
     #perform_fit('gluino-1800','1x0',extra='--robustHesse 1')
     #perform_fit('gluino-1800','2x0',extra='--robustHesse 1')
-    plot_fit('gluino-1800','0x0' )
+    #plot_fit('gluino-1800','0x0' )
     #plot_fit('gluino-1800','1x0' )
     #plot_fit('gluino-1800','2x0' )
     #GOF('gluino-1800','0x0',condor=False, extra='--text2workspace "--channel-masks" --setParametersForFit mask_pass_SIG=1 --setParametersForEval mask_pass_SIG=1')
-    #GOF(condor=False, extra='')
+    GOF('gluino-1800','0x0',condor=False, extra='')
     #SignalInjection(0, condor=False)	# you can make a loop to run a bunch of injected xsecs
     #run_limits()
     #Impacts()
