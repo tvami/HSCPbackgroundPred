@@ -309,9 +309,10 @@ def test_FTest(poly1, poly2, signal=''):
     plot_FTest(base_fstat,nRpfs1,nRpfs2,nBins)
 
 if __name__ == "__main__":
-    make_workspace()
-    perform_fit('gluino-1800','0x0',rMaxExt=0.1,extra='--robustHesse 1')
+    #make_workspace()
+    #perform_fit('gluino-1800','0x0',rMaxExt=0.1,extra='--robustHesse 1')
     plot_fit('gluino-1800','0x0')
+
 
     #plot_fit('gluino-2000','0x0')
     #plot_fit('gluino-2200','0x0')

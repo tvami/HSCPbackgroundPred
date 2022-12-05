@@ -332,7 +332,7 @@ class TwoDAlphabet:
             plot.plot_correlation_matrix( # Ignore nuisance parameters that are bins
                 varsToIgnore=self.ledger.alphaParams.name[self.ledger.alphaParams.name.str.contains('_bin_\d+-\d+')].to_list(),
                 threshold=0, # change this to reduce the size of the correlation matrix to only those variables with correlations above a threshold
-	    	corrText=False # change this if you want the correlation matrix to write the number values to each grid square (often there are too many parameters and looks ugly/useless)
+	    	corrText=True # change this if you want the correlation matrix to write the number values to each grid square (often there are too many parameters and looks ugly/useless)
             )
             plot.gen_post_fit_shapes()
             plot.gen_projections(ledger, self, 'b', prefit)

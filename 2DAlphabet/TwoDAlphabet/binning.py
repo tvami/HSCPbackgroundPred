@@ -207,10 +207,8 @@ def parse_binning_info(binDict):
     '''
     for v in ['X','Y']:
         axis = binDict[v]
-        #if (v == 'X') and ('LOW' in axis.keys()) and ('SIG' in axis.keys()) and ('HIGH' in axis.keys()):
-        if (v == 'X') and ('LOW' in axis.keys()) and ('SIG' in axis.keys()) :
-            #new_bins_rounded = {c:parse_axis_info(axis[c]) for c in ['LOW','SIG','HIGH']}
-            new_bins_rounded = {c:parse_axis_info(axis[c]) for c in ['LOW','SIG']}
+        if (v == 'X') and ('LOW' in axis.keys()) and ('SIG' in axis.keys()) and ('HIGH' in axis.keys()):
+            new_bins_rounded = {c:parse_axis_info(axis[c]) for c in ['LOW','SIG','HIGH']}
         else:
             new_bins = parse_axis_info(axis)
             new_bins_rounded = [round(i,2) for i in new_bins]
@@ -272,8 +270,8 @@ def binlist_to_bindict(binList, sigLow, sigHigh):
             return_bins['LOW'].append(b)
         if b >= sigLow and b <= sigHigh:
             return_bins['SIG'].append(b)
-        if b >= sigHigh:
-            print("This bin should be HIGH, but we dont have that anymore -- big problem")
+        if b > sigHigh:
+            print("We are in HIGH but we should not be!!")
             #return_bins['HIGH'].append(b)
 
     return return_bins 
@@ -440,6 +438,7 @@ def copy_hist_with_new_bins(copyName,XorY,inHist,new_bins):
         TH2: Copy of histogram with new binning scheme. Note that the number of entries
             will not be correct but integrated yield will be. 
     '''
+    print("Rebinning " + str(copyName) + " -- Original Integral : " +str(inHist.Integral()))
     if XorY not in ["X","Y"]:
         raise ValueError('Arg XorY is not "X" or "Y".')
     axis_to_rebin = XorY
@@ -464,14 +463,14 @@ def copy_hist_with_new_bins(copyName,XorY,inHist,new_bins):
 
     # Loop through the old bins
     for static_bin in range(1,static_nbins+1):
-        print 'Bin y: ' + str(static_bin)
+        #print 'Bin y: ' + str(static_bin)
         for rebin in range(1,rebin_nbins+1):
             new_bin_content = 0
             new_bin_errorsq = 0
             new_bin_min = round(rebin_axis.GetBinLowEdge(rebin), 2)
             new_bin_max = round(rebin_axis.GetBinUpEdge(rebin), 2)
 
-            print '\t New bin x: ' + str(rebin) + ', ' + str(new_bin_min) + ', ' + str(new_bin_max)
+            #print '\t New bin x: ' + str(rebin) + ', ' + str(new_bin_min) + ', ' + str(new_bin_max)
             for old_bin in range(1,old_axis.GetNbins()+1):
                 old_bin_min = round(old_axis.GetBinLowEdge(old_bin), 2)
                 old_bin_max = round(old_axis.GetBinUpEdge(old_bin), 2)
@@ -482,11 +481,9 @@ def copy_hist_with_new_bins(copyName,XorY,inHist,new_bins):
                         if axis_to_rebin == "X":
                             new_bin_content += inHist.GetBinContent(old_bin,static_bin)
                             new_bin_errorsq += inHist.GetBinError(old_bin,static_bin)**2
-                            break
                         else:
                             new_bin_content += inHist.GetBinContent(static_bin,old_bin)
                             new_bin_errorsq += inHist.GetBinError(static_bin,old_bin)**2
-                            break
                     elif old_bin_max > new_bin_max:
                         raise ValueError(
                             '''The requested %s rebinning does not align bin edges with the input bin edge.
@@ -496,7 +493,7 @@ def copy_hist_with_new_bins(copyName,XorY,inHist,new_bins):
                         '''The requested %s rebinning does not align bin edges with the input bin edge.
                         Cannot split input bin [%s,%s] with output bin [%s,%s]'''%(axis_to_rebin,old_bin_min,old_bin_max,new_bin_min,new_bin_max))
 
-            print '\t Setting content ' + str(new_bin_content) + ' +/- ' + str(sqrt(new_bin_errorsq))
+            #print '\t Setting content ' + str(new_bin_content) + ' +/- ' + str(sqrt(new_bin_errorsq))
             if new_bin_content > 0:
                 if axis_to_rebin == "X":
                     hist_copy.SetBinContent(rebin,static_bin,new_bin_content)
@@ -508,6 +505,7 @@ def copy_hist_with_new_bins(copyName,XorY,inHist,new_bins):
     # Will now set the copyName which will overwrite inHist if it has the same name
     hist_copy.SetName(copyName)
     hist_copy.SetTitle(copyName)
+    print("\tIntegral in the end : " + str(hist_copy.Integral()))
     return hist_copy
 
 def get_min_bin_width(hist):

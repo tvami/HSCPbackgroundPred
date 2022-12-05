@@ -21,7 +21,7 @@
 	"data_obs": {
 	    "SYSTEMATICS":[],
             "COLOR": 1,
-	    "SCALE": 2.0,
+	    "SCALE": 1.0,
             "TYPE": "DATA",
             "TITLE": "Data",
 	    "ALIAS": "Data",
@@ -30,7 +30,7 @@
         "HSCP_gluino-1800": {
             "SYSTEMATICS": [],
             "COLOR": 2,
-            "SCALE": 2.0,
+            "SCALE": 1.0,
             "TYPE": "SIGNAL",
             "TITLE": "HSCP gluino 1800 GeV",
             "ALIAS": "Signal_gluino-1800",
