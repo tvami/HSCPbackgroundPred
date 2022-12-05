@@ -38,7 +38,8 @@ class Binning:
                           ydict['TITLE'],
                           self.ybinList)
         xRRVs = {}
-        for c in ['LOW','SIG','HIGH']:
+        for c in ['LOW','SIG']:
+        #for c in ['LOW','SIG','HIGH']:
             xRRVs[c] = create_RRV_base(xdict['NAME']+'_'+c+'_'+self.name,
                                   xdict['TITLE'],
                                   self.xbinByCat[c])
@@ -206,8 +207,10 @@ def parse_binning_info(binDict):
     '''
     for v in ['X','Y']:
         axis = binDict[v]
-        if (v == 'X') and ('LOW' in axis.keys()) and ('SIG' in axis.keys()) and ('HIGH' in axis.keys()):
-            new_bins_rounded = {c:parse_axis_info(axis[c]) for c in ['LOW','SIG','HIGH']}
+        #if (v == 'X') and ('LOW' in axis.keys()) and ('SIG' in axis.keys()) and ('HIGH' in axis.keys()):
+        if (v == 'X') and ('LOW' in axis.keys()) and ('SIG' in axis.keys()) :
+            #new_bins_rounded = {c:parse_axis_info(axis[c]) for c in ['LOW','SIG','HIGH']}
+            new_bins_rounded = {c:parse_axis_info(axis[c]) for c in ['LOW','SIG']}
         else:
             new_bins = parse_axis_info(axis)
             new_bins_rounded = [round(i,2) for i in new_bins]
@@ -259,7 +262,8 @@ def binlist_to_bindict(binList, sigLow, sigHigh):
     Returns:
         dict: Dictionary of shape {'LOW':[...],'SIG':[...],'HIGH':[...]}
     '''
-    return_bins = {'LOW':[],'SIG':[],'HIGH':[]}
+    #return_bins = {'LOW':[],'SIG':[],'HIGH':[]}
+    return_bins = {'LOW':[],'SIG':[]}
     for s in [sigLow,sigHigh]:
         if s not in binList:
             raise ValueError('The signal region edges must be in the list of bin edges. The value %s is not in the provided list of bin edges (%s).'%(s,binList))
@@ -269,7 +273,8 @@ def binlist_to_bindict(binList, sigLow, sigHigh):
         if b >= sigLow and b <= sigHigh:
             return_bins['SIG'].append(b)
         if b >= sigHigh:
-            return_bins['HIGH'].append(b)
+            print("This bin should be HIGH, but we dont have that anymore -- big problem")
+            #return_bins['HIGH'].append(b)
 
     return return_bins 
 
@@ -284,7 +289,8 @@ def concat_bin_dicts(binDict):
         list: List of bin edges concatenated from the dictionary entries.
     '''
     bins_list = list(binDict['LOW']) # need list() to make a copy - not a reference
-    for c in ['SIG','HIGH']:
+    #for c in ['SIG','HIGH']:
+    for c in ['SIG']:
         bins_list.extend(binDict[c][1:])
     return bins_list
 
@@ -458,14 +464,14 @@ def copy_hist_with_new_bins(copyName,XorY,inHist,new_bins):
 
     # Loop through the old bins
     for static_bin in range(1,static_nbins+1):
-        # print 'Bin y: ' + str(binY)
+        print 'Bin y: ' + str(static_bin)
         for rebin in range(1,rebin_nbins+1):
             new_bin_content = 0
             new_bin_errorsq = 0
             new_bin_min = round(rebin_axis.GetBinLowEdge(rebin), 2)
             new_bin_max = round(rebin_axis.GetBinUpEdge(rebin), 2)
 
-            # print '\t New bin x: ' + str(newBinX) + ', ' + str(newBinXlow) + ', ' + str(newBinXhigh)
+            print '\t New bin x: ' + str(rebin) + ', ' + str(new_bin_min) + ', ' + str(new_bin_max)
             for old_bin in range(1,old_axis.GetNbins()+1):
                 old_bin_min = round(old_axis.GetBinLowEdge(old_bin), 2)
                 old_bin_max = round(old_axis.GetBinUpEdge(old_bin), 2)
@@ -490,7 +496,7 @@ def copy_hist_with_new_bins(copyName,XorY,inHist,new_bins):
                         '''The requested %s rebinning does not align bin edges with the input bin edge.
                         Cannot split input bin [%s,%s] with output bin [%s,%s]'''%(axis_to_rebin,old_bin_min,old_bin_max,new_bin_min,new_bin_max))
 
-            # print '\t Setting content ' + str(newBinContent) + '+/-' + str(sqrt(newBinErrorSq))
+            print '\t Setting content ' + str(new_bin_content) + ' +/- ' + str(sqrt(new_bin_errorsq))
             if new_bin_content > 0:
                 if axis_to_rebin == "X":
                     hist_copy.SetBinContent(rebin,static_bin,new_bin_content)

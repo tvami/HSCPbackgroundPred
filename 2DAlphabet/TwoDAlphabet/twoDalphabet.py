@@ -259,7 +259,8 @@ class TwoDAlphabet:
         raise RuntimeError('Cannot find region (%s) in config:\n\t%s'%(region,self._binningMap))
 
     def _getCatNameRobust(self, hname):
-        if hname.split('_')[-1] in ['FULL','SIG','HIGH','LOW']: # simplest case
+        #if hname.split('_')[-1] in ['FULL','SIG','HIGH','LOW']: # simplest case
+        if hname.split('_')[-1] in ['FULL','SIG','LOW']: # simplest case
             out =  hname.split('_')[-1]
         else: # systematic variation so need to be careful
             this_rname = False
@@ -281,8 +282,9 @@ class TwoDAlphabet:
         var_lists = {}
         for binningName in self.binnings.keys():
             var_lists[binningName] = {
-                c:ROOT.RooArgList(self.binnings[binningName].xVars[c], self.binnings[binningName].yVar) for c in ['LOW','SIG','HIGH']
+                c:ROOT.RooArgList(self.binnings[binningName].xVars[c], self.binnings[binningName].yVar) for c in ['LOW','SIG']
             }
+                #c:ROOT.RooArgList(self.binnings[binningName].xVars[c], self.binnings[binningName].yVar) for c in ['LOW','SIG','HIGH']
 
         print ("Making workspace...")
         workspace = ROOT.RooWorkspace("w")
@@ -330,7 +332,7 @@ class TwoDAlphabet:
             plot.plot_correlation_matrix( # Ignore nuisance parameters that are bins
                 varsToIgnore=self.ledger.alphaParams.name[self.ledger.alphaParams.name.str.contains('_bin_\d+-\d+')].to_list(),
                 threshold=0, # change this to reduce the size of the correlation matrix to only those variables with correlations above a threshold
-		corrText=False # change this if you want the correlation matrix to write the number values to each grid square (often there are too many parameters and looks ugly/useless)
+	    	corrText=False # change this if you want the correlation matrix to write the number values to each grid square (often there are too many parameters and looks ugly/useless)
             )
             plot.gen_post_fit_shapes()
             plot.gen_projections(ledger, self, 'b', prefit)
@@ -835,7 +837,8 @@ def MakeCard(ledger, subtag, workspaceDir):
     # NOTE: duplicated code but no good way to combine without making things confusing
     for pair,group in ledger.alphaObjs.groupby(['process', 'region']):
         proc,region = pair
-        combine_idx = int(combine_idx_map[combine_idx_map.process.eq(alpha_obj_title_map[pair])].combine_idx.iloc[0])
+        #combine_idx = int(combine_idx_map[combine_idx_map.process.eq(alpha_obj_title_map[pair])].combine_idx.iloc[0])
+        combine_idx = combine_idx_map[combine_idx_map.process.eq(alpha_obj_title_map[pair])].combine_idx.iloc[0]
         
         for cat in ['LOW','SIG']:
             chan = '%s_%s'%(region, cat)

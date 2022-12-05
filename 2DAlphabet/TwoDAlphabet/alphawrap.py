@@ -6,7 +6,8 @@ import itertools
 # import numpy as np
 # from numpy.lib.function_base import piecewise
 
-_subspace = ['LOW','SIG','HIGH']
+#_subspace = ['LOW','SIG','HIGH']
+_subspace = ['LOW','SIG']
 class Generic2D(object):
     '''Wraps binned distributions in a common type so that
     distributions can easily be manipulated and compared. While a full distribution

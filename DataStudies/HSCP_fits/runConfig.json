@@ -10,7 +10,7 @@
           0.2, 
           0.25, 
           0.3, 
-          0.4, 
+          0.35, 
           1.0
         ], 
         "MAX": 1.0, 
@@ -34,9 +34,6 @@
     "HIST": "h$region", 
     "HIST_DOWN": "h$region_$syst_down", 
     "HIST_UP": "h$region_$syst_up", 
-    "SIGNAME": [
-      "HSCP-gluino-1800"
-    ], 
     "path": "./"
   }, 
   "NAME": "NotRelevantString", 
@@ -49,17 +46,14 @@
     ]
   }, 
   "PROCESSES": {
-    "HSCP-gluino-1800": {
-      "ALIAS": "Signal", 
+    "HSCP_gluino-1800": {
+      "ALIAS": "Signal_gluino-1800", 
       "COLOR": 2, 
       "LOC": ".//HSCP_$process.root:h$region", 
-      "NAME": "HSCP-gluino-1800", 
+      "NAME": "HSCP_gluino-1800", 
       "SCALE": 2.0, 
-      "SYSTEMATICS": [
-        "lumi", 
-        "pileup"
-      ], 
-      "TITLE": "Signal", 
+      "SYSTEMATICS": [], 
+      "TITLE": "HSCP gluino 1800 GeV", 
       "TYPE": "SIGNAL", 
       "VARIATION": "nominal"
     }, 
@@ -79,13 +73,13 @@
     "fail": {
       "BINNING": "default", 
       "PROCESSES": [
-        "HSCP-gluino-1800"
+        "HSCP_gluino-1800"
       ]
     }, 
     "pass": {
       "BINNING": "default", 
       "PROCESSES": [
-        "HSCP-gluino-1800"
+        "HSCP_gluino-1800"
       ]
     }
   }, 

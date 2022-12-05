@@ -291,9 +291,9 @@ class Plotter(object):
                             ''
                         )
                         if (region == "pass" and "projx2" in projn) :
-                            slice_str = "F^{Pixels}_{I} > 0.9"
+                            slice_str = "F^{Pixels}_{i} > 0.9 (Signal Region)"
                         elif (region == "fail" and "projx2" in projn) :
-                            slice_str = "F^{Pixels}_{I} < 0.9"
+                            slice_str = "F^{Pixels}_{i} < 0.9"
                         else :
                             slice_str = '%s < %s < %s %s'%slice_edges
                         out_pad_name = '{d}/base_figs/{projn}_{reg}{logy}'.format(
@@ -341,9 +341,9 @@ class Plotter(object):
                         ''
                     )
                     if (region == "pass" and "projx2" in projn) :
-                        slice_str = "F^{Pixels}_{I} > 0.9"
+                        slice_str = "F^{Pixels}_{i} > 0.9"
                     elif (region == "fail" and "projx2" in projn) :
-                        slice_str = "F^{Pixels}_{I} < 0.9"
+                        slice_str = "F^{Pixels}_{i} < 0.9"
                     else :
                         slice_str = '%s < %s < %s %s'%slice_edges
                     out_pad_name = '{d}/base_figs/{p}_{reg}_{projn}'.format(d=self.dir,p=process,projn=projn, reg=region)
@@ -683,12 +683,26 @@ def make_pad_1D(outname, data, bkgs=[], signals=[], title='', subtitle='',
         data.Draw(datastyle+' same')
         legend.Draw()
         
-        CMS_lumi.extraText = extraText
-        CMS_lumi.cmsTextSize = 0.9
-        CMS_lumi.cmsTextOffset = 2
-        CMS_lumi.lumiTextSize = 0.9
-        CMS_lumi.CMS_lumi(main_pad, year, 11)
-        
+        #CMS_lumi.extraText = extraText
+        #CMS_lumi.cmsTextSize = 0.9
+        #CMS_lumi.cmsTextOffset = 2 #was 2
+        #CMS_lumi.lumiTextSize = 0.9
+        #CMS_lumi.CMS_lumi(main_pad, year, 11)
+        #texCMS = ROOT.TLatex(0.13,0.94,"CMS");
+        texCMS = ROOT.TLatex(0.17,0.92,"CMS");#if there is 10^x
+        texCMS.SetNDC();
+        texCMS.SetTextFont(61);
+        texCMS.SetTextSize(0.0675);
+        texCMS.SetLineWidth(2);
+
+        #texInternal = ROOT.TLatex(0.27,0.96,"Simulation"); # for square plots
+        #texInternal = ROOT.TLatex(0.28,0.94,"Work in Progress 2018"); #if there is 10^x
+        texInternal = ROOT.TLatex(0.25,0.92,"Internal");
+        texInternal.SetNDC();
+        texInternal.SetTextFont(52);
+        texInternal.SetTextSize(0.0485);
+        texInternal.SetLineWidth(2);
+ 
         subtitle_tex = ROOT.TLatex()
         subtitle_tex.SetNDC()
         subtitle_tex.SetTextAngle(0)
@@ -696,7 +710,9 @@ def make_pad_1D(outname, data, bkgs=[], signals=[], title='', subtitle='',
         subtitle_tex.SetTextFont(42)
         subtitle_tex.SetTextAlign(12) 
         subtitle_tex.SetTextSize(0.06)
-        subtitle_tex.DrawLatex(0.208,0.74,subtitle)
+        subtitle_tex.DrawLatex(0.21,0.83,subtitle)
+        texCMS.Draw()
+        texInternal.Draw()
 
         sub_pad.cd()
         pull = _make_pull_plot(data,totalBkg)

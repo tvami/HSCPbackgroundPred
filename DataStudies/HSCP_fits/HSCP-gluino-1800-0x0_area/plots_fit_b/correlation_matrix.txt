@@ -1,2 +1,0 @@
-Background_rpf_0x0_par0:lumi = -0.0
-Background_rpf_0x0_par0:pileup = -0.0

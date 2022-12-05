@@ -31,30 +31,6 @@ _rpf_options = {
     '0x0': {
         'form': '0.1*(@0)',
         'constraints': _generate_constraints(1)
-    },
-    '1x0': {
-        'form': '0.1*(@0+@1*x)',
-        'constraints': _generate_constraints(2)
-    },
-    '0x1': {
-        'form': '0.1*(@0+@1*y)',
-        'constraints': _generate_constraints(2)
-    },
-    '1x1': {
-        'form': '0.1*(@0+@1*x)*(1+@2*y)',
-        'constraints': _generate_constraints(3)
-    },
-    '2x0': {
-        'form': '0.1*(@0+@1*x+@2*x**2)*(@3)',
-        'constraints': _generate_constraints(4)
-    },
-    '2x1': {
-        'form': '0.1*(@0+@1*x+@2*x**2)*(1+@3*y)',
-        'constraints': _generate_constraints(4)
-    },
-    '2x2': {
-        'form': '0.1*(@0+@1*x+@2*x**2)*(1+@3*y+@4*y**2)',
-        'constraints': _generate_constraints(4)
     }
 }
 
@@ -95,6 +71,7 @@ def make_workspace():
     #print(f, p)
     # get the binning for the fail region
     binning_f, _ = twoD.GetBinningFor(f)
+
     # you can change the name as you see fit 
     fail_name = 'Background_'+f
     # this is the actual binned distribution of the fail
@@ -153,11 +130,8 @@ def plot_fit(signal, tf):
     subset = twoD.ledger.select(_select_signal, 'HSCP_{}'.format(signal), tf) 
     print("Doing twoD.StdPlots")
     twoD.StdPlots('HSCP_{}-{}_area'.format(signal, tf), subset)
-    twoD.StdPlots('HSCP_{}-{}_area'.format(signal, tf), subset, True)
 
 def GOF(signal,tf,condor=True, extra=''):
-    # replace the blindedFit option in the config file with COMMENT to effectively "unblind" the GoF
-    findReplace = {"blindedFit": "COMMENT"}
     working_area = 'HSCP_fits'
     signame = 'HSCP_'+signal
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
@@ -336,24 +310,9 @@ def test_FTest(poly1, poly2, signal=''):
 
 if __name__ == "__main__":
     make_workspace()
-    
-    perform_fit('gluino-800','0x0',rMaxExt=1,extra='--robustHesse 1')
-    perform_fit('gluino-1000','0x0',rMaxExt=1,extra='--robustHesse 1')
-    perform_fit('gluino-1400','0x0',rMaxExt=0.3,extra='--robustHesse 1')
-    perform_fit('gluino-1600','0x0',rMaxExt=5,extra='--robustHesse 1')
     perform_fit('gluino-1800','0x0',rMaxExt=0.1,extra='--robustHesse 1')
-    perform_fit('gluino-2000','0x0',rMaxExt=0.1,extra='--robustHesse 1')
-    perform_fit('gluino-2200','0x0',rMaxExt=0.1,extra='--robustHesse 1')
-    perform_fit('gluino-2400','0x0',rMaxExt=0.1,extra='--robustHesse 1')
-    perform_fit('gluino-2600','0x0',rMaxExt=1,extra='--robustHesse 1')
-    ## Try with other (non-flat) TFs
-    #perform_fit('gluino-1800','1x0',rMaxExt=1,extra='--robustHesse 1')
-    #perform_fit('gluino-1800','2x0',rMaxExt=1,extra='--robustHesse 1')
-    #plot_fit('gluino-800','0x0')
-    #plot_fit('gluino-1000','0x0')
-    #plot_fit('gluino-1400','0x0')
-    #plot_fit('gluino-1600','0x0')
     plot_fit('gluino-1800','0x0')
+
     #plot_fit('gluino-2000','0x0')
     #plot_fit('gluino-2200','0x0')
     #plot_fit('gluino-2400','0x0')
@@ -363,16 +322,6 @@ if __name__ == "__main__":
     #GOF('gluino-1800','0x0',condor=False, extra='--text2workspace "--channel-masks" --setParametersForFit mask_pass_SIG=1 --setParametersForEval mask_pass_SIG=1')
     #GOF('gluino-1800','0x0',condor=False, extra='')
     #SignalInjection(0, condor=False)	# you can make a loop to run a bunch of injected xsecs
-    run_limits('gluino-800','0x0')
-    run_limits('gluino-1000','0x0')
-    run_limits('gluino-1400','0x0')
-    run_limits('gluino-1600','0x0')
-    run_limits('gluino-1800','0x0')
-    run_limits('gluino-2000','0x0')
-    run_limits('gluino-2200','0x0')
-    run_limits('gluino-2400','0x0')
-    run_limits('gluino-2600','0x0')
-    #Impacts()
 
     #test_FTest('0x0','1x0')
     #test_FTest('1x0','2x0')
