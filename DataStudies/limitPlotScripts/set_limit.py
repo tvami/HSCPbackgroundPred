@@ -184,8 +184,8 @@ else:
     g_mclimit.GetYaxis().SetTitle("#sigma_{HSCP gluino_{"+cstr+"}} [pb]") # NOT GENERIC
     g_mclimit.GetYaxis().SetRangeUser(0., 80.)
     g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
-    g_mclimit.SetMinimum(0.8e-3) #0.005
-    g_mclimit.SetMaximum(0.15)
+    g_mclimit.SetMinimum(1e-4) #0.005
+    g_mclimit.SetMaximum(0.2)
 # Expected
 # g_mclimit = TGraph(len(x_mass), x_mass, y_mclimit)
 # g_mclimit.SetTitle("")
@@ -308,8 +308,8 @@ graphWPup.Draw("l")
 
 # Finally calculate the intercept
 expectedMassLimit,expectedCrossLimit = Inter(g_mclimit,graphWP) #if len(Inter(g_mclimit,graphWP)) > 0 else -1.0
-upLimit,trash = Inter(g_mcminus,graphWP) if len(Inter(g_mcminus,graphWP)) > 0 else -1.0
-lowLimit,trash = Inter(g_mcplus,graphWP) if len(Inter(g_mcplus,graphWP)) > 0 else -1.0
+upLimit,upXsectionLim = Inter(g_mcminus,graphWP) if len(Inter(g_mcminus,graphWP)) > 0 else -1.0
+lowLimit,lowXsectionLim = Inter(g_mcplus,graphWP) if len(Inter(g_mcplus,graphWP)) > 0 else -1.0
 
 expLine = TLine(expectedMassLimit,g_mclimit.GetMinimum(),expectedMassLimit,expectedCrossLimit)
 expLine.SetLineStyle(2)
@@ -318,10 +318,12 @@ expLine.Draw()
 if options.drawIntersection:
     expLineLabel = TPaveText(expectedMassLimit-300, expectedCrossLimit*2, expectedMassLimit+300, expectedCrossLimit*15, "NB")
     expLineLabel.SetFillColorAlpha(kWhite,0)
-    expLineLabel.AddText(str(int(expectedMassLimit))+' TeV')
+    expLineLabel.AddText(str(round(expectedMassLimit,2))+' TeV')
     expLineLabel.Draw()
 
-print 'Expected limit: '+str(expectedMassLimit) + ' +'+str(upLimit-expectedMassLimit) +' -'+str(expectedMassLimit-lowLimit) + ' TeV' # NOT GENERIC
+print('Expected mass limit: '+str(round(expectedMassLimit,3)) + ' +'+str(round(upLimit-expectedMassLimit,3)) +' -'+str(round(expectedMassLimit-lowLimit,3)) + ' TeV')
+print('Expected xsection  limit: '+str(expectedCrossLimit) + ' +'+str(expectedCrossLimit-upXsectionLim) +' -'+str(lowXsectionLim-expectedCrossLimit) + ' pb') 
+
 if not options.blind:
     obsMassLimit,obsCrossLimit = Inter(g_limit,graphWP) if len(Inter(g_limit,graphWP)) > 0 else -1.0
     print 'Observed limit: '+str(obsMassLimit) + ' TeV'
@@ -333,7 +335,7 @@ if not options.blind:
     if options.drawIntersection:
         obsLineLabel = TPaveText(obsMassLimit-300, obsCrossLimit*3, obsMassLimit+300, obsCrossLimit*12,"NB")
         obsLineLabel.SetFillColorAlpha(kWhite,0)
-        obsLineLabel.AddText(str(int(obsMassLimit))+' TeV')
+        obsLineLabel.AddText(str(round(obsMassLimit,2))+' TeV')
         obsLineLabel.Draw()
 
 # Legend and draw
