@@ -438,7 +438,7 @@ def copy_hist_with_new_bins(copyName,XorY,inHist,new_bins):
         TH2: Copy of histogram with new binning scheme. Note that the number of entries
             will not be correct but integrated yield will be. 
     '''
-    print("Rebinning " + str(copyName) + " -- Original Integral : " +str(inHist.Integral()))
+    #print("Rebinning " + str(copyName) + " -- Original Integral : " +str(inHist.Integral()))
     if XorY not in ["X","Y"]:
         raise ValueError('Arg XorY is not "X" or "Y".')
     axis_to_rebin = XorY
@@ -505,7 +505,7 @@ def copy_hist_with_new_bins(copyName,XorY,inHist,new_bins):
     # Will now set the copyName which will overwrite inHist if it has the same name
     hist_copy.SetName(copyName)
     hist_copy.SetTitle(copyName)
-    print("\tIntegral in the end : " + str(hist_copy.Integral()))
+    #print("\tIntegral in the end : " + str(hist_copy.Integral()))
     return hist_copy
 
 def get_min_bin_width(hist):
