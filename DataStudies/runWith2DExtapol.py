@@ -105,8 +105,9 @@ def make_workspace():
     # this is the actual binned distribution of the fail
     #bkg_f = BinnedDistribution(fail_name, bkg_hists[f], binning_f, constant=False)
     #bkg_f_func  = "10000*@0*exp(@1*x)"
-    bkg_f_func = "100*@0*exp(@1*x)"
-    bkg_f_const = {0:{"MIN":0.,"MAX":100,"NOM":1.},1:{"MIN":-50,"MAX":0,"NOM":-0.1}}
+    #bkg_f_func = "100*@0*exp(@1*x)"
+    bkg_f_func = "100*@0*exp(@1*x)*exp(@2*y)"
+    bkg_f_const = {0:{"MIN":0.,"MAX":100,"NOM":1.},1:{"MIN":-50,"MAX":0,"NOM":-0.1},2:{"MIN":-50,"MAX":0,"NOM":-0.1}}
     bkg_f = SemiParametricFunction(fail_name, bkg_hists[f], binning_f, bkg_f_func, constraints=bkg_f_const,funcCeiling=30.)
     # now we add it to the 2DAlphabet ledger
     twoD.AddAlphaObj('Background',f, bkg_f)
@@ -147,28 +148,25 @@ def perform_fit(signal, tf, rMaxExt = 30, extra=''):
     # Now we create a ledger and make a new area for it with a Combine card
     # this select() method uses lambda functions. Will explain later
     print("tf: " + str(tf))
-    subset = twoD.ledger.select(_select_signal, 'Signal_{}'.format(signal), tf)   
-    twoD.MakeCard(subset, 'Signal_{}-{}_area'.format(signal, tf))
+    subset = twoD.ledger.select(_select_signal, '{}'.format(signal), tf)   
+    twoD.MakeCard(subset, '{}-{}_area'.format(signal, tf))
 
     # perform fit
     print("perform fit")
-    twoD.MLfit('Signal_{}-{}_area'.format(signal, tf), rMin=0, rMax=rMaxExt, verbosity=0, extra=extra)
+    twoD.MLfit('{}-{}_area'.format(signal, tf), rMin=0, rMax=rMaxExt, verbosity=0, extra=extra)
 
 def plot_fit(signal, tf):
     working_area = workingArea
-    print("DoingTwoDAlphabet")
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
-    print("Doing twoD.ledger.select")
-    subset = twoD.ledger.select(_select_signal, 'Signal_{}'.format(signal), tf) 
-    print("Doing twoD.StdPlots")
-    twoD.StdPlots('Signal_{}-{}_area'.format(signal, tf), subset)
-    twoD.StdPlots('Signal_{}-{}_area'.format(signal, tf), subset, True)
+    subset = twoD.ledger.select(_select_signal, '{}'.format(signal), tf) 
+    twoD.StdPlots('{}-{}_area'.format(signal, tf), subset)
+    #twoD.StdPlots('{}-{}_area'.format(signal, tf), subset, True)
 
 def GOF(signal,tf,condor=True, extra=''):
     # replace the blindedFit option in the config file with COMMENT to effectively "unblind" the GoF
     #findReplace = {"blindedFit": "COMMENT"}
     working_area = workingArea
-    signame = 'Signal_'+signal
+    signame = signal
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     if not os.path.exists(twoD.tag+'/'+signame+'-{}_area/card.txt'.format(tf)):
         print('{}/{}-area/card.txt does not exist, making card'.format(twoD.tag,signame))
@@ -187,7 +185,7 @@ def GOF(signal,tf,condor=True, extra=''):
 
 def plot_GOF(signal, tf, condor=True):
     working_area = workingArea
-    plot.plot_gof('{}'.format(working_area), 'Signal_{}-{}_area'.format(signal, tf), condor=condor)
+    plot.plot_gof('{}'.format(working_area), '{}-{}_area'.format(signal, tf), condor=condor)
 
 def load_RPF(twoD):
     '''	
@@ -201,7 +199,7 @@ def SignalInjection(r, condor=True):
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     #params = load_RPF(twoD)
     twoD.SignalInjection(
-	'Signal_{}-{}_area'.format(signal, tf),
+	'{}-{}_area'.format(signal, tf),
 	injectAmount = r,	# injected signal xsec (r=0 : bias test)
 	ntoys=500,		# will take forever if not on condor
 	blindData = True,	# make sure you're blinding if working with data
@@ -213,18 +211,18 @@ def SignalInjection(r, condor=True):
 
 def plot_SignalInjection(r, condor=False):
     working_area = workingArea
-    plot.plot_signalInjection(working_area, 'Signal_{}-{}_area'.format(signal, tf), injectedAmount=r, condor=condor)
+    plot.plot_signalInjection(working_area, '{}-{}_area'.format(signal, tf), injectedAmount=r, condor=condor)
 
 def Impacts():
     working_area = workingArea
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
-    twoD.Impacts('Signal_{}-{}_area'.format(signal, tf), cardOrW='card.txt', extra='-t 1')
+    twoD.Impacts('{}-{}_area'.format(signal, tf), cardOrW='card.txt', extra='-t 1')
 
 def run_limits(signal, tf):
     working_area = workingArea
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     twoD.Limit(
-	subtag='Signal_{}-{}_area'.format(signal, tf),
+	subtag='{}-{}_area'.format(signal, tf),
 	blindData=False,	# BE SURE TO CHANGE THIS IF YOU NEED TO BLIND YOUR DATA 
 	verbosity=1,
 	condor=False
@@ -256,7 +254,7 @@ def test_FTest(poly1, poly2, signal=''):
     nBins = (len(binning.xbinList)-1)*(len(binning.ybinList)-1)
     
     # Get number of RPF params and run GoF for poly1
-    params1 = twoD.ledger.select(_select_signal, 'Signal_{}'.format(signal), poly1).alphaParams
+    params1 = twoD.ledger.select(_select_signal, '{}'.format(signal), poly1).alphaParams
     rpfSet1 = params1[params1["name"].str.contains("rpf")]
     print("rpfSet1: " + str(rpfSet1))
     nRpfs1  = len(rpfSet1.index)
@@ -345,42 +343,33 @@ def test_FTest(poly1, poly2, signal=''):
 
 if __name__ == "__main__":
     make_workspace()
-   
-    perform_fit('gluino-800','0x0',rMaxExt=1,extra='--robustHesse 1')
-    perform_fit('gluino-1000','0x0',rMaxExt=1,extra='--robustHesse 1')
-    perform_fit('gluino-1400','0x0',rMaxExt=0.1,extra='--robustHesse 1')
-    perform_fit('gluino-1600','0x0',rMaxExt=5,extra='--robustHesse 1')
-    perform_fit('gluino-1800','0x0',rMaxExt=0.1,extra='--robustHesse 1')
-    perform_fit('gluino-2000','0x0',rMaxExt=10,extra='--robustHesse 1')
-    perform_fit('gluino-2200','0x0',rMaxExt=50,extra='--robustHesse 1')
-    perform_fit('gluino-2400','0x0',rMaxExt=0.1,extra='--robustHesse 1')
-    perform_fit('gluino-2600','0x0',rMaxExt=60,extra='--robustHesse 1')
-    ## Try with other (non-flat) TFs
-    #perform_fit('gluino-1800','1x0',rMaxExt=1,extra='--robustHesse 1')
-    #perform_fit('gluino-1800','2x0',rMaxExt=1,extra='--robustHesse 1')
-    #plot_fit('gluino-800','0x0')
-    plot_fit('gluino-1000','0x0')
-    plot_fit('gluino-1400','0x0')
-    plot_fit('gluino-1600','0x0')
-    plot_fit('gluino-1800','0x0')
-    plot_fit('gluino-2000','0x0')
-    plot_fit('gluino-2200','0x0')
-    plot_fit('gluino-2400','0x0')
-    plot_fit('gluino-2600','0x0')
-    #plot_fit('gluino-1800','1x0' )
-    #plot_fit('gluino-1800','2x0' )
+    
+    signal_areas = ["Signal_gluino-1800"]
+    #signal_areas = ["Signal_gluino-1000", "Signal_gluino-1400", "Signal_gluino-1600", "Signal_gluino-1800", "Signal_gluino-2000", "Signal_gluino-2200", "Signal_gluino-2400", "Signal_gluino-2600", "Signal_gluino-800", "Signal_gluinoCS-1800", "Signal_gluinoCS-2000", "Signal_gluinoCS-2200", "Signal_gluinoCS-2400", "Signal_gluinoCS-2600", "Signal_gluinoCS-500", "Signal_gluinoCS-800", "Signal_gmsbStau-1029", "Signal_gmsbStau-1218", "Signal_gmsbStau-1409", "Signal_gmsbStau-1599", "Signal_gmsbStau-200", "Signal_gmsbStau-247", "Signal_gmsbStau-308", "Signal_gmsbStau-432", "Signal_gmsbStau-557", "Signal_gmsbStau-651", "Signal_gmsbStau-745", "Signal_gmsbStau-871", "Signal_ppStau-1029", "Signal_ppStau-1218", "Signal_ppStau-200", "Signal_ppStau-247", "Signal_ppStau-308", "Signal_ppStau-432", "Signal_ppStau-557", "Signal_ppStau-651", "Signal_ppStau-745", "Signal_ppStau-871", "Signal_stop-1000", "Signal_stop-1200", "Signal_stop-1400", "Signal_stop-1600", "Signal_stop-1800", "Signal_stop-2000", "Signal_stop-2200", "Signal_stop-2400", "Signal_stop-2600", "Signal_stop-500", "Signal_stop-800", "Signal_stopCS-1000", "Signal_stopCS-1200", "Signal_stopCS-1400", "Signal_stopCS-1600", "Signal_stopCS-1800", "Signal_stopCS-2000", "Signal_stopCS-2200", "Signal_stopCS-2400", "Signal_stopCS-2600", "Signal_stopCS-500", "Signal_stopCS-800", "Signal_tauPrime1e-1000", "Signal_tauPrime1e-1400", "Signal_tauPrime1e-1800", "Signal_tauPrime1e-200", "Signal_tauPrime1e-2200", "Signal_tauPrime1e-2600", "Signal_tauPrime1e-400", "Signal_tauPrime1e-500", "Signal_tauPrime1e-800", "Signal_tauPrime2e-1000", "Signal_tauPrime2e-1400", "Signal_tauPrime2e-1800", "Signal_tauPrime2e-200", "Signal_tauPrime2e-2200", "Signal_tauPrime2e-2600", "Signal_tauPrime2e-400", "Signal_tauPrime2e-500"]
+    #signal_areas = ["Signal_tauPrime1e-1000", "Signal_tauPrime1e-1400", "Signal_tauPrime1e-1800", "Signal_tauPrime1e-200", "Signal_tauPrime1e-2200", "Signal_tauPrime1e-2600", "Signal_tauPrime1e-400", "Signal_tauPrime1e-500", "Signal_tauPrime1e-800", "Signal_tauPrime2e-1000", "Signal_tauPrime2e-1400", "Signal_tauPrime2e-1800", "Signal_tauPrime2e-200", "Signal_tauPrime2e-2200", "Signal_tauPrime2e-2600", "Signal_tauPrime2e-400", "Signal_tauPrime2e-500"]
+
+    for signal in signal_areas : 
+      # When there are 100 signals, let's make sure we only run on the ones we didnt do before
+      if os.path.exists(workingArea + "/" + signal + "-0x0_area/done") : continue
+      fitPassed = False
+      # If the fit failed iterate on rMax
+      rMax = 30
+      while not (fitPassed) : 
+        print("\n\n\nperform_fit with rMax = " + str(rMax))
+        perform_fit(signal,'0x0',rMax,extra='--robustHesse 1')
+        # Do fitting until the fit passes
+        with open(workingArea + "/" + signal + "-0x0_area/FitDiagnostics.log", 'r') as file:
+          content = file.read()
+          if not "Fit failed" in content: fitPassed = True
+          rMax = rMax / 10.
+      plot_fit(signal,'0x0')
+      print("\n\n\nFit is succesful, running limits now for " + str(signal))
+      run_limits(signal,'0x0')
+      open(workingArea + "/" + signal + "-0x0_area/done", 'wa').close()
+
     #GOF('gluino-1800','0x0',condor=False, extra='--text2workspace "--channel-masks" --setParametersForFit mask_pass_SIG=1 --setParametersForEval mask_pass_SIG=1')
     #GOF('gluino-1800','0x0',condor=False, extra='')
     #SignalInjection(0, condor=False)	# you can make a loop to run a bunch of injected xsecs
-    run_limits('gluino-800','0x0')
-    run_limits('gluino-1000','0x0')
-    run_limits('gluino-1400','0x0')
-    run_limits('gluino-1600','0x0')
-    run_limits('gluino-1800','0x0')
-    run_limits('gluino-2000','0x0')
-    run_limits('gluino-2200','0x0')
-    run_limits('gluino-2400','0x0')
-    run_limits('gluino-2600','0x0')
     #Impacts()
     #test_FTest('0x0','1x0')
     #test_FTest('1x0','2x0')

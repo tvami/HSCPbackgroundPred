@@ -174,18 +174,19 @@ if not options.blind:
     g_limit.SetLineColor(1)
     g_limit.SetLineWidth(2)
     g_limit.SetMarkerSize(1) #0.5
-    g_limit.GetYaxis().SetRangeUser(0., 80.)
     g_limit.GetXaxis().SetRangeUser(0.8, 3.0)
     g_limit.SetMinimum(0.8e-4) #0.005
     g_limit.SetMaximum(0.1)
 else:
     print 'Blinded'
-    g_mclimit.GetXaxis().SetTitle("m_{HSCP gluino} [TeV]")  # NOT GENERIC
-    g_mclimit.GetYaxis().SetTitle("#sigma_{HSCP gluino_{"+cstr+"}} [pb]") # NOT GENERIC
-    g_mclimit.GetYaxis().SetRangeUser(0., 80.)
-    g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
-    g_mclimit.SetMinimum(1e-4) #0.005
-    g_mclimit.SetMaximum(0.2)
+    g_mclimit.GetXaxis().SetTitle("m_{HSCP "+cstr+"} [TeV]")  # NOT GENERIC
+    g_mclimit.GetYaxis().SetTitle("#sigma_{HSCP "+cstr+"} [pb]") # NOT GENERIC
+    if ("tau" in cstr) : 
+      g_mclimit.GetXaxis().SetRangeUser(0.1, 1.5)
+    else: 
+      g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
+    g_mclimit.SetMinimum(5e-5) #0.005
+    g_mclimit.SetMaximum(0.03)
 # Expected
 # g_mclimit = TGraph(len(x_mass), x_mass, y_mclimit)
 # g_mclimit.SetTitle("")
@@ -277,8 +278,8 @@ g_error.SetFillColor( kGreen+1)
 g_error.SetLineColor(0)
 
 if not options.blind:
-    g_limit.GetXaxis().SetTitle("m_{HSCP gluino} [TeV]")  # NOT GENERIC
-    g_limit.GetYaxis().SetTitle("#sigma_{HSCP gluino} [pb]") # NOT GENERIC
+    g_limit.GetXaxis().SetTitle("m_{HSCP "+cstr+"} [TeV]")  # NOT GENERIC
+    g_limit.GetYaxis().SetTitle("#sigma_{HSCP "+cstr+"} [pb]") # NOT GENERIC
     g_limit.GetXaxis().SetTitleSize(0.055)
     g_limit.GetYaxis().SetTitleSize(0.05)
     g_limit.Draw('ap')
@@ -291,8 +292,8 @@ if not options.blind:
     g_limit.GetXaxis().SetTitleOffset(1.25)
 
 else:
-    g_mclimit.GetXaxis().SetTitle("m_{HSCP gluino} [TeV]")  # NOT GENERIC
-    g_mclimit.GetYaxis().SetTitle("#sigma_{HSCP gluino} [pb]") # NOT GENERIC
+    g_mclimit.GetXaxis().SetTitle("m_{HSCP  "+cstr+"} [TeV]")  # NOT GENERIC
+    g_mclimit.GetYaxis().SetTitle("#sigma_{HSCP "+cstr+"} [pb]") # NOT GENERIC
     g_mclimit.GetXaxis().SetTitleSize(0.055)
     g_mclimit.GetYaxis().SetTitleSize(0.05)
     g_mclimit.Draw("al")
@@ -313,7 +314,8 @@ lowLimit,lowXsectionLim = Inter(g_mcplus,graphWP) if len(Inter(g_mcplus,graphWP)
 
 expLine = TLine(expectedMassLimit,g_mclimit.GetMinimum(),expectedMassLimit,expectedCrossLimit)
 expLine.SetLineStyle(2)
-expLine.Draw()
+
+#expLine.Draw()
 
 if options.drawIntersection:
     expLineLabel = TPaveText(expectedMassLimit-300, expectedCrossLimit*2, expectedMassLimit+300, expectedCrossLimit*15, "NB")
@@ -347,8 +349,7 @@ if not options.blind:
 legend.AddEntry(g_mclimit, "Median expected","l")
 legend.AddEntry(g_error, "68% expected", "f")
 legend.AddEntry(g_error95, "95% expected", "f")
-legend.AddEntry(graphWP, "Theory HSCP gluino_{"+cstr+"}", "l")   # NOT GENERIC
-# legend.AddEntry(graphWPup, "Theory b*_{"+cstr+"} 1 #sigma uncertainty", "l")
+legend.AddEntry(graphWP, "Theory HSCP "+cstr+"", "l")   # NOT GENERIC
 
 legend.SetBorderSize(0)
 legend.SetFillStyle(0)

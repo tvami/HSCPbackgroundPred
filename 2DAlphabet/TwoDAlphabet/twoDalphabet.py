@@ -872,6 +872,7 @@ def MakeCard(ledger, subtag, workspaceDir):
 def _runMLfit(cardOrW, blinding, verbosity, rMin, rMax, setParams, usePreviousFit=False, extra=''):
     if usePreviousFit: param_options = ''
     else:              param_options = '--text2workspace "--channel-masks" '
+#    else:              param_options = '--text2workspace "--channel-masks --X-allow-no-signal" '
     params_to_set = ','.join(['mask_pass_HIGH=1']+['mask_%s_SIG=1'%r for r in blinding]+['%s=%s'%(p,v) for p,v in setParams.items()]+['r=1'])
     param_options += '--setParameters '+params_to_set
 

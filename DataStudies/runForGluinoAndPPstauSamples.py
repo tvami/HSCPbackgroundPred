@@ -1,16 +1,11 @@
 from time import time
 from TwoDAlphabet import plot
 from TwoDAlphabet.twoDalphabet import MakeCard, TwoDAlphabet
-from TwoDAlphabet.alphawrap import BinnedDistribution, ParametricFunction, SemiParametricFunction
+from TwoDAlphabet.alphawrap import BinnedDistribution, ParametricFunction
 from TwoDAlphabet.helpers import make_env_tarball, cd, execute_cmd
 from TwoDAlphabet.ftest import FstatCalc
-import os,sys
+import os
 import numpy as np
-from optparse import OptionParser
-parser = OptionParser(usage="Usage: python %prog workingArea config.json")
-
-workingArea = sys.argv[1]
-configJSON = sys.argv[2]
 
 # Helper function to get region names
 def _get_other_region_names(pass_reg_name):
@@ -86,7 +81,7 @@ def _select_signal(row, args):
 # Make the workspace
 def make_workspace():
   # Create the workspace directory, using info from the specified JSON file
-  twoD = TwoDAlphabet(workingArea, configJSON, loadPrevious=False)
+  twoD = TwoDAlphabet('HSCP_fits', 'configForGluinoAndPPstauSamples.json', loadPrevious=False)
 
   # 2DAlphabet wasn't intended for an analysis like this, so the default function 
   # for Looping over all regions and for a given region's data histogram, subtracting
@@ -103,11 +98,7 @@ def make_workspace():
     # you can change the name as you see fit 
     fail_name = 'Background_'+f
     # this is the actual binned distribution of the fail
-    #bkg_f = BinnedDistribution(fail_name, bkg_hists[f], binning_f, constant=False)
-    #bkg_f_func  = "10000*@0*exp(@1*x)"
-    bkg_f_func = "100*@0*exp(@1*x)"
-    bkg_f_const = {0:{"MIN":0.,"MAX":100,"NOM":1.},1:{"MIN":-50,"MAX":0,"NOM":-0.1}}
-    bkg_f = SemiParametricFunction(fail_name, bkg_hists[f], binning_f, bkg_f_func, constraints=bkg_f_const,funcCeiling=30.)
+    bkg_f = BinnedDistribution(fail_name, bkg_hists[f], binning_f, constant=False)
     # now we add it to the 2DAlphabet ledger
     twoD.AddAlphaObj('Background',f, bkg_f)
 
@@ -138,7 +129,7 @@ def perform_fit(signal, tf, rMaxExt = 30, extra=''):
 	extra (str) = any extra flags to pass to Combine when running the ML fit
     '''
     # this is the name of the directory created in the workspace function
-    working_area = workingArea
+    working_area = 'HSCP_fits'
     # we reuse the workspace from the last step.
     # The runConfig.json is copied from the origin JSON config file, 
     # and we must specify that we want to load the previous workspace
@@ -147,28 +138,28 @@ def perform_fit(signal, tf, rMaxExt = 30, extra=''):
     # Now we create a ledger and make a new area for it with a Combine card
     # this select() method uses lambda functions. Will explain later
     print("tf: " + str(tf))
-    subset = twoD.ledger.select(_select_signal, 'Signal_{}'.format(signal), tf)   
-    twoD.MakeCard(subset, 'Signal_{}-{}_area'.format(signal, tf))
+    subset = twoD.ledger.select(_select_signal, 'HSCP_{}'.format(signal), tf)   
+    twoD.MakeCard(subset, 'HSCP_{}-{}_area'.format(signal, tf))
 
     # perform fit
     print("perform fit")
-    twoD.MLfit('Signal_{}-{}_area'.format(signal, tf), rMin=0, rMax=rMaxExt, verbosity=0, extra=extra)
+    twoD.MLfit('HSCP_{}-{}_area'.format(signal, tf), rMin=0, rMax=rMaxExt, verbosity=1, extra=extra)
 
 def plot_fit(signal, tf):
-    working_area = workingArea
+    working_area = 'HSCP_fits'
     print("DoingTwoDAlphabet")
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     print("Doing twoD.ledger.select")
-    subset = twoD.ledger.select(_select_signal, 'Signal_{}'.format(signal), tf) 
+    subset = twoD.ledger.select(_select_signal, 'HSCP_{}'.format(signal), tf) 
     print("Doing twoD.StdPlots")
-    twoD.StdPlots('Signal_{}-{}_area'.format(signal, tf), subset)
-    twoD.StdPlots('Signal_{}-{}_area'.format(signal, tf), subset, True)
+    twoD.StdPlots('HSCP_{}-{}_area'.format(signal, tf), subset)
+    twoD.StdPlots('HSCP_{}-{}_area'.format(signal, tf), subset, True)
 
 def GOF(signal,tf,condor=True, extra=''):
     # replace the blindedFit option in the config file with COMMENT to effectively "unblind" the GoF
     #findReplace = {"blindedFit": "COMMENT"}
-    working_area = workingArea
-    signame = 'Signal_'+signal
+    working_area = 'HSCP_fits'
+    signame = 'HSCP_'+signal
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     if not os.path.exists(twoD.tag+'/'+signame+'-{}_area/card.txt'.format(tf)):
         print('{}/{}-area/card.txt does not exist, making card'.format(twoD.tag,signame))
@@ -186,8 +177,8 @@ def GOF(signal,tf,condor=True, extra=''):
         )
 
 def plot_GOF(signal, tf, condor=True):
-    working_area = workingArea
-    plot.plot_gof('{}'.format(working_area), 'Signal_{}-{}_area'.format(signal, tf), condor=condor)
+    working_area = 'HSCP_fits'
+    plot.plot_gof('{}'.format(working_area), 'HSCP_{}-{}_area'.format(signal, tf), condor=condor)
 
 def load_RPF(twoD):
     '''	
@@ -197,11 +188,11 @@ def load_RPF(twoD):
     return {k:v['val'] for k,v in params_to_set.items()}
 
 def SignalInjection(r, condor=True):
-    working_area = workingArea
+    working_area = 'HSCP_fits'
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     #params = load_RPF(twoD)
     twoD.SignalInjection(
-	'Signal_{}-{}_area'.format(signal, tf),
+	'HSCP_{}-{}_area'.format(signal, tf),
 	injectAmount = r,	# injected signal xsec (r=0 : bias test)
 	ntoys=500,		# will take forever if not on condor
 	blindData = True,	# make sure you're blinding if working with data
@@ -212,19 +203,19 @@ def SignalInjection(r, condor=True):
     )
 
 def plot_SignalInjection(r, condor=False):
-    working_area = workingArea
-    plot.plot_signalInjection(working_area, 'Signal_{}-{}_area'.format(signal, tf), injectedAmount=r, condor=condor)
+    working_area = 'HSCP_fits'
+    plot.plot_signalInjection(working_area, 'HSCP_{}-{}_area'.format(signal, tf), injectedAmount=r, condor=condor)
 
 def Impacts():
-    working_area = workingArea
+    working_area = 'HSCP_fits'
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
-    twoD.Impacts('Signal_{}-{}_area'.format(signal, tf), cardOrW='card.txt', extra='-t 1')
+    twoD.Impacts('HSCP_{}-{}_area'.format(signal, tf), cardOrW='card.txt', extra='-t 1')
 
 def run_limits(signal, tf):
-    working_area = workingArea
+    working_area = 'HSCP_fits'
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     twoD.Limit(
-	subtag='Signal_{}-{}_area'.format(signal, tf),
+	subtag='HSCP_{}-{}_area'.format(signal, tf),
 	blindData=False,	# BE SURE TO CHANGE THIS IF YOU NEED TO BLIND YOUR DATA 
 	verbosity=1,
 	condor=False
@@ -249,28 +240,28 @@ def test_FTest(poly1, poly2, signal=''):
     '''
     Perform an F-test using existing working areas
     '''
-    working_area = workingArea
+    working_area = 'HSCP_fits'
     
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     binning = twoD.binnings['default']
     nBins = (len(binning.xbinList)-1)*(len(binning.ybinList)-1)
     
     # Get number of RPF params and run GoF for poly1
-    params1 = twoD.ledger.select(_select_signal, 'Signal_{}'.format(signal), poly1).alphaParams
+    params1 = twoD.ledger.select(_select_signal, 'HSCP_{}'.format(signal), poly1).alphaParams
     rpfSet1 = params1[params1["name"].str.contains("rpf")]
     print("rpfSet1: " + str(rpfSet1))
     nRpfs1  = len(rpfSet1.index)
     print(" >>>>>> Num RPF parameters for poly1: " + str(nRpfs1))
-    _gof_for_FTest(twoD, 'Signal_gluino-1800-{}_area'.format(poly1), card_or_w='card.txt')
-    gofFile1 = working_area+'/Signal_gluino-1800-{}_area/higgsCombine_gof_data.GoodnessOfFit.mH120.root'.format(poly1)
+    _gof_for_FTest(twoD, 'HSCP_gluino-1800-{}_area'.format(poly1), card_or_w='card.txt')
+    gofFile1 = working_area+'/HSCP_gluino-1800-{}_area/higgsCombine_gof_data.GoodnessOfFit.mH120.root'.format(poly1)
 
     # Get number of RPF params and run GoF for poly2
-    params2 = twoD.ledger.select(_select_signal, 'Signal_{}'.format(signal), poly2).alphaParams
+    params2 = twoD.ledger.select(_select_signal, 'HSCP_{}'.format(signal), poly2).alphaParams
     rpfSet2 = params2[params2["name"].str.contains("rpf")]
     nRpfs2  = len(rpfSet2.index)
     print(" >>>>>> Num RPF parameters for poly2: " + str(nRpfs2))
-    _gof_for_FTest(twoD, 'Signal_gluino-1800-{}_area'.format(poly2), card_or_w='card.txt')
-    gofFile2 = working_area+'/Signal_gluino-1800-{}_area/higgsCombine_gof_data.GoodnessOfFit.mH120.root'.format(poly2)
+    _gof_for_FTest(twoD, 'HSCP_gluino-1800-{}_area'.format(poly2), card_or_w='card.txt')
+    gofFile2 = working_area+'/HSCP_gluino-1800-{}_area/higgsCombine_gof_data.GoodnessOfFit.mH120.root'.format(poly2)
 
 
     base_fstat = FstatCalc(gofFile1,gofFile2,nRpfs1,nRpfs2,nBins)
@@ -346,27 +337,52 @@ def test_FTest(poly1, poly2, signal=''):
 if __name__ == "__main__":
     make_workspace()
    
-    perform_fit('gluino-800','0x0',rMaxExt=1,extra='--robustHesse 1')
-    perform_fit('gluino-1000','0x0',rMaxExt=1,extra='--robustHesse 1')
+    perform_fit('gluino-800','0x0',rMaxExt=10,extra='--robustHesse 1')
+    perform_fit('gluino-1000','0x0',rMaxExt=10,extra='--robustHesse 1')
     perform_fit('gluino-1400','0x0',rMaxExt=0.1,extra='--robustHesse 1')
     perform_fit('gluino-1600','0x0',rMaxExt=5,extra='--robustHesse 1')
     perform_fit('gluino-1800','0x0',rMaxExt=0.1,extra='--robustHesse 1')
-    perform_fit('gluino-2000','0x0',rMaxExt=10,extra='--robustHesse 1')
-    perform_fit('gluino-2200','0x0',rMaxExt=50,extra='--robustHesse 1')
+    perform_fit('gluino-2000','0x0',rMaxExt=1,extra='--robustHesse 1')
+    perform_fit('gluino-2200','0x0',rMaxExt=0.1,extra='--robustHesse 1')
     perform_fit('gluino-2400','0x0',rMaxExt=0.1,extra='--robustHesse 1')
-    perform_fit('gluino-2600','0x0',rMaxExt=60,extra='--robustHesse 1')
+    perform_fit('gluino-2600','0x0',rMaxExt=0.1,extra='--robustHesse 1')
+
+    #perform_fit('ppStau-200','0x0',rMaxExt=1,extra='--robustHesse 1')
+    #perform_fit('ppStau-247','0x0',rMaxExt=1,extra='--robustHesse 1')
+    #perform_fit('ppStau-308','0x0',rMaxExt=10,extra='--robustHesse 1')
+    #perform_fit('ppStau-432','0x0',rMaxExt=1,extra='--robustHesse 1')
+    #perform_fit('ppStau-557','0x0',rMaxExt=1,extra='--robustHesse 1')
+    #perform_fit('ppStau-651','0x0',rMaxExt=1,extra='--robustHesse 1')
+    #perform_fit('ppStau-745','0x0',rMaxExt=1,extra='--robustHesse 1')
+    #perform_fit('ppStau-871','0x0',rMaxExt=1,extra='--robustHesse 1')
+    #perform_fit('ppStau-1029','0x0',rMaxExt=1,extra='--robustHesse 1')
+    #perform_fit('ppStau-1218','0x0',rMaxExt=1,extra='--robustHesse 1')
+    #perform_fit('ppStau-1599','0x0',rMaxExt=1,extra='--robustHesse 1')
     ## Try with other (non-flat) TFs
     #perform_fit('gluino-1800','1x0',rMaxExt=1,extra='--robustHesse 1')
     #perform_fit('gluino-1800','2x0',rMaxExt=1,extra='--robustHesse 1')
     #plot_fit('gluino-800','0x0')
-    plot_fit('gluino-1000','0x0')
-    plot_fit('gluino-1400','0x0')
-    plot_fit('gluino-1600','0x0')
-    plot_fit('gluino-1800','0x0')
-    plot_fit('gluino-2000','0x0')
-    plot_fit('gluino-2200','0x0')
-    plot_fit('gluino-2400','0x0')
-    plot_fit('gluino-2600','0x0')
+    #plot_fit('gluino-1000','0x0')
+    #plot_fit('gluino-1400','0x0')
+    #plot_fit('gluino-1600','0x0')
+    #plot_fit('gluino-1800','0x0')
+    #plot_fit('gluino-2000','0x0')
+    #plot_fit('gluino-2200','0x0')
+    #plot_fit('gluino-2400','0x0')
+    #plot_fit('gluino-2600','0x0')
+    '''
+    #plot_fit('ppStau-200','0x0')
+    plot_fit('ppStau-247','0x0')
+    plot_fit('ppStau-308','0x0')
+    plot_fit('ppStau-432','0x0')
+    plot_fit('ppStau-557','0x0')
+    plot_fit('ppStau-651','0x0')
+    plot_fit('ppStau-745','0x0')
+    plot_fit('ppStau-871','0x0')
+    plot_fit('ppStau-1029','0x0')
+    plot_fit('ppStau-1218','0x0')
+    plot_fit('ppStau-1599','0x0')
+    ## Try with other (non-flat) TFs
     #plot_fit('gluino-1800','1x0' )
     #plot_fit('gluino-1800','2x0' )
     #GOF('gluino-1800','0x0',condor=False, extra='--text2workspace "--channel-masks" --setParametersForFit mask_pass_SIG=1 --setParametersForEval mask_pass_SIG=1')
@@ -381,11 +397,22 @@ if __name__ == "__main__":
     run_limits('gluino-2200','0x0')
     run_limits('gluino-2400','0x0')
     run_limits('gluino-2600','0x0')
+    run_limits('ppStau-200','0x0')
+    run_limits('ppStau-247','0x0')
+    run_limits('ppStau-308','0x0')
+    run_limits('ppStau-432','0x0')
+    run_limits('ppStau-557','0x0')
+    run_limits('ppStau-651','0x0')
+    run_limits('ppStau-745','0x0')
+    run_limits('ppStau-871','0x0')
+    run_limits('ppStau-1029','0x0')
+    run_limits('ppStau-1218','0x0')
+    run_limits('ppStau-1599','0x0')
     #Impacts()
     #test_FTest('0x0','1x0')
     #test_FTest('1x0','2x0')
     #test_FTest('0x0','2x0')
-
+    '''
     # if you ran GOF/SigInj via condor, you need to wait until they're finished to run plotting:
     #plot_GOF('gluino-1800','0x0',condor=False)
     #plot_SignalInjection(0, condor=False)

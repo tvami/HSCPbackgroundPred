@@ -1,0 +1,106 @@
+{
+    "NAME": "NotRelevantString",
+    "GLOBAL": {
+	"FILE": "HSCP_$process-SR1.root",
+        "FILE2": "HSCP_$process-SR2.root",
+        "FILE3":"HSCP_$process-SR3.root",
+	"HIST": "h$region",
+        "HIST_UP": "h$region_$syst_up",
+        "HIST_DOWN": "h$region_$syst_down",
+	"path": "./",
+        "SIGNAME": ["Signal_gluino-800", "Signal_gluino-1000", "Signal_gluino-1400", "Signal_gluino-1600", "Signal_gluino-1800", "Signal_gluino-2000", "Signal_gluino-2200", "Signal_gluino-2400", "Signal_gluino-2600"]
+    },
+    "REGIONS": {
+	"pass": {
+            "PROCESSES": ["SIGNAME"],
+	    "BINNING": "default"
+	},
+	"fail": {
+            "PROCESSES": ["SIGNAME"],
+            "BINNING": "default"
+	}
+    },
+    "PROCESSES": {
+	"data_obs": {
+	    "SYSTEMATICS":[],
+            "COLOR": 1,
+	    "SCALE": 1.0,
+            "TYPE": "DATA",
+            "TITLE": "Data",
+	    "ALIAS": "Data",
+	    "LOC": "path/FILE:HIST"
+	},
+        "SIGNAME": {
+            "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+            "COLOR": 2,
+            "SCALE": 1.0,
+            "TYPE": "SIGNAL",
+            "TITLE": "HSCP signal",
+            "LOC": "path/FILE:HIST"
+        }
+    },
+    "SYSTEMATICS": {
+	"lumi": {
+            "CODE": 0,
+            "VAL": 1.018
+	},
+        "pileup": {
+            "ALIAS": "PUsyst",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "systOnF": {
+            "ALIAS": "Fsyst",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "systOnG": {
+            "ALIAS": "Gsyst",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "systOnTrigger": {
+            "ALIAS": "Triggersyst",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "systOnPt": {
+            "ALIAS": "Ptsyst",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        }
+    },
+    "BINNING": {
+        "default": {
+            "X": {
+                "NAME": "Ias",
+                "TITLE": "G_{i}^{Strips}",
+                "BINSv1": [0.0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,1.0],
+                "BINSv2": [0.0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,1.0],
+                "BINSv3": [0.0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,1.0],
+                "BINS": [0.0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.95,1.0],
+                "MIN":0.0,
+                "MAX":1.0,
+                "SIGSTART": 0.25,
+                "SIGEND": 1.0
+            },
+            "Y": {
+                "NAME": "ProbQ",
+                "TITLE": "F_{i}^{Pixels}",
+                "NBINS": 1,
+                "MIN": 0.0,
+                "MAX": 1.0
+            }
+        }
+    },
+    "OPTIONS": {
+        "blindedFit": ["pass"],
+        "blindedPlots": ["pass"]
+    }
+}
+
