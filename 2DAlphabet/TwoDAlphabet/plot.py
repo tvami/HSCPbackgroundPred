@@ -290,12 +290,11 @@ class Plotter(object):
                             self.slices['x' if 'y' in proj else 'y'][region]['vals'][islice+1],
                             ''
                         )
-                        if (region == "pass" and "projx2" in projn) :
-                            slice_str = "F^{Pixels}_{i} > 0.9 (Signal Region)"
-                        elif (region == "fail" and "projx2" in projn) :
-                            slice_str = "F^{Pixels}_{i} < 0.9"
-                        else :
-                            slice_str = '%s < %s < %s %s'%slice_edges
+                        slice_str = '%s < %s < %s %s'%slice_edges
+                        if (region == "pass") :
+                            slice_str += ", F^{Pixels}_{i} > 0.9"
+                        elif (region == "fail") :
+                            slice_str += ", F^{Pixels}_{i} < 0.9"
                         out_pad_name = '{d}/base_figs/{projn}_{reg}{logy}'.format(
                                             d=self.dir, projn=projn, reg=region,
                                             logy='' if logyFlag == False else '_logy')
@@ -340,12 +339,11 @@ class Plotter(object):
                         self.slices['x' if 'y' in proj else 'y'][region]['vals'][islice+1],
                         ''
                     )
-                    if (region == "pass" and "projx2" in projn) :
-                        slice_str = "F^{Pixels}_{i} > 0.9"
-                    elif (region == "fail" and "projx2" in projn) :
-                        slice_str = "F^{Pixels}_{i} < 0.9"
-                    else :
-                        slice_str = '%s < %s < %s %s'%slice_edges
+                    slice_str = '%s < %s < %s %s'%slice_edges
+                    if (region == "pass") :
+                        slice_str += ", F^{Pixels}_{i} > 0.9"
+                    elif (region == "fail") :
+                        slice_str += ", F^{Pixels}_{i} < 0.9"
                     out_pad_name = '{d}/base_figs/{p}_{reg}_{projn}'.format(d=self.dir,p=process,projn=projn, reg=region)
                     make_pad_1D(
                         out_pad_name, 
