@@ -1,0 +1,11 @@
+,process,region,binning,color,process_type,scale,variation,source_filename,source_histname,alias,title,combine_idx,direction,syst_type,shapes,variation_alias,lnN
+0,data_obs,fail,default,1,DATA,2.0,nominal,.//HSCP_Data.root,hfail,Data,Data,,,,,,
+17,HSCP_gluino-1800,fail,default,2,SIGNAL,2.0,lumi,.//HSCP_Signal_gluino-1800.root,hfail,Signal_gluino-1800,HSCP gluino 1800 GeV,,,lnN,,,1.018
+18,HSCP_gluino-1800,fail,default,2,SIGNAL,2.0,pileup,.//HSCP_Signal_gluino-1800.root,hfail_PUsyst_up,Signal_gluino-1800,HSCP gluino 1800 GeV,,Up,shapes,1.0,PUsyst,
+19,HSCP_gluino-1800,fail,default,2,SIGNAL,2.0,pileup,.//HSCP_Signal_gluino-1800.root,hfail_PUsyst_down,Signal_gluino-1800,HSCP gluino 1800 GeV,,Down,shapes,1.0,PUsyst,
+20,HSCP_gluino-1800,fail,default,2,SIGNAL,2.0,nominal,.//HSCP_Signal_gluino-1800.root,hfail,Signal_gluino-1800,HSCP gluino 1800 GeV,,,,,,
+37,data_obs,pass,default,1,DATA,2.0,nominal,.//HSCP_Data.root,hpass,Data,Data,,,,,,
+54,HSCP_gluino-1800,pass,default,2,SIGNAL,2.0,lumi,.//HSCP_Signal_gluino-1800.root,hpass,Signal_gluino-1800,HSCP gluino 1800 GeV,,,lnN,,,1.018
+55,HSCP_gluino-1800,pass,default,2,SIGNAL,2.0,pileup,.//HSCP_Signal_gluino-1800.root,hpass_PUsyst_up,Signal_gluino-1800,HSCP gluino 1800 GeV,,Up,shapes,1.0,PUsyst,
+56,HSCP_gluino-1800,pass,default,2,SIGNAL,2.0,pileup,.//HSCP_Signal_gluino-1800.root,hpass_PUsyst_down,Signal_gluino-1800,HSCP gluino 1800 GeV,,Down,shapes,1.0,PUsyst,
+57,HSCP_gluino-1800,pass,default,2,SIGNAL,2.0,nominal,.//HSCP_Signal_gluino-1800.root,hpass,Signal_gluino-1800,HSCP gluino 1800 GeV,,,,,,

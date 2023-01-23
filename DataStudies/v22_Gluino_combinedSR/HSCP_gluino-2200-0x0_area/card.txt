@@ -1,0 +1,68 @@
+Combination of SR1=../../SR1/HSCP_gluino-2200-0x0_area/card.txt  SR2=../../SR2/HSCP_gluino-2200-0x0_area/card.txt  SR3=../../SR3/HSCP_gluino-2200-0x0_area/card.txt
+imax 12 number of bins
+jmax 2 number of processes minus 1
+kmax 6 number of nuisance parameters
+----------------------------------------------------------------------------------------------------------------------------------
+shapes Background        SR1_fail_LOW      ../../SR1/HSCP_gluino-2200-0x0_area/../base.root w:Background_fail_LOW
+shapes HSCP_gluino-2200  SR1_fail_LOW      ../../SR1/HSCP_gluino-2200-0x0_area/../base.root w:HSCP_gluino-2200_fail_LOW w:HSCP_gluino-2200_fail_LOW_$SYSTEMATIC
+shapes data_obs          SR1_fail_LOW      ../../SR1/HSCP_gluino-2200-0x0_area/../base.root w:data_obs_fail_LOW
+shapes Background        SR1_fail_SIG      ../../SR1/HSCP_gluino-2200-0x0_area/../base.root w:Background_fail_SIG
+shapes HSCP_gluino-2200  SR1_fail_SIG      ../../SR1/HSCP_gluino-2200-0x0_area/../base.root w:HSCP_gluino-2200_fail_SIG w:HSCP_gluino-2200_fail_SIG_$SYSTEMATIC
+shapes data_obs          SR1_fail_SIG      ../../SR1/HSCP_gluino-2200-0x0_area/../base.root w:data_obs_fail_SIG
+shapes Background_0x0    SR1_pass_LOW      ../../SR1/HSCP_gluino-2200-0x0_area/../base.root w:Background_0x0_pass_LOW
+shapes HSCP_gluino-2200  SR1_pass_LOW      ../../SR1/HSCP_gluino-2200-0x0_area/../base.root w:HSCP_gluino-2200_pass_LOW w:HSCP_gluino-2200_pass_LOW_$SYSTEMATIC
+shapes data_obs          SR1_pass_LOW      ../../SR1/HSCP_gluino-2200-0x0_area/../base.root w:data_obs_pass_LOW
+shapes Background_0x0    SR1_pass_SIG      ../../SR1/HSCP_gluino-2200-0x0_area/../base.root w:Background_0x0_pass_SIG
+shapes HSCP_gluino-2200  SR1_pass_SIG      ../../SR1/HSCP_gluino-2200-0x0_area/../base.root w:HSCP_gluino-2200_pass_SIG w:HSCP_gluino-2200_pass_SIG_$SYSTEMATIC
+shapes data_obs          SR1_pass_SIG      ../../SR1/HSCP_gluino-2200-0x0_area/../base.root w:data_obs_pass_SIG
+shapes Background        SR2_fail_LOW      ../../SR2/HSCP_gluino-2200-0x0_area/../base.root w:Background_fail_LOW
+shapes HSCP_gluino-2200  SR2_fail_LOW      ../../SR2/HSCP_gluino-2200-0x0_area/../base.root w:HSCP_gluino-2200_fail_LOW w:HSCP_gluino-2200_fail_LOW_$SYSTEMATIC
+shapes data_obs          SR2_fail_LOW      ../../SR2/HSCP_gluino-2200-0x0_area/../base.root w:data_obs_fail_LOW
+shapes Background        SR2_fail_SIG      ../../SR2/HSCP_gluino-2200-0x0_area/../base.root w:Background_fail_SIG
+shapes HSCP_gluino-2200  SR2_fail_SIG      ../../SR2/HSCP_gluino-2200-0x0_area/../base.root w:HSCP_gluino-2200_fail_SIG w:HSCP_gluino-2200_fail_SIG_$SYSTEMATIC
+shapes data_obs          SR2_fail_SIG      ../../SR2/HSCP_gluino-2200-0x0_area/../base.root w:data_obs_fail_SIG
+shapes Background_0x0    SR2_pass_LOW      ../../SR2/HSCP_gluino-2200-0x0_area/../base.root w:Background_0x0_pass_LOW
+shapes HSCP_gluino-2200  SR2_pass_LOW      ../../SR2/HSCP_gluino-2200-0x0_area/../base.root w:HSCP_gluino-2200_pass_LOW w:HSCP_gluino-2200_pass_LOW_$SYSTEMATIC
+shapes data_obs          SR2_pass_LOW      ../../SR2/HSCP_gluino-2200-0x0_area/../base.root w:data_obs_pass_LOW
+shapes Background_0x0    SR2_pass_SIG      ../../SR2/HSCP_gluino-2200-0x0_area/../base.root w:Background_0x0_pass_SIG
+shapes HSCP_gluino-2200  SR2_pass_SIG      ../../SR2/HSCP_gluino-2200-0x0_area/../base.root w:HSCP_gluino-2200_pass_SIG w:HSCP_gluino-2200_pass_SIG_$SYSTEMATIC
+shapes data_obs          SR2_pass_SIG      ../../SR2/HSCP_gluino-2200-0x0_area/../base.root w:data_obs_pass_SIG
+shapes Background        SR3_fail_LOW      ../../SR3/HSCP_gluino-2200-0x0_area/../base.root w:Background_fail_LOW
+shapes HSCP_gluino-2200  SR3_fail_LOW      ../../SR3/HSCP_gluino-2200-0x0_area/../base.root w:HSCP_gluino-2200_fail_LOW w:HSCP_gluino-2200_fail_LOW_$SYSTEMATIC
+shapes data_obs          SR3_fail_LOW      ../../SR3/HSCP_gluino-2200-0x0_area/../base.root w:data_obs_fail_LOW
+shapes Background        SR3_fail_SIG      ../../SR3/HSCP_gluino-2200-0x0_area/../base.root w:Background_fail_SIG
+shapes HSCP_gluino-2200  SR3_fail_SIG      ../../SR3/HSCP_gluino-2200-0x0_area/../base.root w:HSCP_gluino-2200_fail_SIG w:HSCP_gluino-2200_fail_SIG_$SYSTEMATIC
+shapes data_obs          SR3_fail_SIG      ../../SR3/HSCP_gluino-2200-0x0_area/../base.root w:data_obs_fail_SIG
+shapes Background_0x0    SR3_pass_LOW      ../../SR3/HSCP_gluino-2200-0x0_area/../base.root w:Background_0x0_pass_LOW
+shapes HSCP_gluino-2200  SR3_pass_LOW      ../../SR3/HSCP_gluino-2200-0x0_area/../base.root w:HSCP_gluino-2200_pass_LOW w:HSCP_gluino-2200_pass_LOW_$SYSTEMATIC
+shapes data_obs          SR3_pass_LOW      ../../SR3/HSCP_gluino-2200-0x0_area/../base.root w:data_obs_pass_LOW
+shapes Background_0x0    SR3_pass_SIG      ../../SR3/HSCP_gluino-2200-0x0_area/../base.root w:Background_0x0_pass_SIG
+shapes HSCP_gluino-2200  SR3_pass_SIG      ../../SR3/HSCP_gluino-2200-0x0_area/../base.root w:HSCP_gluino-2200_pass_SIG w:HSCP_gluino-2200_pass_SIG_$SYSTEMATIC
+shapes data_obs          SR3_pass_SIG      ../../SR3/HSCP_gluino-2200-0x0_area/../base.root w:data_obs_pass_SIG
+----------------------------------------------------------------------------------------------------------------------------------
+bin          SR1_fail_LOW  SR1_fail_SIG  SR1_pass_LOW  SR1_pass_SIG  SR2_fail_LOW  SR2_fail_SIG  SR2_pass_LOW  SR2_pass_SIG  SR3_fail_LOW  SR3_fail_SIG  SR3_pass_LOW  SR3_pass_SIG
+observation  -1            -1            -1            -1            -1            -1            -1            -1            -1            -1            -1            -1          
+----------------------------------------------------------------------------------------------------------------------------------
+bin                                 SR1_fail_LOW      SR1_fail_LOW      SR1_fail_SIG      SR1_fail_SIG      SR1_pass_LOW      SR1_pass_LOW      SR1_pass_SIG      SR1_pass_SIG      SR2_fail_LOW      SR2_fail_LOW      SR2_fail_SIG      SR2_fail_SIG      SR2_pass_LOW      SR2_pass_LOW      SR2_pass_SIG      SR2_pass_SIG      SR3_fail_LOW      SR3_fail_LOW      SR3_fail_SIG      SR3_fail_SIG      SR3_pass_LOW      SR3_pass_LOW      SR3_pass_SIG      SR3_pass_SIG    
+process                             HSCP_gluino-2200  Background        HSCP_gluino-2200  Background        HSCP_gluino-2200  Background_0x0    HSCP_gluino-2200  Background_0x0    HSCP_gluino-2200  Background        HSCP_gluino-2200  Background        HSCP_gluino-2200  Background_0x0    HSCP_gluino-2200  Background_0x0    HSCP_gluino-2200  Background        HSCP_gluino-2200  Background        HSCP_gluino-2200  Background_0x0    HSCP_gluino-2200  Background_0x0  
+process                             0                 1                 0                 1                 0                 2                 0                 2                 0                 1                 0                 1                 0                 2                 0                 2                 0                 1                 0                 1                 0                 2                 0                 2               
+rate                                -1                1                 -1                1                 -1                1                 -1                1                 -1                1                 -1                1                 -1                1                 -1                1                 -1                1                 -1                1                 -1                1                 -1                1               
+----------------------------------------------------------------------------------------------------------------------------------
+lumi                    lnN         1.018             -                 1.018             -                 1.018             -                 1.018             -                 1.018             -                 1.018             -                 1.018             -                 1.018             -                 1.018             -                 1.018             -                 1.018             -                 1.018             -               
+pileup                  shapes      1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -               
+systOnF                 shapes      1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -               
+systOnG                 shapes      1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -               
+systOnPt                shapes      1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -               
+systOnTrigger           shapes      1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -                 1.0               -               
+Background_fail_SIG_bin_2-1  flatParam
+Background_fail_SIG_bin_4-1  flatParam
+Background_fail_SIG_bin_3-1  flatParam
+Background_fail_LOW_bin_5-1  flatParam
+Background_fail_LOW_bin_2-1  flatParam
+Background_fail_par0  flatParam
+Background_fail_LOW_bin_4-1  flatParam
+Background_rpf_0x0_par0  flatParam
+Background_fail_SIG_bin_1-1  flatParam
+Background_fail_LOW_bin_1-1  flatParam
+Background_fail_LOW_bin_3-1  flatParam
+Background_fail_par1  flatParam

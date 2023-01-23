@@ -1,0 +1,3 @@
+Blinded
+Expected mass limit: 2.024 +0.134 -0.102 TeV
+Expected xsection  limit: 0.00093112285 +0.000440301685913 -0.000827877560918 pb

@@ -1,0 +1,230 @@
+{
+  "BINNING": {
+    "default": {
+      "X": {
+        "BINS": [
+          0.0, 
+          0.05, 
+          0.1, 
+          0.15, 
+          0.2, 
+          0.25, 
+          0.3, 
+          0.35, 
+          0.4, 
+          1.0
+        ], 
+        "MAX": 1.0, 
+        "MIN": 0.0, 
+        "NAME": "Ias", 
+        "SIGEND": 1.0, 
+        "SIGSTART": 0.35, 
+        "TITLE": "G_{i}^{Strips}"
+      }, 
+      "Y": {
+        "MAX": 1.0, 
+        "MIN": 0.0, 
+        "NAME": "ProbQ", 
+        "NBINS": 1, 
+        "TITLE": "F_{i}^{Pixels}"
+      }
+    }
+  }, 
+  "GLOBAL": {
+    "FILE": "HSCP_$process.root", 
+    "HIST": "h$region", 
+    "HIST_DOWN": "h$region_$syst_down", 
+    "HIST_UP": "h$region_$syst_up", 
+    "path": "./"
+  }, 
+  "NAME": "NotRelevantString", 
+  "OPTIONS": {
+    "blindedFit": [
+      "pass"
+    ], 
+    "blindedPlots": [
+      "pass"
+    ]
+  }, 
+  "PROCESSES": {
+    "HSCP_gluino-1000": {
+      "ALIAS": "Signal_gluino-1000", 
+      "COLOR": 2, 
+      "LOC": ".//HSCP_$process.root:h$region", 
+      "NAME": "HSCP_gluino-1000", 
+      "SCALE": 2.0, 
+      "SYSTEMATICS": [
+        "lumi", 
+        "pileup"
+      ], 
+      "TITLE": "HSCP gluino 1000 GeV", 
+      "TYPE": "SIGNAL", 
+      "VARIATION": "nominal"
+    }, 
+    "HSCP_gluino-1400": {
+      "ALIAS": "Signal_gluino-1400", 
+      "COLOR": 2, 
+      "LOC": ".//HSCP_$process.root:h$region", 
+      "NAME": "HSCP_gluino-1400", 
+      "SCALE": 2.0, 
+      "SYSTEMATICS": [
+        "lumi", 
+        "pileup"
+      ], 
+      "TITLE": "HSCP gluino 1400 GeV", 
+      "TYPE": "SIGNAL", 
+      "VARIATION": "nominal"
+    }, 
+    "HSCP_gluino-1600": {
+      "ALIAS": "Signal_gluino-1600", 
+      "COLOR": 2, 
+      "LOC": ".//HSCP_$process.root:h$region", 
+      "NAME": "HSCP_gluino-1600", 
+      "SCALE": 2.0, 
+      "SYSTEMATICS": [
+        "lumi", 
+        "pileup"
+      ], 
+      "TITLE": "HSCP gluino 1600 GeV", 
+      "TYPE": "SIGNAL", 
+      "VARIATION": "nominal"
+    }, 
+    "HSCP_gluino-1800": {
+      "ALIAS": "Signal_gluino-1800", 
+      "COLOR": 2, 
+      "LOC": ".//HSCP_$process.root:h$region", 
+      "NAME": "HSCP_gluino-1800", 
+      "SCALE": 2.0, 
+      "SYSTEMATICS": [
+        "lumi", 
+        "pileup"
+      ], 
+      "TITLE": "HSCP gluino 1800 GeV", 
+      "TYPE": "SIGNAL", 
+      "VARIATION": "nominal"
+    }, 
+    "HSCP_gluino-2000": {
+      "ALIAS": "Signal_gluino-2000", 
+      "COLOR": 2, 
+      "LOC": ".//HSCP_$process.root:h$region", 
+      "NAME": "HSCP_gluino-2000", 
+      "SCALE": 2.0, 
+      "SYSTEMATICS": [
+        "lumi", 
+        "pileup"
+      ], 
+      "TITLE": "HSCP gluino 2000 GeV", 
+      "TYPE": "SIGNAL", 
+      "VARIATION": "nominal"
+    }, 
+    "HSCP_gluino-2200": {
+      "ALIAS": "Signal_gluino-2200", 
+      "COLOR": 2, 
+      "LOC": ".//HSCP_$process.root:h$region", 
+      "NAME": "HSCP_gluino-2200", 
+      "SCALE": 2.0, 
+      "SYSTEMATICS": [
+        "lumi", 
+        "pileup"
+      ], 
+      "TITLE": "HSCP gluino 2200 GeV", 
+      "TYPE": "SIGNAL", 
+      "VARIATION": "nominal"
+    }, 
+    "HSCP_gluino-2400": {
+      "ALIAS": "Signal_gluino-2400", 
+      "COLOR": 2, 
+      "LOC": ".//HSCP_$process.root:h$region", 
+      "NAME": "HSCP_gluino-2400", 
+      "SCALE": 2.0, 
+      "SYSTEMATICS": [
+        "lumi", 
+        "pileup"
+      ], 
+      "TITLE": "HSCP gluino 2400 GeV", 
+      "TYPE": "SIGNAL", 
+      "VARIATION": "nominal"
+    }, 
+    "HSCP_gluino-2600": {
+      "ALIAS": "Signal_gluino-2600", 
+      "COLOR": 2, 
+      "LOC": ".//HSCP_$process.root:h$region", 
+      "NAME": "HSCP_gluino-2600", 
+      "SCALE": 2.0, 
+      "SYSTEMATICS": [
+        "lumi", 
+        "pileup"
+      ], 
+      "TITLE": "HSCP gluino 2600 GeV", 
+      "TYPE": "SIGNAL", 
+      "VARIATION": "nominal"
+    }, 
+    "HSCP_gluino-800": {
+      "ALIAS": "Signal_gluino-800", 
+      "COLOR": 2, 
+      "LOC": ".//HSCP_$process.root:h$region", 
+      "NAME": "HSCP_gluino-800", 
+      "SCALE": 2.0, 
+      "SYSTEMATICS": [
+        "lumi", 
+        "pileup"
+      ], 
+      "TITLE": "HSCP gluino 800 GeV", 
+      "TYPE": "SIGNAL", 
+      "VARIATION": "nominal"
+    }, 
+    "data_obs": {
+      "ALIAS": "Data", 
+      "COLOR": 1, 
+      "LOC": ".//HSCP_$process.root:h$region", 
+      "NAME": "data_obs", 
+      "SCALE": 2.0, 
+      "SYSTEMATICS": [], 
+      "TITLE": "Data", 
+      "TYPE": "DATA", 
+      "VARIATION": "nominal"
+    }
+  }, 
+  "REGIONS": {
+    "fail": {
+      "BINNING": "default", 
+      "PROCESSES": [
+        "HSCP_gluino-800", 
+        "HSCP_gluino-1000", 
+        "HSCP_gluino-1400", 
+        "HSCP_gluino-1600", 
+        "HSCP_gluino-1800", 
+        "HSCP_gluino-2000", 
+        "HSCP_gluino-2200", 
+        "HSCP_gluino-2400", 
+        "HSCP_gluino-2600"
+      ]
+    }, 
+    "pass": {
+      "BINNING": "default", 
+      "PROCESSES": [
+        "HSCP_gluino-800", 
+        "HSCP_gluino-1000", 
+        "HSCP_gluino-1400", 
+        "HSCP_gluino-1600", 
+        "HSCP_gluino-1800", 
+        "HSCP_gluino-2000", 
+        "HSCP_gluino-2200", 
+        "HSCP_gluino-2400", 
+        "HSCP_gluino-2600"
+      ]
+    }
+  }, 
+  "SYSTEMATICS": {
+    "lumi": {
+      "CODE": 0, 
+      "VAL": 1.018
+    }, 
+    "pileup": {
+      "ALIAS": "PUsyst", 
+      "DOWN": ".//HSCP_$process.root:h$region_$syst_down", 
+      "SIGMA": 1.0, 
+      "UP": ".//HSCP_$process.root:h$region_$syst_up"
+    }
+  }
+}

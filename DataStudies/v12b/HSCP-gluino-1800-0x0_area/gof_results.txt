@@ -1,0 +1,4 @@
+Test statistic in data = 14.4283144325
+Mean from toys = 4.20863420828
+Width from toys = 3.67226315769
+p-value = 0.00269345600738

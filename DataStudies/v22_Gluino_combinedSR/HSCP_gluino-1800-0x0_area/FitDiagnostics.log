@@ -1,0 +1,23 @@
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+>>> method used is FitDiagnostics
+Warning: Did not find a parameter with name mask_pass_HIGH
+Set Default Value of Parameter mask_pass_SIG To : 1
+Set Default Value of Parameter r To : 1
+>>> 1 out of 4 channels masked
+
+SimNLL created with 0 channels, 0 generic constraints, 6 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+SimNLL created with 4 channels, 0 generic constraints, 6 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+  [WARNING] Found [Background_fail_LOW_bin_1-1] at boundary. 
+  [WARNING] Found [Background_fail_LOW_bin_2-1] at boundary. 
+  [WARNING] Found [Background_fail_LOW_bin_3-1] at boundary. 
+  [WARNING] Found [Background_fail_LOW_bin_4-1] at boundary. 
+  [WARNING] Found [Background_fail_LOW_bin_5-1] at boundary. 
+  [WARNING] Found [Background_fail_SIG_bin_1-1] at boundary. 
+  [WARNING] Found [Background_fail_par0] at boundary. 
+  [WARNING] Found [Background_fail_par1] at boundary. 
+  [WARNING] Found [Background_rpf_0x0_par0] at boundary. 
+
+ --- FitDiagnostics ---
+Fit failed.
+Done in 0.00 min (cpu), 0.00 min (real)

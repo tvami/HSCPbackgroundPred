@@ -1,0 +1,11 @@
+,process,region,binning,color,process_type,scale,variation,source_filename,source_histname,alias,title,combine_idx,direction,syst_type,shapes,variation_alias,lnN
+0,data_obs,fail,default,1,DATA,1.0,nominal,.//HSCP_Data.root,hfail,Data,Data,,,,,,
+29,HSCP_gluino-2400,fail,default,2,SIGNAL,10.0,lumi,.//HSCP_Signal_gluino-2400.root,hfail,Signal_gluino-2400,HSCP gluino 2400 GeV,,,lnN,,,1.018
+30,HSCP_gluino-2400,fail,default,2,SIGNAL,10.0,pileup,.//HSCP_Signal_gluino-2400.root,hfail_PUsyst_up,Signal_gluino-2400,HSCP gluino 2400 GeV,,Up,shapes,1.0,PUsyst,
+31,HSCP_gluino-2400,fail,default,2,SIGNAL,10.0,pileup,.//HSCP_Signal_gluino-2400.root,hfail_PUsyst_down,Signal_gluino-2400,HSCP gluino 2400 GeV,,Down,shapes,1.0,PUsyst,
+32,HSCP_gluino-2400,fail,default,2,SIGNAL,10.0,nominal,.//HSCP_Signal_gluino-2400.root,hfail,Signal_gluino-2400,HSCP gluino 2400 GeV,,,,,,
+37,data_obs,pass,default,1,DATA,1.0,nominal,.//HSCP_Data.root,hpass,Data,Data,,,,,,
+66,HSCP_gluino-2400,pass,default,2,SIGNAL,10.0,lumi,.//HSCP_Signal_gluino-2400.root,hpass,Signal_gluino-2400,HSCP gluino 2400 GeV,,,lnN,,,1.018
+67,HSCP_gluino-2400,pass,default,2,SIGNAL,10.0,pileup,.//HSCP_Signal_gluino-2400.root,hpass_PUsyst_up,Signal_gluino-2400,HSCP gluino 2400 GeV,,Up,shapes,1.0,PUsyst,
+68,HSCP_gluino-2400,pass,default,2,SIGNAL,10.0,pileup,.//HSCP_Signal_gluino-2400.root,hpass_PUsyst_down,Signal_gluino-2400,HSCP gluino 2400 GeV,,Down,shapes,1.0,PUsyst,
+69,HSCP_gluino-2400,pass,default,2,SIGNAL,10.0,nominal,.//HSCP_Signal_gluino-2400.root,hpass,Signal_gluino-2400,HSCP gluino 2400 GeV,,,,,,

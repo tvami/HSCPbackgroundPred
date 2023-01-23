@@ -1,0 +1,23 @@
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+>>> method used is FitDiagnostics
+Warning: Did not find a parameter with name mask_pass_HIGH
+Set Default Value of Parameter mask_pass_SIG To : 1
+Set Default Value of Parameter r To : 1
+>>> 1 out of 4 channels masked
+
+SimNLL created with 0 channels, 0 generic constraints, 6 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+SimNLL created with 4 channels, 0 generic constraints, 6 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+>> Found 19 floating parameters
+>> The following parameters are protected in the event of negative eigenvalues: r
+>> Parameter r does not have a valid stencil and will be dropped
+>> Verifying eigenvalues are all positive (iteration 0)
+>> All eigenvalues are positive
+>> Inverting Hessian...
+>> Matrix inverted
+>> Note: the following parameters were dropped as their ranges are either too narrow or the parameter has no effect on the NLL:
+     - r
+
+ --- FitDiagnostics ---
+Done! fit s+b and fit b should be identical
+Done in 0.00 min (cpu), 0.01 min (real)

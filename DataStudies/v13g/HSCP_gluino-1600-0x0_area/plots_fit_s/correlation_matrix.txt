@@ -1,0 +1,6 @@
+Background_rpf_0x0_par0:lumi = 1.04674856988e-06
+Background_rpf_0x0_par0:pileup = 1.50397915727e-07
+Background_rpf_0x0_par0:r = -0.00112806739954
+lumi:pileup = 2.70441264733e-07
+r:lumi = -0.000911449718153
+r:pileup = -0.000119779520166

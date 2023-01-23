@@ -1,0 +1,9 @@
+,process,region,process_type,title
+0,data_obs,fail,DATA,Data
+1,HSCP_gluino-2400,fail,SIGNAL,HSCP gluino 2400 GeV
+2,Background,fail,BKG,Background
+3,TotalBkg,fail,TOTAL,TotalBkg
+4,data_obs,pass,DATA,Data
+5,HSCP_gluino-2400,pass,SIGNAL,HSCP gluino 2400 GeV
+6,Background_0x0,pass,BKG,Background
+7,TotalBkg,pass,TOTAL,TotalBkg

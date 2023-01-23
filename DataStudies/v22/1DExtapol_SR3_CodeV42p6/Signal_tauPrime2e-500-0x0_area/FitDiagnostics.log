@@ -1,0 +1,71 @@
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+>>> method used is FitDiagnostics
+Warning: Did not find a parameter with name mask_pass_HIGH
+Set Default Value of Parameter mask_pass_SIG To : 1
+Set Default Value of Parameter r To : 1
+>>> 1 out of 4 channels masked
+
+SimNLL created with 0 channels, 0 generic constraints, 6 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+SimNLL created with 4 channels, 0 generic constraints, 6 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+>> Found 16 floating parameters
+>> The following parameters are protected in the event of negative eigenvalues: r
+>> Verifying eigenvalues are all positive (iteration 0)
+Eigenvalue 15 : -0.000384391
+ - 0.998999	r
+ - 0.0320976	systOnG
+ - 0.0294204	systOnF
+ - -0.00672342	systOnTrigger
+ - -0.00657343	pileup
+>> Attempt 0 failed, remove the variable with largest eigenvector component...
+>> Dropping systOnG from the hessian
+>> Verifying eigenvalues are all positive (iteration 1)
+Eigenvalue 14 : -0.000186593
+ - -0.999513	r
+ - -0.029466	systOnF
+ - 0.00673382	systOnTrigger
+ - 0.0065836	pileup
+ - 0.00400415	lumi
+>> Attempt 1 failed, remove the variable with largest eigenvector component...
+>> Dropping systOnF from the hessian
+>> Verifying eigenvalues are all positive (iteration 2)
+Eigenvalue 13 : -2.00992e-05
+ - -0.999948	r
+ - 0.0067426	systOnTrigger
+ - 0.00659219	pileup
+ - 0.00400937	lumi
+ - 2.33534e-06	Background_fail_par1
+>> Attempt 2 failed, remove the variable with largest eigenvector component...
+>> Dropping systOnTrigger from the hessian
+>> Verifying eigenvalues are all positive (iteration 3)
+Eigenvalue 12 : -1.1396e-05
+ - 0.99997	r
+ - -0.00659264	pileup
+ - -0.00400965	lumi
+ - -2.33717e-06	Background_fail_par1
+ - 1.4583e-06	Background_fail_par0
+>> Attempt 3 failed, remove the variable with largest eigenvector component...
+>> Dropping pileup from the hessian
+>> Verifying eigenvalues are all positive (iteration 4)
+Eigenvalue 11 : -3.0761e-06
+ - -0.999992	r
+ - 0.00400991	lumi
+ - 2.33891e-06	Background_fail_par1
+ - -1.46047e-06	Background_fail_par0
+ - 1.77929e-07	Background_fail_LOW_bin_5-1
+>> Attempt 4 failed, remove the variable with largest eigenvector component...
+>> Dropping lumi from the hessian
+>> Verifying eigenvalues are all positive (iteration 5)
+>> All eigenvalues are positive
+>> Inverting Hessian...
+>> Matrix inverted
+>> Note: the following parameters were dropped to make the covariance matrix pos-def:
+     - systOnG
+     - systOnF
+     - systOnTrigger
+     - pileup
+     - lumi
+
+ --- FitDiagnostics ---
+Best fit r: 6.86419e-06  -6.86419e-06/+2.99999  (68% CL)
+Done in 0.00 min (cpu), 0.00 min (real)

@@ -1,0 +1,275 @@
+{
+    "NAME": "NotRelevantString",
+    "GLOBAL": {
+	"FILE": "HSCP_$process.root",
+	"HIST": "h$region",
+        "HIST_UP": "h$region_$syst_up",
+        "HIST_DOWN": "h$region_$syst_down",
+	"path": "./"
+    },
+    "REGIONS": {
+	"pass": {
+            "PROCESSES": ["HSCP_gluino-800", "HSCP_gluino-1000", "HSCP_gluino-1400", "HSCP_gluino-1600", "HSCP_gluino-1800", "HSCP_gluino-2000", "HSCP_gluino-2200", "HSCP_gluino-2400", "HSCP_gluino-2600","HSCP_ppStau-1029","HSCP_ppStau-1218","HSCP_ppStau-1599","HSCP_ppStau-200","HSCP_ppStau-247","HSCP_ppStau-308","HSCP_ppStau-432","HSCP_ppStau-557","HSCP_ppStau-651","HSCP_ppStau-745","HSCP_ppStau-871"],
+	    "BINNING": "default"
+	},
+	"fail": {
+            "PROCESSES": ["HSCP_gluino-800", "HSCP_gluino-1000", "HSCP_gluino-1400", "HSCP_gluino-1600", "HSCP_gluino-1800", "HSCP_gluino-2000", "HSCP_gluino-2200", "HSCP_gluino-2400", "HSCP_gluino-2600","HSCP_ppStau-1029","HSCP_ppStau-1218","HSCP_ppStau-1599","HSCP_ppStau-200","HSCP_ppStau-247","HSCP_ppStau-308","HSCP_ppStau-432","HSCP_ppStau-557","HSCP_ppStau-651","HSCP_ppStau-745","HSCP_ppStau-871"],
+            "BINNING": "default"
+	}
+    },
+    "PROCESSES": {
+	"data_obs": {
+	    "SYSTEMATICS":[],
+            "COLOR": 1,
+	    "SCALE": 1.0,
+            "TYPE": "DATA",
+            "TITLE": "Data",
+	    "ALIAS": "Data",
+	    "LOC": "path/FILE:HIST"
+	},
+        "HSCP_gluino-800": {
+            "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+            "COLOR": 2,
+            "SCALE": 1.0,
+            "TYPE": "SIGNAL",
+            "TITLE": "HSCP gluino 800 GeV",
+            "ALIAS": "Signal_gluino-800",
+            "LOC": "path/FILE:HIST"
+        },
+        "HSCP_gluino-1000": {
+            "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+            "COLOR": 2,
+            "SCALE": 1.0,
+            "TYPE": "SIGNAL",
+            "TITLE": "HSCP gluino 1000 GeV",
+            "ALIAS": "Signal_gluino-1000",
+            "LOC": "path/FILE:HIST"
+        },
+        "HSCP_gluino-1400": {
+            "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+            "COLOR": 2,
+            "SCALE": 1.0,
+            "TYPE": "SIGNAL",
+            "TITLE": "HSCP gluino 1400 GeV",
+            "ALIAS": "Signal_gluino-1400",
+            "LOC": "path/FILE:HIST"
+        },
+        "HSCP_gluino-1600": {
+            "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+            "COLOR": 2,
+            "SCALE": 1.0,
+            "TYPE": "SIGNAL",
+            "TITLE": "HSCP gluino 1600 GeV",
+            "ALIAS": "Signal_gluino-1600",
+            "LOC": "path/FILE:HIST"
+        },
+        "HSCP_gluino-1800": {
+            "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+            "COLOR": 2,
+            "SCALE": 1.0,
+            "TYPE": "SIGNAL",
+            "TITLE": "HSCP gluino 1800 GeV",
+            "ALIAS": "Signal_gluino-1800",
+            "LOC": "path/FILE:HIST"
+        },
+        "HSCP_gluino-2000": {
+            "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+            "COLOR": 2,
+            "SCALE": 1.0,
+            "TYPE": "SIGNAL",
+            "TITLE": "HSCP gluino 2000 GeV",
+            "ALIAS": "Signal_gluino-2000",
+            "LOC": "path/FILE:HIST"
+        },
+        "HSCP_gluino-2200": {
+            "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+            "COLOR": 2,
+            "SCALE": 1.0,
+            "TYPE": "SIGNAL",
+            "TITLE": "HSCP gluino 2200 GeV",
+            "ALIAS": "Signal_gluino-2200",
+            "LOC": "path/FILE:HIST"
+        },
+        "HSCP_gluino-2400": {
+            "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+            "COLOR": 2,
+            "SCALE": 1.0,
+            "TYPE": "SIGNAL",
+            "TITLE": "HSCP gluino 2400 GeV",
+            "ALIAS": "Signal_gluino-2400",
+            "LOC": "path/FILE:HIST"
+        },
+        "HSCP_gluino-2600": {
+            "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+            "COLOR": 2,
+            "SCALE": 1.0,
+            "TYPE": "SIGNAL",
+            "TITLE": "HSCP gluino 2600 GeV",
+            "ALIAS": "Signal_gluino-2600",
+            "LOC": "path/FILE:HIST"
+        },
+        "HSCP_ppStau-200": {
+          "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+          "COLOR": 2,
+          "SCALE": 1.0,
+          "TYPE": "SIGNAL",
+          "TITLE": "HSCP pp stau 200 GeV",
+          "ALIAS": "Signal_ppStau-200",
+          "LOC": "path/FILE:HIST"
+        },
+        "HSCP_ppStau-247": {
+          "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+          "COLOR": 2,
+          "SCALE": 1.0,
+          "TYPE": "SIGNAL",
+          "TITLE": "HSCP pp stau 247 GeV",
+          "ALIAS": "Signal_ppStau-247",
+          "LOC": "path/FILE:HIST"
+        },
+
+        "HSCP_ppStau-308": {
+          "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+          "COLOR": 2,
+          "SCALE": 1.0,
+          "TYPE": "SIGNAL",
+          "TITLE": "HSCP pp stau 308 GeV",
+          "ALIAS": "Signal_ppStau-308",
+          "LOC": "path/FILE:HIST"
+        },
+        "HSCP_ppStau-432": {
+          "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+          "COLOR": 2,
+          "SCALE": 1.0,
+          "TYPE": "SIGNAL",
+          "TITLE": "HSCP pp stau 432 GeV",
+          "ALIAS": "Signal_ppStau-432",
+          "LOC": "path/FILE:HIST"
+        },
+        "HSCP_ppStau-557": {
+          "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+          "COLOR": 2,
+          "SCALE": 1.0,
+          "TYPE": "SIGNAL",
+          "TITLE": "HSCP pp stau 557 GeV",
+          "ALIAS": "Signal_ppStau-557",
+          "LOC": "path/FILE:HIST"
+        },
+        "HSCP_ppStau-651": {
+          "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+          "COLOR": 2,
+          "SCALE": 1.0,
+          "TYPE": "SIGNAL",
+          "TITLE": "HSCP pp stau 651 GeV",
+          "ALIAS": "Signal_ppStau-651",
+          "LOC": "path/FILE:HIST"
+        },
+        "HSCP_ppStau-745": {
+          "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+          "COLOR": 2,
+          "SCALE": 1.0,
+          "TYPE": "SIGNAL",
+          "TITLE": "HSCP pp stau 745 GeV",
+          "ALIAS": "Signal_ppStau-745",
+          "LOC": "path/FILE:HIST"
+        },
+        "HSCP_ppStau-871": {
+          "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+          "COLOR": 2,
+          "SCALE": 1.0,
+          "TYPE": "SIGNAL",
+          "TITLE": "HSCP pp stau 871 GeV",
+          "ALIAS": "Signal_ppStau-871",
+          "LOC": "path/FILE:HIST"
+        },
+        "HSCP_ppStau-1029": {
+          "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+          "COLOR": 2,
+          "SCALE": 1.0,
+          "TYPE": "SIGNAL",
+          "TITLE": "HSCP pp stau 1029 GeV",
+          "ALIAS": "Signal_ppStau-1029",
+          "LOC": "path/FILE:HIST"
+        },
+        "HSCP_ppStau-1218": {
+          "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+          "COLOR": 2,
+          "SCALE": 1.0,
+          "TYPE": "SIGNAL",
+          "TITLE": "HSCP pp stau 1218 GeV",
+          "ALIAS": "Signal_ppStau-1218",
+          "LOC": "path/FILE:HIST"
+        },
+        "HSCP_ppStau-1599": {
+          "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt"],
+          "COLOR": 2,
+          "SCALE": 1.0,
+          "TYPE": "SIGNAL",
+          "TITLE": "HSCP pp stau 1599 GeV",
+          "ALIAS": "Signal_ppStau-1599",
+          "LOC": "path/FILE:HIST"
+        }
+    },
+    "SYSTEMATICS": {
+	"lumi": {
+            "CODE": 0,
+            "VAL": 1.018
+	},
+        "pileup": {
+            "ALIAS": "PUsyst",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "systOnF": {
+            "ALIAS": "Fsyst",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "systOnG": {
+            "ALIAS": "Gsyst",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "systOnTrigger": {
+            "ALIAS": "Triggersyst",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "systOnPt": {
+            "ALIAS": "Ptsyst",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        }
+    },
+    "BINNING": {
+        "default": {
+            "X": {
+                "NAME": "Ias",
+                "TITLE": "G_{i}^{Strips}",
+                "BINS": [0.0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,1.0],
+                "BINSv2": [0.0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,1.0],
+                "BINSv2": [0.0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,1.0],
+                "MIN":0.0,
+                "MAX":1.0,
+                "SIGSTART": 0.25,
+                "SIGEND": 1.0
+            },
+            "Y": {
+                "NAME": "ProbQ",
+                "TITLE": "F_{i}^{Pixels}",
+                "NBINS": 1,
+                "MIN": 0.0,
+                "MAX": 1.0
+            }
+        }
+    },
+    "OPTIONS": {
+        "blindedFit": ["pass"],
+        "blindedPlots": ["pass"]
+    }
+}
+
