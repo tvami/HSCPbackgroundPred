@@ -219,12 +219,19 @@ graphWP.GetYaxis().SetRangeUser(0., 80.)
 graphWP.GetXaxis().SetRangeUser(1.0, 3.0)
 graphWP.SetMinimum(0.3e-3) #0.005
 graphWP.SetMaximum(100.)
+xsecAt1800 = 0
 for index,mass in enumerate(signal_mass):
     xsec = theory_xsecs[index]
     graphWP.SetPoint(index,    mass,   xsec    )
+    if (mass == 1.8 ) : xsecAt1800 = theory_xsecs[index]
 
 graphWP.SetLineWidth(3)
 graphWP.SetLineColor(4)
+
+graphWPFixedAt1800  = ROOT.TGraph()
+graphWPFixedAt1800.SetPoint(0, 1.799, xsecAt1800*0.99)
+graphWPFixedAt1800.SetPoint(1, 1.8, xsecAt1800)
+graphWPFixedAt1800.SetPoint(2, 1.801, xsecAt1800*1.01)
 
 
 # Theory up and down unnecessary if not splitting PDF uncertainty into shape and norm
@@ -307,10 +314,18 @@ else:
 graphWPdown.Draw("l")
 graphWPup.Draw("l")
 
+#graphWPFixedAt1800.SetMarkerStyle(29)
+#graphWPFixedAt1800.Draw("samep")
+
 # Finally calculate the intercept
 expectedMassLimit,expectedCrossLimit = Inter(g_mclimit,graphWP) #if len(Inter(g_mclimit,graphWP)) > 0 else -1.0
 upLimit,upXsectionLim = Inter(g_mcminus,graphWP) if len(Inter(g_mcminus,graphWP)) > 0 else -1.0
 lowLimit,lowXsectionLim = Inter(g_mcplus,graphWP) if len(Inter(g_mcplus,graphWP)) > 0 else -1.0
+
+a,expectedCrossLimitAt1800 = Inter(g_mclimit,graphWPFixedAt1800) #if len(Inter(g_mclimit,graphWPFixedAt1800)) > 0 else -1.0
+a,upXsectionLimAt1800 = Inter(g_mcminus,graphWPFixedAt1800) if len(Inter(g_mcminus,graphWPFixedAt1800)) > 0 else -1.0
+a,lowXsectionLimAt1800 = Inter(g_mcplus,graphWPFixedAt1800) if len(Inter(g_mcplus,graphWPFixedAt1800)) > 0 else -1.0
+
 
 expLine = TLine(expectedMassLimit,g_mclimit.GetMinimum(),expectedMassLimit,expectedCrossLimit)
 expLine.SetLineStyle(2)
@@ -324,7 +339,10 @@ if options.drawIntersection:
     expLineLabel.Draw()
 
 print('Expected mass limit: '+str(round(expectedMassLimit,3)) + ' +'+str(round(upLimit-expectedMassLimit,3)) +' -'+str(round(expectedMassLimit-lowLimit,3)) + ' TeV')
-print('Expected xsection  limit: '+str(expectedCrossLimit) + ' +'+str(expectedCrossLimit-upXsectionLim) +' -'+str(lowXsectionLim-expectedCrossLimit) + ' pb') 
+print('Expected xsection limit at excluded mass: '+str(round(expectedCrossLimit,6)) + ' +'+str(round(expectedCrossLimit-upXsectionLim,6)) +' -'+str(round(lowXsectionLim-expectedCrossLimit,6)) + ' pb') 
+print('Expected xsection limit @1800GeV: '+str(round(expectedCrossLimitAt1800,6)) + ' +'+str(round(expectedCrossLimitAt1800-upXsectionLimAt1800,6)) +' -'+str(round(lowXsectionLimAt1800-expectedCrossLimitAt1800,6)) + ' pb') 
+
+
 
 if not options.blind:
     obsMassLimit,obsCrossLimit = Inter(g_limit,graphWP) if len(Inter(g_limit,graphWP)) > 0 else -1.0
