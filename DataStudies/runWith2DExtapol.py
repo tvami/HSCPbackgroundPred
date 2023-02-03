@@ -106,9 +106,18 @@ def make_workspace():
     #bkg_f = BinnedDistribution(fail_name, bkg_hists[f], binning_f, constant=False)
     #bkg_f_func  = "10000*@0*exp(@1*x)"
     #bkg_f_func = "100*@0*exp(@1*x)"
-    bkg_f_func = "100*@0*exp(@1*x)*exp(@2*y)"
-    bkg_f_const = {0:{"MIN":0.,"MAX":100,"NOM":1.},1:{"MIN":-50,"MAX":0,"NOM":-0.1},2:{"MIN":-50,"MAX":0,"NOM":-0.1}}
-    bkg_f = SemiParametricFunction(fail_name, bkg_hists[f], binning_f, bkg_f_func, constraints=bkg_f_const,funcCeiling=30.)
+    #bkg_f_func = "100*@0*exp(@1*x)+exp(@2*y)"
+    #bkg_f_func = "100*@0*exp(@1*x)+(y**@2)" 
+    bkg_f_func = "100*@0*exp(@1*x)*(exp(@2*y+@3)+@4)"
+    bkg_f_const = {0:{"MIN":0.,"MAX":1000000,"NOM":100.},1:{"MIN":-50,"MAX":50,"NOM":-0.1},2:{"MIN":-10,"MAX":10,"NOM":-2},3:{"MIN":-100,"MAX":100,"NOM":20},4:{"MIN":-20,"MAX":10000,"NOM":20}}
+    #bkg_f_func = "100*@0*exp(@1*x)*(1+@2*y+@3*(y*y))"
+    #bkg_f_func = "100*@0*exp(@1*x)*(@2+@3*y+@4*y*y)"
+    #bkg_f_const = {0:{"MIN":0.,"MAX":10000,"NOM":1.},1:{"MIN":-50,"MAX":0,"NOM":-0.1},2:{"MIN":-50,"MAX":0,"NOM":-0.1}}
+    #bkg_f_const = {0:{"MIN":0.,"MAX":10000,"NOM":1.},1:{"MIN":-50,"MAX":0,"NOM":-0.1},2:{"MIN":-10,"MAX":10,"NOM":-2}}
+    #bkg_f_const = {0:{"MIN":0.,"MAX":10000,"NOM":1.},1:{"MIN":-50,"MAX":0,"NOM":-0.1},2:{"MIN":-5000,"MAX":5000,"NOM":0},3:{"MIN":-5000,"MAX":5000,"NOM":0}}
+    #bkg_f_const = {0:{"MIN":0.,"MAX":10000,"NOM":1.},1:{"MIN":-50,"MAX":0,"NOM":-0.1},2:{"MIN":-5000,"MAX":5000,"NOM":0},3:{"MIN":-5000,"MAX":5000,"NOM":0},4:{"MIN":-5000,"MAX":5000,"NOM":0}}
+    #bkg_f_const = {0:{"MIN":0.,"MAX":10000,"NOM":1.},1:{"MIN":-50,"MAX":0,"NOM":-0.1},2:{"MIN":-5000,"MAX":5000,"NOM":0}}
+    bkg_f = SemiParametricFunction(fail_name, bkg_hists[f], binning_f, bkg_f_func, constraints=bkg_f_const,funcCeiling=100.)
     # now we add it to the 2DAlphabet ledger
     twoD.AddAlphaObj('Background',f, bkg_f)
 
@@ -356,7 +365,8 @@ if __name__ == "__main__":
       rMax = 30
       while not (fitPassed) : 
         print("\n\n\nperform_fit with rMax = " + str(rMax))
-        perform_fit(signal,'0x0',rMax,extra='--robustHesse 1')
+        #perform_fit(signal,'0x0',rMax,extra='--robustHesse 1')
+        perform_fit(signal,'0x0',rMax,extra='')
         # Do fitting until the fit passes
         with open(workingArea + "/" + signal + "-0x0_area/FitDiagnostics.log", 'r') as file:
           content = file.read()

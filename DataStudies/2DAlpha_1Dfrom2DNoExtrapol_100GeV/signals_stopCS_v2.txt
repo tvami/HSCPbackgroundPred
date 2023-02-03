@@ -1,0 +1,4 @@
+Signal_stopCS-1400-0x0_area,  Signal_stopCS-1600-0x0_area,  Signal_stopCS-1800-0x0_area,  Signal_stopCS-2000-0x0_area,  Signal_stopCS-2200-0x0_area,  Signal_stopCS-2400-0x0_area
+1400,  1600,  1800,  2000,  2200,  2400
+0.000473, 0.000142, 4.51e-05, 1.48e-05,5e-06, 1.71e-06
+0.000473, 0.000142, 4.51e-05, 1.48e-05,5e-06, 1.71e-06

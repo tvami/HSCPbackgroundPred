@@ -96,8 +96,8 @@
                 "NAME": "pT",
                 "TITLEvolt": "F_{i}^{Pixels}",
                 "TITLE": "p_{T}",
-                "NBINSvolt": 4,
-                "BINS": [0.0,400.0,800.0,4000.0],
+                "NBINS": 10,
+                "BINSvolt": [0.0,400.0,800.0,4000.0],
                 "SLICES": [0,400,800,4000],
                 "MIN": 0.0,
                 "MAX": 4000.0

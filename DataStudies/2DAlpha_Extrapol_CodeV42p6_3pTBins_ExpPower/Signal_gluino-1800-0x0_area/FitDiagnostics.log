@@ -1,0 +1,33 @@
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+>>> method used is FitDiagnostics
+Warning: Did not find a parameter with name mask_pass_HIGH
+Set Default Value of Parameter mask_pass_SIG To : 1
+Set Default Value of Parameter r To : 1
+>>> 1 out of 4 channels masked
+
+SimNLL created with 0 channels, 0 generic constraints, 1 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+SimNLL created with 4 channels, 0 generic constraints, 1 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+  [WARNING] Found [Background_fail_par2] at boundary. 
+  [WARNING] Found [Background_fail_par2] at boundary. 
+>> Found 20 floating parameters
+>> The following parameters are protected in the event of negative eigenvalues: r
+>> Verifying eigenvalues are all positive (iteration 0)
+Eigenvalue 19 : -3.14124e-06
+ - -0.999992	r
+ - 0.00410432	lumi
+ - 7.53298e-05	Background_fail_par0
+ - -4.31178e-05	Background_fail_par1
+ - 3.5429e-05	Background_fail_par2
+>> Attempt 0 failed, remove the variable with largest eigenvector component...
+>> Dropping lumi from the hessian
+>> Verifying eigenvalues are all positive (iteration 1)
+>> All eigenvalues are positive
+>> Inverting Hessian...
+>> Matrix inverted
+>> Note: the following parameters were dropped to make the covariance matrix pos-def:
+     - lumi
+
+ --- FitDiagnostics ---
+Best fit r: 7.32052e-09  -7.32052e-09/+30  (68% CL)
+Done in 0.03 min (cpu), 0.03 min (real)

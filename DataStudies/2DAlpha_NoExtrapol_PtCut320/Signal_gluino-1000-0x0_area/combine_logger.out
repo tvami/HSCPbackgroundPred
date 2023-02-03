@@ -1,0 +1,6 @@
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: evaluate) CachingNLL.cc: 719 -- underflow (expected events <=0) in total event yield for pdf_binpass_SIG_obsOnly, expected yield = -71.2841 (observed: 4)
+INFO: (function: evaluate) CachingNLL.cc: 719 -- underflow (expected events <=0) in total event yield for pdf_binpass_SIG_obsOnly, expected yield = -71.3874 (observed: 4)
+INFO: (function: evaluate) CachingNLL.cc: 719 -- underflow (expected events <=0) in total event yield for pdf_binpass_SIG_obsOnly, expected yield = -71.1793 (observed: 4)

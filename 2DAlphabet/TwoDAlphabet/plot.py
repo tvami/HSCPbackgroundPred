@@ -579,6 +579,7 @@ def make_pad_1D(outname, data, bkgs=[], signals=[], title='', subtitle='',
     data.GetXaxis().SetLabelOffset(0.05)
     data.GetYaxis().SetNdivisions(508)
     data.SetMaximum(1.35*data.GetMaximum())
+    if (1.35*data.GetMaximum()==0) : data.SetMaximum(1.35*totalBkg.GetMaximum())
 
     if len(bkgs) == 0:
         data.SetTitle(title)
@@ -700,7 +701,8 @@ def make_pad_1D(outname, data, bkgs=[], signals=[], title='', subtitle='',
         texInternal.SetTextFont(52);
         texInternal.SetTextSize(0.0485);
         texInternal.SetLineWidth(2);
- 
+        
+        ROOT.gPad.RedrawAxis() 
         subtitle_tex = ROOT.TLatex()
         subtitle_tex.SetNDC()
         subtitle_tex.SetTextAngle(0)

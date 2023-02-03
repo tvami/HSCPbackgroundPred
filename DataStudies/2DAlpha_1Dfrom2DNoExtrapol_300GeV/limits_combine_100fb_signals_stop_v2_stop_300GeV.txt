@@ -1,0 +1,2 @@
+Expected mass limit: 1.438 +0.101 --7.541 TeV
+Expected xsection limit at excluded mass: 0.00041 +0.000166 --0.000445 pb

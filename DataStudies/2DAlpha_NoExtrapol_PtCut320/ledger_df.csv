@@ -1,0 +1,39 @@
+,process,region,binning,color,process_type,scale,variation,source_filename,source_histname,alias,title,combine_idx,direction,syst_type,shapes,variation_alias,lnN
+0,data_obs,fail,default,1,DATA,1.0,nominal,.//HSCP_Data-SR1.root,hfail,Data,Data,,,,,,
+1,Signal_gluino-1000,fail,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-1000-SR1.root,hfail,Signal_gluino-1000,HSCP signal,,,lnN,,,1.018
+2,Signal_gluino-1000,fail,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-1000-SR1.root,hfail,Signal_gluino-1000,HSCP signal,,,,,,
+3,Signal_gluino-1400,fail,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-1400-SR1.root,hfail,Signal_gluino-1400,HSCP signal,,,lnN,,,1.018
+4,Signal_gluino-1400,fail,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-1400-SR1.root,hfail,Signal_gluino-1400,HSCP signal,,,,,,
+5,Signal_gluino-1600,fail,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-1600-SR1.root,hfail,Signal_gluino-1600,HSCP signal,,,lnN,,,1.018
+6,Signal_gluino-1600,fail,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-1600-SR1.root,hfail,Signal_gluino-1600,HSCP signal,,,,,,
+7,Signal_gluino-1800,fail,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-1800-SR1.root,hfail,Signal_gluino-1800,HSCP signal,,,lnN,,,1.018
+8,Signal_gluino-1800,fail,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-1800-SR1.root,hfail,Signal_gluino-1800,HSCP signal,,,,,,
+9,Signal_gluino-2000,fail,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-2000-SR1.root,hfail,Signal_gluino-2000,HSCP signal,,,lnN,,,1.018
+10,Signal_gluino-2000,fail,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-2000-SR1.root,hfail,Signal_gluino-2000,HSCP signal,,,,,,
+11,Signal_gluino-2200,fail,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-2200-SR1.root,hfail,Signal_gluino-2200,HSCP signal,,,lnN,,,1.018
+12,Signal_gluino-2200,fail,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-2200-SR1.root,hfail,Signal_gluino-2200,HSCP signal,,,,,,
+13,Signal_gluino-2400,fail,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-2400-SR1.root,hfail,Signal_gluino-2400,HSCP signal,,,lnN,,,1.018
+14,Signal_gluino-2400,fail,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-2400-SR1.root,hfail,Signal_gluino-2400,HSCP signal,,,,,,
+15,Signal_gluino-2600,fail,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-2600-SR1.root,hfail,Signal_gluino-2600,HSCP signal,,,lnN,,,1.018
+16,Signal_gluino-2600,fail,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-2600-SR1.root,hfail,Signal_gluino-2600,HSCP signal,,,,,,
+17,Signal_gluino-800,fail,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-800-SR1.root,hfail,Signal_gluino-800,HSCP signal,,,lnN,,,1.018
+18,Signal_gluino-800,fail,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-800-SR1.root,hfail,Signal_gluino-800,HSCP signal,,,,,,
+19,data_obs,pass,default,1,DATA,1.0,nominal,.//HSCP_Data-SR1.root,hpass,Data,Data,,,,,,
+20,Signal_gluino-1000,pass,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-1000-SR1.root,hpass,Signal_gluino-1000,HSCP signal,,,lnN,,,1.018
+21,Signal_gluino-1000,pass,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-1000-SR1.root,hpass,Signal_gluino-1000,HSCP signal,,,,,,
+22,Signal_gluino-1400,pass,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-1400-SR1.root,hpass,Signal_gluino-1400,HSCP signal,,,lnN,,,1.018
+23,Signal_gluino-1400,pass,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-1400-SR1.root,hpass,Signal_gluino-1400,HSCP signal,,,,,,
+24,Signal_gluino-1600,pass,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-1600-SR1.root,hpass,Signal_gluino-1600,HSCP signal,,,lnN,,,1.018
+25,Signal_gluino-1600,pass,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-1600-SR1.root,hpass,Signal_gluino-1600,HSCP signal,,,,,,
+26,Signal_gluino-1800,pass,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-1800-SR1.root,hpass,Signal_gluino-1800,HSCP signal,,,lnN,,,1.018
+27,Signal_gluino-1800,pass,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-1800-SR1.root,hpass,Signal_gluino-1800,HSCP signal,,,,,,
+28,Signal_gluino-2000,pass,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-2000-SR1.root,hpass,Signal_gluino-2000,HSCP signal,,,lnN,,,1.018
+29,Signal_gluino-2000,pass,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-2000-SR1.root,hpass,Signal_gluino-2000,HSCP signal,,,,,,
+30,Signal_gluino-2200,pass,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-2200-SR1.root,hpass,Signal_gluino-2200,HSCP signal,,,lnN,,,1.018
+31,Signal_gluino-2200,pass,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-2200-SR1.root,hpass,Signal_gluino-2200,HSCP signal,,,,,,
+32,Signal_gluino-2400,pass,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-2400-SR1.root,hpass,Signal_gluino-2400,HSCP signal,,,lnN,,,1.018
+33,Signal_gluino-2400,pass,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-2400-SR1.root,hpass,Signal_gluino-2400,HSCP signal,,,,,,
+34,Signal_gluino-2600,pass,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-2600-SR1.root,hpass,Signal_gluino-2600,HSCP signal,,,lnN,,,1.018
+35,Signal_gluino-2600,pass,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-2600-SR1.root,hpass,Signal_gluino-2600,HSCP signal,,,,,,
+36,Signal_gluino-800,pass,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-800-SR1.root,hpass,Signal_gluino-800,HSCP signal,,,lnN,,,1.018
+37,Signal_gluino-800,pass,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-800-SR1.root,hpass,Signal_gluino-800,HSCP signal,,,,,,

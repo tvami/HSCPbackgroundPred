@@ -1,0 +1,7 @@
+,process,region,binning,color,process_type,scale,variation,source_filename,source_histname,alias,title,combine_idx,direction,syst_type,shapes,variation_alias,lnN
+0,data_obs,fail,default,1,DATA,1.0,nominal,.//HSCP_Data-SR1.root,hfail,Data,Data,,,,,,
+13,Signal_gluino-2400,fail,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-2400-SR1.root,hfail,Signal_gluino-2400,HSCP signal,,,lnN,,,1.018
+14,Signal_gluino-2400,fail,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-2400-SR1.root,hfail,Signal_gluino-2400,HSCP signal,,,,,,
+19,data_obs,pass,default,1,DATA,1.0,nominal,.//HSCP_Data-SR1.root,hpass,Data,Data,,,,,,
+32,Signal_gluino-2400,pass,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_gluino-2400-SR1.root,hpass,Signal_gluino-2400,HSCP signal,,,lnN,,,1.018
+33,Signal_gluino-2400,pass,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_gluino-2400-SR1.root,hpass,Signal_gluino-2400,HSCP signal,,,,,,

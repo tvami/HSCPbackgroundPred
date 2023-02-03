@@ -1,0 +1,8 @@
+,process,region,process_type,title
+0,data_obs,fail,DATA,Data
+1,Background,fail,BKG,Background
+2,TotalBkg,fail,TOTAL,TotalBkg
+3,data_obs,pass,DATA,Data
+4,Signal_gmsbStau-200,pass,SIGNAL,HSCP signal
+5,Background_0x0,pass,BKG,Background
+6,TotalBkg,pass,TOTAL,TotalBkg

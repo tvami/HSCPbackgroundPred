@@ -1,0 +1,43 @@
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+>>> method used is FitDiagnostics
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_tauPrime1e-200_fail_SIGPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_tauPrime1e-200_fail_SIGPdf[ pdfObs=(Ias_SIG_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_SIG_default = 0.62,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_tauPrime1e-200_fail_SIG_pileupUpPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_tauPrime1e-200_fail_SIG_pileupUpPdf[ pdfObs=(Ias_SIG_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_SIG_default = 0.62,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_tauPrime1e-200_fail_SIG_pileupDownPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_tauPrime1e-200_fail_SIG_pileupDownPdf[ pdfObs=(Ias_SIG_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_SIG_default = 0.62,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnFUpPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnFUpPdf[ pdfObs=(Ias_SIG_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_SIG_default = 0.62,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnFDownPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnFDownPdf[ pdfObs=(Ias_SIG_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_SIG_default = 0.62,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnGDownPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnGDownPdf[ pdfObs=(Ias_SIG_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_SIG_default = 0.62,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnPtUpPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnPtUpPdf[ pdfObs=(Ias_SIG_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_SIG_default = 0.62,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnPtDownPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnPtDownPdf[ pdfObs=(Ias_SIG_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_SIG_default = 0.62,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnTriggerUpPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnTriggerUpPdf[ pdfObs=(Ias_SIG_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_SIG_default = 0.62,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnTriggerDownPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_tauPrime1e-200_fail_SIG_systOnTriggerDownPdf[ pdfObs=(Ias_SIG_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_SIG_default = 0.62,pT_default = 2200)

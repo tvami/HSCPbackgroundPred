@@ -1,0 +1,15 @@
+,process,region,binning,color,process_type,scale,variation,source_filename,source_histname,alias,title,combine_idx,direction,syst_type,shapes,variation_alias,lnN
+0,data_obs,fail,default,1,DATA,1.0,nominal,.//HSCP_Data-SR1.root,hfail,Data,Data,,,,,,
+1,data_obs,pass,default,1,DATA,1.0,nominal,.//HSCP_Data-SR1.root,hpass,Data,Data,,,,,,
+722,Signal_tauPrime1e-1000,pass,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_tauPrime1e-1000-SR1.root,hpass,Signal_tauPrime1e-1000,HSCP signal,,,lnN,,,1.018
+723,Signal_tauPrime1e-1000,pass,default,2,SIGNAL,1.0,pileup,.//HSCP_Signal_tauPrime1e-1000-SR1.root,hpass_PUsyst_up,Signal_tauPrime1e-1000,HSCP signal,,Up,shapes,1.0,PUsyst,
+724,Signal_tauPrime1e-1000,pass,default,2,SIGNAL,1.0,pileup,.//HSCP_Signal_tauPrime1e-1000-SR1.root,hpass_PUsyst_down,Signal_tauPrime1e-1000,HSCP signal,,Down,shapes,1.0,PUsyst,
+725,Signal_tauPrime1e-1000,pass,default,2,SIGNAL,1.0,systOnF,.//HSCP_Signal_tauPrime1e-1000-SR1.root,hpass_Fsyst_up,Signal_tauPrime1e-1000,HSCP signal,,Up,shapes,1.0,Fsyst,
+726,Signal_tauPrime1e-1000,pass,default,2,SIGNAL,1.0,systOnF,.//HSCP_Signal_tauPrime1e-1000-SR1.root,hpass_Fsyst_down,Signal_tauPrime1e-1000,HSCP signal,,Down,shapes,1.0,Fsyst,
+727,Signal_tauPrime1e-1000,pass,default,2,SIGNAL,1.0,systOnG,.//HSCP_Signal_tauPrime1e-1000-SR1.root,hpass_Gsyst_up,Signal_tauPrime1e-1000,HSCP signal,,Up,shapes,1.0,Gsyst,
+728,Signal_tauPrime1e-1000,pass,default,2,SIGNAL,1.0,systOnG,.//HSCP_Signal_tauPrime1e-1000-SR1.root,hpass_Gsyst_down,Signal_tauPrime1e-1000,HSCP signal,,Down,shapes,1.0,Gsyst,
+729,Signal_tauPrime1e-1000,pass,default,2,SIGNAL,1.0,systOnTrigger,.//HSCP_Signal_tauPrime1e-1000-SR1.root,hpass_Triggersyst_up,Signal_tauPrime1e-1000,HSCP signal,,Up,shapes,1.0,Triggersyst,
+730,Signal_tauPrime1e-1000,pass,default,2,SIGNAL,1.0,systOnTrigger,.//HSCP_Signal_tauPrime1e-1000-SR1.root,hpass_Triggersyst_down,Signal_tauPrime1e-1000,HSCP signal,,Down,shapes,1.0,Triggersyst,
+731,Signal_tauPrime1e-1000,pass,default,2,SIGNAL,1.0,systOnPt,.//HSCP_Signal_tauPrime1e-1000-SR1.root,hpass_Ptsyst_up,Signal_tauPrime1e-1000,HSCP signal,,Up,shapes,1.0,Ptsyst,
+732,Signal_tauPrime1e-1000,pass,default,2,SIGNAL,1.0,systOnPt,.//HSCP_Signal_tauPrime1e-1000-SR1.root,hpass_Ptsyst_down,Signal_tauPrime1e-1000,HSCP signal,,Down,shapes,1.0,Ptsyst,
+733,Signal_tauPrime1e-1000,pass,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_tauPrime1e-1000-SR1.root,hpass,Signal_tauPrime1e-1000,HSCP signal,,,,,,

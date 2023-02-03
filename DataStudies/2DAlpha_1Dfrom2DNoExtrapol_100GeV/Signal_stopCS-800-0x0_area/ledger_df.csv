@@ -1,0 +1,15 @@
+,process,region,binning,color,process_type,scale,variation,source_filename,source_histname,alias,title,combine_idx,direction,syst_type,shapes,variation_alias,lnN
+0,data_obs,fail,default,1,DATA,1.0,nominal,.//HSCP_Data-SR1.root,hfail,Data,Data,,,,,,
+1,data_obs,pass,default,1,DATA,1.0,nominal,.//HSCP_Data-SR1.root,hpass,Data,Data,,,,,,
+710,Signal_stopCS-800,pass,default,2,SIGNAL,1.0,lumi,.//HSCP_Signal_stopCS-800-SR1.root,hpass,Signal_stopCS-800,HSCP signal,,,lnN,,,1.018
+711,Signal_stopCS-800,pass,default,2,SIGNAL,1.0,pileup,.//HSCP_Signal_stopCS-800-SR1.root,hpass_PUsyst_up,Signal_stopCS-800,HSCP signal,,Up,shapes,1.0,PUsyst,
+712,Signal_stopCS-800,pass,default,2,SIGNAL,1.0,pileup,.//HSCP_Signal_stopCS-800-SR1.root,hpass_PUsyst_down,Signal_stopCS-800,HSCP signal,,Down,shapes,1.0,PUsyst,
+713,Signal_stopCS-800,pass,default,2,SIGNAL,1.0,systOnF,.//HSCP_Signal_stopCS-800-SR1.root,hpass_Fsyst_up,Signal_stopCS-800,HSCP signal,,Up,shapes,1.0,Fsyst,
+714,Signal_stopCS-800,pass,default,2,SIGNAL,1.0,systOnF,.//HSCP_Signal_stopCS-800-SR1.root,hpass_Fsyst_down,Signal_stopCS-800,HSCP signal,,Down,shapes,1.0,Fsyst,
+715,Signal_stopCS-800,pass,default,2,SIGNAL,1.0,systOnG,.//HSCP_Signal_stopCS-800-SR1.root,hpass_Gsyst_up,Signal_stopCS-800,HSCP signal,,Up,shapes,1.0,Gsyst,
+716,Signal_stopCS-800,pass,default,2,SIGNAL,1.0,systOnG,.//HSCP_Signal_stopCS-800-SR1.root,hpass_Gsyst_down,Signal_stopCS-800,HSCP signal,,Down,shapes,1.0,Gsyst,
+717,Signal_stopCS-800,pass,default,2,SIGNAL,1.0,systOnTrigger,.//HSCP_Signal_stopCS-800-SR1.root,hpass_Triggersyst_up,Signal_stopCS-800,HSCP signal,,Up,shapes,1.0,Triggersyst,
+718,Signal_stopCS-800,pass,default,2,SIGNAL,1.0,systOnTrigger,.//HSCP_Signal_stopCS-800-SR1.root,hpass_Triggersyst_down,Signal_stopCS-800,HSCP signal,,Down,shapes,1.0,Triggersyst,
+719,Signal_stopCS-800,pass,default,2,SIGNAL,1.0,systOnPt,.//HSCP_Signal_stopCS-800-SR1.root,hpass_Ptsyst_up,Signal_stopCS-800,HSCP signal,,Up,shapes,1.0,Ptsyst,
+720,Signal_stopCS-800,pass,default,2,SIGNAL,1.0,systOnPt,.//HSCP_Signal_stopCS-800-SR1.root,hpass_Ptsyst_down,Signal_stopCS-800,HSCP signal,,Down,shapes,1.0,Ptsyst,
+721,Signal_stopCS-800,pass,default,2,SIGNAL,1.0,nominal,.//HSCP_Signal_stopCS-800-SR1.root,hpass,Signal_stopCS-800,HSCP signal,,,,,,

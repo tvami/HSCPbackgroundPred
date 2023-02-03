@@ -1,0 +1,47 @@
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+>>> method used is FitDiagnostics
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_gluinoCS-2200_fail_LOWPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_gluinoCS-2200_fail_LOWPdf[ pdfObs=(Ias_LOW_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_LOW_default = 0.22,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_gluinoCS-2200_fail_LOW_pileupUpPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_gluinoCS-2200_fail_LOW_pileupUpPdf[ pdfObs=(Ias_LOW_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_LOW_default = 0.22,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_gluinoCS-2200_fail_LOW_pileupDownPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_gluinoCS-2200_fail_LOW_pileupDownPdf[ pdfObs=(Ias_LOW_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_LOW_default = 0.22,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnFUpPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnFUpPdf[ pdfObs=(Ias_LOW_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_LOW_default = 0.22,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnFDownPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnFDownPdf[ pdfObs=(Ias_LOW_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_LOW_default = 0.22,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnGUpPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnGUpPdf[ pdfObs=(Ias_LOW_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_LOW_default = 0.22,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnGDownPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnGDownPdf[ pdfObs=(Ias_LOW_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_LOW_default = 0.22,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnPtUpPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnPtUpPdf[ pdfObs=(Ias_LOW_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_LOW_default = 0.22,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnPtDownPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnPtDownPdf[ pdfObs=(Ias_LOW_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_LOW_default = 0.22,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnTriggerUpPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnTriggerUpPdf[ pdfObs=(Ias_LOW_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_LOW_default = 0.22,pT_default = 2200)
+[#0] ERROR:Eval -- RooAbsReal::logEvalError(shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnTriggerDownPdf) evaluation error, 
+ origin       : RooHistPdf::shapeSig_Signal_gluinoCS-2200_fail_LOW_systOnTriggerDownPdf[ pdfObs=(Ias_LOW_default,pT_default) ]
+ message      : p.d.f normalization integral is zero or negative
+ server values: pdfObs=(Ias_LOW_default = 0.22,pT_default = 2200)
