@@ -1,0 +1,10 @@
+Background_fail_par0:lumi = -0.0580939268054
+Background_fail_par1:Background_fail_par0 = -0.949587534355
+Background_fail_par1:lumi = 0.10767783885
+Background_rpf_0x0_par0:Background_fail_par0 = -0.0055868889208
+Background_rpf_0x0_par0:Background_fail_par1 = 0.00383035554999
+Background_rpf_0x0_par0:lumi = 0.00173394470068
+Background_rpf_0x0_par0:r = -0.00560830840582
+r:Background_fail_par0 = 0.187900258816
+r:Background_fail_par1 = -0.348275541031
+r:lumi = -0.309174277733
