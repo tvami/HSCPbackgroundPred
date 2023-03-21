@@ -1,4 +1,1 @@
-Signal_tauPrime2e-500-0x0_area, Signal_tauPrime2e-1000-0x0_area,  Signal_tauPrime2e-1400-0x0_area, Signal_tauPrime2e-1800-0x0_area
-500, 1000,  1400, 1800 
-3.5E-03, 2.4E-04, 2.7E-05, 3.9E-06
-3.5E-03, 2.4E-04, 2.7E-05, 3.9E-06
+../limitPlotScripts/signals_tauPrime2e.txt
