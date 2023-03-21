@@ -59,7 +59,7 @@ signal_mass = [float(m.strip())/1000 for m in signal_mass]
 # Read in xsecs as a list of strings, strip whitespace, and convert to floats
 theory_xsecs = signal_file.readline().split(',')
 theory_xsecs = [float(x.strip()) for x in theory_xsecs]
-# 
+#
 signal_xsecs = signal_file.readline().split(',')
 signal_xsecs = [float(x.strip()) for x in signal_xsecs]
 
@@ -82,13 +82,13 @@ for this_index, this_name in enumerate(signal_names):
     this_output = TFile.Open(this_name+'/higgsCombineTest.AsymptoticLimits.mH120.root')
     if not this_output: continue
     this_tree = this_output.Get('limit')
-    
+
     # Set the mass (x axis)
     x_mass.append(this_mass)
     # Grab the cross section limits (y axis)
     for ievent in range(int(this_tree.GetEntries())):
         this_tree.GetEntry(ievent)
-        
+
         # Nominal expected
         if this_tree.quantileExpected == 0.5:
             y_mclimit.append(this_tree.limit*this_xsec)
@@ -106,19 +106,19 @@ for this_index, this_name in enumerate(signal_names):
             y_mclimitup95.append(this_tree.limit*this_xsec)
         print("For " + str(this_mass) + " mc_limit is " +str(y_mclimit))
         # Observed (plot only if unblinded)
-        if this_tree.quantileExpected == -1: 
+        if this_tree.quantileExpected == -1:
             if not options.blind:
-		print('DEBUG : appending to y_limit')
-		print('appending: {} to y_limit'.format(this_tree.limit*this_xsec))
+                print('DEBUG : appending to y_limit')
+                print('appending: {} to y_limit'.format(this_tree.limit*this_xsec))
                 y_limit.append(this_tree.limit*this_xsec)
             else:
                 y_limit.append(0.0)
-    
+
 # Make Canvas and TGraphs (mostly stolen from other code that formats well)
 climits = TCanvas("climits", "climits",700, 600)
 climits.SetLogy(True)
 climits.SetLeftMargin(.15)
-climits.SetBottomMargin(.15)  
+climits.SetBottomMargin(.15)
 climits.SetTopMargin(0.1)
 climits.SetRightMargin(0.05)
 
@@ -159,10 +159,10 @@ if (len(x_mass) != len(y_mclimit)) :
     print("Num of mass point not the same as the num of limit point")
     print("Check your input files, we exit now")
     exit()
-    
+
 # Observed
 if not options.blind:
-    print 'Not blinded'
+    print('Not blinded')
     print('---------------DEBUG---------------------')
     print('x_mass: {}'.format(x_mass))
     print('len x_mass: {}'.format(len(x_mass)))
@@ -178,12 +178,12 @@ if not options.blind:
     g_limit.SetMinimum(0.8e-4) #0.005
     g_limit.SetMaximum(0.1)
 else:
-    print 'Blinded'
+    print('Blinded')
     g_mclimit.GetXaxis().SetTitle("m_{HSCP "+cstr+"} [TeV]")  # NOT GENERIC
     g_mclimit.GetYaxis().SetTitle("#sigma_{HSCP "+cstr+"} [pb]") # NOT GENERIC
-    if ("tau" in cstr) : 
+    if ("tau" in cstr) :
       g_mclimit.GetXaxis().SetRangeUser(0.1, 1.5)
-    else: 
+    else:
       g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
     g_mclimit.SetMinimum(5e-5) #0.005
     g_mclimit.SetMaximum(0.03)
@@ -310,7 +310,7 @@ else:
     graphWP.Draw("l")
     g_mclimit.GetYaxis().SetTitleOffset(1.5)
     g_mclimit.GetXaxis().SetTitleOffset(1.25)
-    
+
 graphWPdown.Draw("l")
 graphWPup.Draw("l")
 
@@ -339,14 +339,14 @@ if options.drawIntersection:
     expLineLabel.Draw()
 
 print('Expected mass limit: '+str(round(expectedMassLimit,3)) + ' +'+str(round(upLimit-expectedMassLimit,3)) +' -'+str(round(expectedMassLimit-lowLimit,3)) + ' TeV')
-print('Expected xsection limit at excluded mass: '+str(round(expectedCrossLimit,6)) + ' +'+str(round(expectedCrossLimit-upXsectionLim,6)) +' -'+str(round(lowXsectionLim-expectedCrossLimit,6)) + ' pb') 
-print('Expected xsection limit @1800GeV: '+str(round(expectedCrossLimitAt1800,6)) + ' +'+str(round(expectedCrossLimitAt1800-upXsectionLimAt1800,6)) +' -'+str(round(lowXsectionLimAt1800-expectedCrossLimitAt1800,6)) + ' pb') 
+print('Expected xsection limit at excluded mass: '+str(round(expectedCrossLimit,6)) + ' +'+str(round(expectedCrossLimit-upXsectionLim,6)) +' -'+str(round(lowXsectionLim-expectedCrossLimit,6)) + ' pb')
+print('Expected xsection limit @1800GeV: '+str(round(expectedCrossLimitAt1800,6)) + ' +'+str(round(expectedCrossLimitAt1800-upXsectionLimAt1800,6)) +' -'+str(round(lowXsectionLimAt1800-expectedCrossLimitAt1800,6)) + ' pb')
 
 
 
 if not options.blind:
     obsMassLimit,obsCrossLimit = Inter(g_limit,graphWP) if len(Inter(g_limit,graphWP)) > 0 else -1.0
-    print 'Observed limit: '+str(obsMassLimit) + ' TeV'
+    print('Observed limit: '+str(obsMassLimit) + ' TeV')
 
     obsLine = TLine(obsMassLimit,g_mclimit.GetMinimum(),obsMassLimit,obsCrossLimit)
     obsLine.SetLineStyle(2)
@@ -380,7 +380,7 @@ legend.Draw("same")
 # text1.SetTextFont(42)
 # text1.DrawLatex(0.17,0.88, "#scale[1.0]{CMS, L = "+options.lumi+" fb^{-1} at  #sqrt{s} = 13 TeV}") # NOT GENERIC
 
-# TPT.Draw()      
+# TPT.Draw()
 climits.RedrawAxis()
 
 CMS_lumi.extraText = 'Internal'

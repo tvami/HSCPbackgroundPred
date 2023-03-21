@@ -3,11 +3,12 @@ from ROOT import *
 from contextlib import contextmanager
 import os, pickle, subprocess, time,random
 import math, collections
-from math import sqrt
+from math import sqrt, log, exp
 import array
 import json
 import CMS_lumi, tdrstyle
 import pprint
+import ctypes
 pp = pprint.PrettyPrinter(indent = 2)
 
 def setSnapshot(d=''):
@@ -43,12 +44,12 @@ def openJSON(f,twoDconfig=True):
         if twoDconfig:
             for process in [proc for proc in input_config['PROCESS'].keys() if proc != 'HELP']:
                 for index,item in enumerate(input_config['PROCESS'][process]['SYSTEMATICS']):           # There's one list that also
-                    input_config['PROCESS'][process]['SYSTEMATICS'][index] = item.encode('ascii')  
+                    input_config['PROCESS'][process]['SYSTEMATICS'][index] = item.encode('ascii')
 
     return input_config
 
-def ascii_encode_dict(data):    
-    ascii_encode = lambda x: x.encode('ascii') if isinstance(x, unicode) else x 
+def ascii_encode_dict(data):
+    ascii_encode = lambda x: x.encode('ascii') if isinstance(x, unicode) else x
     return dict(map(ascii_encode, pair) for pair in data.items())
 
 def copyHistWithNewXbins(thisHist,newXbins,copyName):
@@ -62,13 +63,13 @@ def copyHistWithNewXbins(thisHist,newXbins,copyName):
     ynbins = len(ybins_array)-1
 
     xbins_array = array.array('f',newXbins)
-    xnbins = len(xbins_array)-1 
+    xnbins = len(xbins_array)-1
 
     # Use copyName with _temp to avoid overwriting if thisHist has the same name
     # We can do this at the end but not before we're finished with thisHist
     hist_copy = TH2F(copyName+'_temp',copyName+'_temp',xnbins,xbins_array,ynbins,ybins_array)
     hist_copy.Sumw2()
-    
+
     hist_copy.GetXaxis().SetName(thisHist.GetXaxis().GetName())
     hist_copy.GetYaxis().SetName(thisHist.GetYaxis().GetName())
 
@@ -128,7 +129,7 @@ def copyHistWithNewYbins(thisHist,newYbins,copyName):
     # We can do this at the end but not before we're finished with thisHist
     hist_copy = TH2F(copyName+'_temp',copyName+'_temp',xnbins,xbins_array,ynbins,ybins_array)
     hist_copy.Sumw2()
-    
+
     hist_copy.GetXaxis().SetName(thisHist.GetXaxis().GetName())
     hist_copy.GetYaxis().SetName(thisHist.GetYaxis().GetName())
 
@@ -187,7 +188,7 @@ def ConvertToEvtsPerUnit(hist,width=None):
             new_error = factor * converted.GetBinError(ibin)
             converted.SetBinContent(ibin,new_content)
             converted.SetBinError(ibin,new_error)
-    
+
     return converted
 
 def GetMinWidth(hist):
@@ -198,7 +199,7 @@ def GetMinWidth(hist):
     return int(use_width)
 
 def smoothHist2D(name,histToSmooth,renormalize=False,iterate=1,skipEdges=False):
-    print "Smoothing "+name
+    print("Smoothing "+name)
     if renormalize: norm = histToSmooth.Integral()
     smoothed_hist = histToSmooth.Clone(name)
     smoothed_hist.Reset()
@@ -228,7 +229,7 @@ def smoothHist2D(name,histToSmooth,renormalize=False,iterate=1,skipEdges=False):
                         bin_contents.append(histToSmooth.GetBinContent(ix+1,iy-1))
                     bin_contents.append(histToSmooth.GetBinContent(ix  ,iy+1))
                     bin_contents.append(histToSmooth.GetBinContent(ix  ,iy-1))
-            
+
             elif ix == histToSmooth.GetNbinsX():
                 if iy == 1: # lower right corner
                     if skipEdges: pass
@@ -243,7 +244,7 @@ def smoothHist2D(name,histToSmooth,renormalize=False,iterate=1,skipEdges=False):
                         bin_contents.append(histToSmooth.GetBinContent(ix-1,iy-1))
                         bin_contents.append(histToSmooth.GetBinContent(ix  ,iy-1))
                 else: # right wall
-                    if not skipEdges: 
+                    if not skipEdges:
                         bin_contents.append(histToSmooth.GetBinContent(ix-1,iy+1))
                         bin_contents.append(histToSmooth.GetBinContent(ix-1,iy  ))
                         bin_contents.append(histToSmooth.GetBinContent(ix-1,iy-1))
@@ -312,7 +313,7 @@ def stitchHistsInX(name,xbins,ybins,thisHistList,blinded=[]):
         if i in blinded:
             bin_jump += thisHistList[i].GetNbinsX()
             continue
-        
+
         for ybin in range(1,h.GetNbinsY()+1):
             for xbin in range(1,h.GetNbinsX()+1):
                 stitched_xindex = xbin + bin_jump
@@ -357,9 +358,9 @@ def rebinY(thisHist,name,tag,new_y_bins_array):
                 newBinErrorSq = 0
                 nybins = 0
             else:
-                print 'ERROR when doing psuedo-2D y rebin approximation. Slices do not line up on y bin edges'
-                print 'Input bin upper edge = '+str(thisHist.GetYaxis().GetBinUpEdge(ybin))
-                print 'Rebin upper edge = '+str(rebinned.GetYaxis().GetBinUpEdge(rebinHistYBin))
+                print('ERROR when doing psuedo-2D y rebin approximation. Slices do not line up on y bin edges')
+                print('Input bin upper edge = '+str(thisHist.GetYaxis().GetBinUpEdge(ybin)))
+                print('Rebin upper edge = '+str(rebinned.GetYaxis().GetBinUpEdge(rebinHistYBin)))
                 quit()
 
     makeCan(name+'_rebin_compare',tag,[rebinned,thisHist])
@@ -375,7 +376,7 @@ def splitBins(binList, sigLow, sigHigh):
         if b >= sigHigh:
             return_bins['HIGH'].append(b)
 
-    return return_bins 
+    return return_bins
 
 def remapToUnity(hist):
     # Map to [-1,1]
@@ -479,17 +480,17 @@ def ftestInfoLookup(projInfoDict):
 
         nrpfparams+=this_nrpfparams
         nbins+=this_nbins
-    
+
     return nrpfparams,nbins
 
 def FStatCalc(filename1,filename2,p1,p2,n):
-    print 'Calculating F statistic'
+    print ('Calculating F statistic')
     # Flip flop to make sure p2 is always greater than p1 (more parameters should always fit better)
     if p1 > p2:
         p1, p2 = p2, p1
         filename1, filename2 = filename2, filename1
-    print 'Files: ',filename1,filename2
-    print 'Parameters: p1 %f, p2 %f, n %f'%(p1,p2,n)
+    print ('Files: ',filename1,filename2)
+    print ('Parameters: p1 %f, p2 %f, n %f'%(p1,p2,n))
 
     # Get limit trees from each file
     file1 = TFile.Open(filename1)
@@ -507,10 +508,10 @@ def FStatCalc(filename1,filename2,p1,p2,n):
         if tree1.limit-tree2.limit>0:
             F = (tree1.limit-tree2.limit)/(p2-p1)/(tree2.limit/(n-p2))
             # print 'Entry ',i, ":", tree2.limit, "-", tree1.limit, "=", tree2.limit-tree1.limit, "F =", F
-            # if F < 50: 
+            # if F < 50:
             diffs.append(F)
         else:
-            print 'WARNING in calculation of F statistic for entry %i. limit1-limit2 <=0 (%f - %f)' %(i,tree1.limit,tree2.limit)
+            print ('WARNING in calculation of F statistic for entry %i. limit1-limit2 <=0 (%f - %f)' %(i,tree1.limit,tree2.limit))
             diffs.append(0)
     # print 'Diffs F stat: ',diffs
     return diffs
@@ -524,7 +525,7 @@ def makeToyCard(channelNames):
     nprocesses = 1 # jmax
     nsystematics = 0 # kmax
 
-    toy_gen_card.write('imax '+str(nchannels)+'\n')      
+    toy_gen_card.write('imax '+str(nchannels)+'\n')
     toy_gen_card.write('jmax '+str(nprocesses)+'\n')
     toy_gen_card.write('kmax '+str(nsystematics)+'\n')
     toy_gen_card.write('-'*120+'\n')
@@ -574,7 +575,7 @@ def makeToyCard(channelNames):
             # If bkg
             elif proc == 'TotalBkg':
                 processCode_line += ('1 ')
-                rate_line += '-1 '                                            
+                rate_line += '-1 '
 
     toy_gen_card.write(colliMate(bin_line+'\n',column_width))
     toy_gen_card.write(colliMate(processName_line+'\n',column_width))
@@ -591,7 +592,7 @@ def projInfoLookup(projDir,card_tag):
     firstline = run_card.readline()
     if 'Combination of ' in firstline:
         more_than_one = True
-    
+
     proj_info = {}
     if more_than_one:
         # Look up all categories run in the most recent fit
@@ -612,7 +613,7 @@ def getTwoDAlphaNames(line):
     return proj_names
 
 def executeCmd(cmd,dryrun=False):
-    print 'Executing: '+cmd
+    print ('Executing: '+cmd)
     if not dryrun:
         subprocess.call([cmd],shell=True)
 
@@ -662,7 +663,7 @@ def dictToLatexTable(dict2convert,outfilename,roworder=[],columnorder=[]):
 
 def reorderHists(histlist):
     if len(histlist) != 6:
-        print Exception('reorderHists() only built to rearrange list of six hists from 2x3 to 3x2')
+        print (Exception('reorderHists() only built to rearrange list of six hists from 2x3 to 3x2'))
         return histlist
 
     outlist = []
@@ -678,11 +679,11 @@ def reorderHists(histlist):
 def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
             titles=[],subtitles=[],sliceVar='X',dataName='Data',bkgNames=[],signalNames=[],logy=False,
             rootfile=False,xtitle='',ytitle='',ztitle='',dataOff=False,
-            datastyle='pe',year=1, addSignals=True, extraText=''):  
+            datastyle='pe',year=1, addSignals=True, extraText=''):
     # histlist is just the generic list but if bkglist is specified (non-empty)
-    # then this function will stack the backgrounds and compare against histlist as if 
+    # then this function will stack the backgrounds and compare against histlist as if
     # it is data. The imporant bit is that bkglist is a list of lists. The first index
-    # of bkglist corresponds to the index in histlist (the corresponding data). 
+    # of bkglist corresponds to the index in histlist (the corresponding data).
     # For example you could have:
     #   histlist = [data1, data2]
     #   bkglist = [[bkg1_1,bkg2_1],[bkg1_2,bkg2_2]]
@@ -719,8 +720,8 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
         if titles != []: titles = reorderHists(titles)
         if subtitles != []: subtitles = reorderHists(subtitles)
     else:
-        print 'histlist of size ' + str(len(histlist)) + ' not currently supported'
-        print histlist
+        print ('histlist of size ' + str(len(histlist)) + ' not currently supported')
+        print (histlist)
         return 0
 
     tdrstyle.setTDRStyle()
@@ -728,13 +729,13 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
     gStyle.SetTitleBorderSize(0)
     gStyle.SetTitleAlign(33)
     gStyle.SetTitleX(.77)
-        
+
     myCan = TCanvas(name,name,width,height)
     myCan.Divide(padx,pady)
 
     # Just some colors that I think work well together and a bunch of empty lists for storage if needed
     default_colors = [kRed,kMagenta,kGreen,kCyan,kBlue]
-    if len(colors) == 0:   
+    if len(colors) == 0:
         colors = default_colors
     color_idx_order = None
     stacks = []
@@ -753,7 +754,7 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
         myCan.cd(hist_index+1)
         # if len(histlist) > 1:
         thisPad = myCan.GetPrimitive(name+'_'+str(hist_index+1))
-        thisPad.cd()        
+        thisPad.cd()
         thisPad.SetRightMargin(0.0)
         thisPad.SetTopMargin(0.0)
         thisPad.SetBottomMargin(0.0)
@@ -790,7 +791,7 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
 
             CMS_lumi.extraText = extraText
             CMS_lumi.CMS_lumi(thisPad, year, 11, sim=False if 'data' in name.lower() else True)
-        
+
         # Otherwise it's a TH1 hopefully
         else:
             titleSize = 0.09
@@ -803,7 +804,7 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
                 hist.SetMarkerStyle(8)
             if 'hist' in datastyle.lower():
                 hist.SetFillColorAlpha(0,0)
-            
+
             hist.GetXaxis().SetTitle(xtitle)
             hist.GetYaxis().SetTitle(ytitle)
 
@@ -815,7 +816,7 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
                 hist.SetTitleOffset(1.1)
                 hist.Draw(datastyle)
                 CMS_lumi.CMS_lumi(thisPad, year, 11)
-            
+
             # Otherwise...
             else:
                 # Create some subpads, a legend, a stack, and a total bkg hist that we'll use for the error bars
@@ -878,7 +879,7 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
                 if color_idx_order == None:
                     color_idx_order = ColorCodeSortedIndices(colors)
                     colors = [colors[i] for i in color_idx_order]
-                
+
                 bkglist[hist_index] = [bkglist[hist_index][i] for i in color_idx_order]
                 if bkgNames != [] and isinstance(bkgNames[0],list):
                     bkgNames[hist_index] = [bkgNames[hist_index][i] for i in color_idx_order]
@@ -888,7 +889,7 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
                 for bkg_index,bkg in enumerate(bkglist[hist_index]):     # Won't loop if bkglist is empty
                     # bkg.Sumw2()
                     if totalBkg == None: tot_hists[hist_index].Add(bkg)
-                    
+
                     if logy:
                         bkg.SetMinimum(1e-3)
 
@@ -907,7 +908,7 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
                     if bkgNames == []: this_bkg_name = bkg.GetName().split('_')[0]
                     elif type(bkgNames[0]) != list: this_bkg_name = bkgNames[bkg_index]
                     else: this_bkg_name = bkgNames[hist_index][bkg_index]
-                    
+
                     legend_info[this_bkg_name] = bkg
 
                 # Deal with legend which needs ordering reversed from stack build
@@ -915,7 +916,7 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
                     if bname not in legend_duplicates:
                         legends[hist_index].AddEntry(legend_info[bname],bname,'f')
                         legend_duplicates.append(bname)
-                    
+
                 # Go to main pad, set logy if needed
                 mains[hist_index].cd()
 
@@ -931,7 +932,7 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
                     if logy == True:
                         h.SetMaximum(yMax*10**(2.5-legend_topY+0.1))
 
-                
+
                 mLS = 0.08
                 # Now draw the main pad
                 data_leg_title = hist.GetTitle()
@@ -946,14 +947,14 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
                 hist.GetXaxis().SetLabelOffset(0.05)
                 if logy == True:
                     hist.SetMinimum(1e-3)
-                
+
                 hist.GetYaxis().SetNdivisions(508)
 
                 hist.Draw(datastyle+' X0')
                 #gStyle.SetErrorX(0.5)
 
-                if logy == True:stacks[hist_index].SetMinimum(1e-3) 
-                
+                if logy == True:stacks[hist_index].SetMinimum(1e-3)
+
                 stacks[hist_index].Draw('same hist') # need to draw twice because the axis doesn't exist for modification until drawing
                 try:
                     stacks[hist_index].GetYaxis().SetNdivisions(508)
@@ -963,7 +964,7 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
 
                 # Do the signals
                 sigs_to_plot = []
-                if len(signals) > 0: 
+                if len(signals) > 0:
                     # Can add together for total signal
                     if addSignals:
                         totsig = signals[hist_index][0].Clone()
@@ -990,7 +991,7 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
                         sig.Draw('hist same')
 
                 # Draw total hist and error
-                if logy: 
+                if logy:
                     tot_hists[hist_index].SetMinimum(1e-3)
                     tot_hists_err[hist_index].SetMinimum(1e-3)
                 tot_hists[hist_index].Draw('hist same')
@@ -1019,7 +1020,7 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
                 pulls[hist_index].GetYaxis().SetRangeUser(-2.9,2.9)
                 pulls[hist_index].GetYaxis().SetTitleOffset(0.4)
                 # pulls[hist_index].GetXaxis().SetTitleOffset(0.9)
-                             
+
                 pulls[hist_index].GetYaxis().SetLabelSize(0.13)
                 pulls[hist_index].GetYaxis().SetTitleSize(0.12)
                 pulls[hist_index].GetYaxis().SetNdivisions(306)
@@ -1037,7 +1038,7 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
                 CMS_lumi.cmsTextSize = 0.9
                 CMS_lumi.cmsTextOffset = 2
                 CMS_lumi.lumiTextSize = 0.9
-                
+
                 CMS_lumi.CMS_lumi(mains[hist_index], year, 11)
                 mains[hist_index].cd()
                 lumiE = TLatex()
@@ -1045,17 +1046,17 @@ def makeCan(name, tag, histlist, bkglist=[],totalBkg=None,signals=[],colors=[],
                 lumiE.SetTextAngle(0)
                 lumiE.SetTextColor(kBlack)
                 lumiE.SetTextFont(42)
-                lumiE.SetTextAlign(31) 
+                lumiE.SetTextAlign(31)
                 lumiE.SetTextSize(0.7*0.1)
                 lumiE.DrawLatex(1-0.05,1-0.1+0.2*0.1,"137 fb^{-1} (13 TeV)")
-                
+
                 if isinstance(subtitles,list) and len(subtitles) > 0:
                     subtitle = TLatex()
                     subtitle.SetNDC()
                     subtitle.SetTextAngle(0)
                     subtitle.SetTextColor(kBlack)
                     subtitle.SetTextFont(42)
-                    subtitle.SetTextAlign(12) 
+                    subtitle.SetTextAlign(12)
                     subtitle.SetTextSize(0.06)
                     # print (subtitles[hist_index])
                     subtitle_string = '%s < %s < %s %s'%(subtitles[hist_index].split('-')[0], sliceVar.split(' ')[0], subtitles[hist_index].split('-')[1], 'GeV')
@@ -1125,17 +1126,17 @@ def FindCommonString(string_list):
             string = string_list[istring]
             if to_match not in string:                  # if in the string, add more
                 passed = False
-            
+
         if passed == True:
             to_match+=s
 
     if to_match[-2] == '_':
-        return to_match[:-2] 
+        return to_match[:-2]
     else:
         return to_match[:-1]                # if not, return to_match minus final character
 
     return to_match[:-2]
-        
+
 def Make_Pull_plot( DATA,BKG):
     BKGUP, BKGDOWN = Make_up_down(BKG)
     pull = DATA.Clone(DATA.GetName()+"_pull")
@@ -1157,7 +1158,7 @@ def Make_Pull_plot( DATA,BKG):
         else:
             sigma = sqrt(BKGerr*BKGerr)
         if FScont == 0.0:
-            pull.SetBinContent(ibin, 0.0 )  
+            pull.SetBinContent(ibin, 0.0 )
         else:
             if sigma != 0 :
                 pullcont = (pull.GetBinContent(ibin))/sigma
@@ -1182,16 +1183,16 @@ def Make_up_down(hist):
 
 def checkFitForm(xFitForm,yFitForm):
     if '@0' in xFitForm:
-        print 'ERROR: @0 in XFORM. This is reserved for the variable x. Please either replace it with x or start your parameter naming with @1. Quitting...'
+        print ('ERROR: @0 in XFORM. This is reserved for the variable x. Please either replace it with x or start your parameter naming with @1. Quitting...')
         quit()
     if '@0' in yFitForm:
-        print 'ERROR: @0 in YFORM. This is reserved for the variable y. Please either replace it with y or start your parameter naming with @1. Quitting...'
+        print ('ERROR: @0 in YFORM. This is reserved for the variable y. Please either replace it with y or start your parameter naming with @1. Quitting...')
         quit()
     if 'x' in yFitForm and 'exp' not in yFitForm:
-        print 'ERROR: x in YFORM. Did you mean to write "y"? Quitting...'
+        print ('ERROR: x in YFORM. Did you mean to write "y"? Quitting...')
         quit()
     if 'y' in xFitForm:
-        print 'ERROR: y in XFORM. Did you mean to write "x"? Quitting...'
+        print ('ERROR: y in XFORM. Did you mean to write "x"? Quitting...')
         quit()
 
 def RFVform2TF1(RFVform,shift=0): # shift tells function how much to shift the indices of the coefficients by
@@ -1221,7 +1222,7 @@ def make_smooth_graph(h2,h3):
     npoints = h3.GetN()
     h3.Set(2*npoints+2)
     for b in range(npoints+2):
-        x1, y1 = (ROOT.Double(), ROOT.Double())
+        x1, y1 = (ctypes.c_double(), ctypes.c_double())
         if b == 0:
             h3.GetPoint(npoints-1, x1, y1)
         elif b == 1:
@@ -1251,7 +1252,7 @@ def Condor(runscript):
     # commands.append("condor_q lcorcodi")
 
     for s in commands:
-        print s
+        print (s)
         subprocess.call([s],shell=True)
 
 def StatsForCondor(run_name,toyDict,tarFilesList,commands,files_to_grab=[]):
@@ -1299,7 +1300,7 @@ def StatsForCondor(run_name,toyDict,tarFilesList,commands,files_to_grab=[]):
                 this_run_file.write('cp '+this_run_name+'.tgz $CMSSW_BASE/../')
                 this_run_file.close()
                 Condor('run_combine_%s.sh'%(i))
-                
+
         else:
             executeCmd('cp '+os.environ['CMSSW_BASE']+'/src/2DAlphabet/condor/templates/run_combine.sh run_combine.sh')
             this_run_file = open('run_combine.sh','a+')
@@ -1351,7 +1352,7 @@ def WaitForJobs( listOfJobs ):
         time.sleep(1)
 
 
-    print 'Jobs completed. Checking for errors...'
+    print ('Jobs completed. Checking for errors...')
     numberOfTracebacks = subprocess.check_output('grep -i "Traceback" output*.log | wc -l', shell=True)
     numberOfSyntax = subprocess.check_output('grep -i "Syntax" output*.log | wc -l', shell=True)
 
@@ -1361,34 +1362,101 @@ def WaitForJobs( listOfJobs ):
     # Check there are no syntax or traceback errors
     # Future idea - check output file sizes
     if numberOfTracebacks > 0:
-        print str(numberOfTracebacks) + ' job(s) failed with traceback error'
+        print (str(numberOfTracebacks) + ' job(s) failed with traceback error')
         quit()
     elif numberOfSyntax > 0:
-        print str(numberOfSyntax) + ' job(s) failed with syntax error'
+        print (str(numberOfSyntax) + ' job(s) failed with syntax error')
         quit()
     else:
-        print 'No errors!'
+        print ('No errors!')
 
-def Inter(g1,g2):
-    xaxisrange = g1.GetXaxis().GetXmax()-g1.GetXaxis().GetXmin()
-    xaxismin = g1.GetXaxis().GetXmin()
-    xinters = []
-    yinters = []
-    for x in range(0,10000):
-        xpoint = xaxismin + (float(x)/1000.0)*xaxisrange
-        xpoint1 = xaxismin + (float(x+1)/1000.0)*xaxisrange
-        Pr1 = g1.Eval(xpoint)
-        Pr2 = g2.Eval(xpoint)
-        Po1 = g1.Eval(xpoint1)
-        Po2 = g2.Eval(xpoint1)
-        if (Pr1-Pr2)*(Po1-Po2)<0:
-            xinters.append(0.5*(xpoint+xpoint1))
-            yinters.append(0.5*(Po1+Po2))
-        
-    if len(xinters) == 0:
-        xinters = [-1]
-        yinters = [-1]
-    return xinters[0],yinters[0]
+def sign(x):
+    return (x > 0) - (x < 0)
+
+def Inter(g1,g2, interpolationType="exp"):
+
+    listOfCrossingRegions = []
+
+    # walk through both graphs looking for crossings.
+    for g1p in range(g1.GetN()-1):
+        g1xi, g1xip1, g1yi, g1yip1 = ctypes.c_double(), ctypes.c_double(), ctypes.c_double(), ctypes.c_double()
+        g1.GetPoint(g1p, g1xi, g1yi)
+        g1.GetPoint(g1p+1, g1xip1, g1yip1)
+        g1xi   = g1xi.value
+        g1xip1 = g1xip1.value
+        g1yi   = g1yi.value
+        g1yip1 = g1yip1.value
+        for g2p in range(g2.GetN()-1):
+            g2xi, g2xip1, g2yi, g2yip1 = ctypes.c_double(), ctypes.c_double(), ctypes.c_double(), ctypes.c_double()
+            g2.GetPoint(g2p, g2xi, g2yi)
+            g2.GetPoint(g2p+1, g2xip1, g2yip1)
+
+            g2xi   = g2xi.value
+            g2xip1 = g2xip1.value
+            g2yi   = g2yi.value
+            g2yip1 = g2yip1.value
+
+            print (g1p,g2p)
+            print (g1xi,g1xip1)
+            print (g1yi,g1yip1)
+            print (g2xi,g2xip1)
+            print (g2yi,g2yip1)
+            # Now I have two adjacent points from each graph
+
+            if sign( g1yi-g2yi ) != sign( g1yip1-g2yip1 ) and \
+                g1xi < g2xip1 and g1xip1 > g2xi:
+                # we have a local crossing
+                listOfCrossingRegions.append((g1xi,g1xip1,g2xi,g2xip1,g1yi,g1yip1,g2yi,g2yip1))
+
+
+    listOfCrossings = []
+    for g1xi,g1xip1,g2xi,g2xip1,g1yi,g1yip1,g2yi,g2yip1 in listOfCrossingRegions:
+        if interpolationType.lower() == "linear":
+            m1 = (g1yip1 - g1yi) / (g1xip1 - g1xi)
+            m2 = (g2yip1 - g2yi) / (g2xip1 - g2xi)
+
+            xcrossing = (-m2*g2xi + g2yi - g1yi + m1 * g1xi) / (m1 - m2)
+            ycrossing = m1*(xcrossing - g1xi) + g1yi
+
+            listOfCrossings.append( (xcrossing,ycrossing) )
+        elif interpolationType.lower() == "exp":
+            # assuming form y = A*exp(Bx)
+            B1 = math.log( g1yip1 / g1yi ) / (g1xip1 - g1xi)
+            A1 = g1yi / math.exp(B1*g1xi)
+            B2 = math.log( g2yip1 / g2yi ) / (g2xip1 - g2xi)
+            A2 = g2yi / math.exp(B2*g2xi)
+            xcrossing = math.log(A1/A2) / (B2-B1)
+            ycrossing = A1*math.exp(B1*xcrossing)
+
+            # print("exp crossing calculation")
+            # print(A1,B1,A2,B2)
+            # print(xcrossing,ycrossing)
+            listOfCrossings.append( (xcrossing,ycrossing) )
+
+    if len(listOfCrossings)==0:
+        return (-1,-1)
+
+    return listOfCrossings[0]
+
+    # xaxisrange = g1.GetXaxis().GetXmax()-g1.GetXaxis().GetXmin()
+    # xaxismin = g1.GetXaxis().GetXmin()
+    # xinters = []
+    # yinters = []
+    # for x in range(0,10000):
+    #     xpoint = xaxismin + (float(x)/1000.0)*xaxisrange
+    #     xpoint1 = xaxismin + (float(x+1)/1000.0)*xaxisrange
+    #     Pr1 = g1.Eval(xpoint)
+    #     Pr2 = g2.Eval(xpoint)
+    #     Po1 = g1.Eval(xpoint1)
+    #     Po2 = g2.Eval(xpoint1)
+    #     if (Pr1-Pr2)*(Po1-Po2)<0:
+    #         xinters.append(0.5*(xpoint+xpoint1))
+    #         yinters.append(0.5*(Po1+Po2))
+
+    # if len(xinters) == 0:
+    #     xinters = [-1]
+    #     yinters = [-1]
+    # return xinters[0],yinters[0]
 
 # Right after I wrote this I realized it's obsolete... It's cool parentheses parsing though so I'm keeping it
 def separateXandYfromFitString(fitForm):
@@ -1428,7 +1496,7 @@ def separateXandYfromFitString(fitForm):
             outerContent.append(c)
 
     if len(outerContent) != 2:
-        print 'ERROR: Form of the fit did not factorize correctly. Please make sure it is in (x part)(y part) form. Quitting...'
+        print ('ERROR: Form of the fit did not factorize correctly. Please make sure it is in (x part)(y part) form. Quitting...')
         quit()
     else:
         for c in outerContent:
@@ -1437,14 +1505,14 @@ def separateXandYfromFitString(fitForm):
             elif 'x' not in c and 'y' in c:
                 yPart = c
             else:
-                print 'ERROR: Form of the fit did not factorize correctly. Please make sure it is in (x part)(y part) form. Quitting...'
+                print ('ERROR: Form of the fit did not factorize correctly. Please make sure it is in (x part)(y part) form. Quitting...')
                 quit()
 
     return xPart,yPart
 
 @contextmanager
 def cd(newdir):
-    print 'cd '+newdir
+    print ('cd '+newdir)
     prevdir = os.getcwd()
     os.chdir(os.path.expanduser(newdir))
     try:
