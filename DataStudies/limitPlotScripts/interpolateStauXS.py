@@ -43,7 +43,7 @@ gr.Draw("ALP")
 ROOT.gPad.SetLogy()
 
 
-mymasses = [0.308, 0.432, 0.557, 0.651, 0.745, 0.871, 1.029]
+mymasses = [0.247,0.308, 0.432, 0.557, 0.651, 0.745, 0.871, 1.029]
 mymasses = [x*1000 for x in mymasses]
 myxs = []
 for mymass in mymasses:
