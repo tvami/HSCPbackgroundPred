@@ -526,7 +526,7 @@ def get_min_bin_width(hist):
     for ibin in range(1,hist.GetNbinsX()+1):
         if hist.GetBinWidth(ibin) < use_width:
             use_width = hist.GetBinWidth(ibin)
-    return int(use_width)
+    return round(use_width,3)
 
 def convert_to_events_per_unit(hist,width=None):
     '''Convert the bin contents of a 1D histogram so they are normalized to the

@@ -784,7 +784,7 @@ def make_systematic_plots(twoD):
     as projections onto 1D axis where no selection has been made on the axis not
     being plotted. Plots are saved to UncertPlots/.
     '''
-    c = ROOT.TCanvas('c','c',800,700)
+    c = ROOT.TCanvas('c','c',800,800)
 
     for (p,r), _ in twoD.df.groupby(['process','region']):
         if p == 'data_obs': continue
@@ -819,9 +819,17 @@ def make_systematic_plots(twoD):
                 nominal.GetXaxis().SetTitleSize(0.05)
                 c.SetRightMargin(0.16)
 
+                nominal.SetStats(0)
                 nominal.Draw('hist')
                 up.Draw('same hist')
                 down.Draw('same hist')
+
+                legend = ROOT.TLegend(0.75,0.78,0.9,0.88)
+                legend.SetBorderSize(0)
+                legend.AddEntry(nominal,'Nom','l')
+                legend.AddEntry(up,'Up','l')
+                legend.AddEntry(down,'Down','l')
+                legend.Draw()
 
                 c.Print(twoD.tag+'/UncertPlots/Uncertainty_%s_%s_%s_%s.png'%(p,r,s,'proj'+axis),'png')
 
