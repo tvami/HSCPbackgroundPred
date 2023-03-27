@@ -1,0 +1,50 @@
+imax 4
+jmax 2
+kmax 6
+------------------------------------------------------------------------------------------------------------------------
+shapes  Signal_gluino-1800   fail_LOW ../base.root w:Signal_gluino-1800_fail_LOW w:Signal_gluino-1800_fail_LOW_$SYSTEMATIC
+shapes  Signal_gluino-1800   fail_SIG ../base.root w:Signal_gluino-1800_fail_SIG w:Signal_gluino-1800_fail_SIG_$SYSTEMATIC
+shapes  Signal_gluino-1800   pass_LOW ../base.root w:Signal_gluino-1800_pass_LOW w:Signal_gluino-1800_pass_LOW_$SYSTEMATIC
+shapes  Signal_gluino-1800   pass_SIG ../base.root w:Signal_gluino-1800_pass_SIG w:Signal_gluino-1800_pass_SIG_$SYSTEMATIC
+shapes  data_obs             fail_LOW ../base.root w:data_obs_fail_LOW
+shapes  data_obs             fail_SIG ../base.root w:data_obs_fail_SIG
+shapes  data_obs             pass_LOW ../base.root w:data_obs_pass_LOW
+shapes  data_obs             pass_SIG ../base.root w:data_obs_pass_SIG
+shapes  Background           fail_LOW ../base.root w:Background_fail_LOW
+shapes  Background           fail_SIG ../base.root w:Background_fail_SIG
+shapes  Background_0x0       pass_LOW ../base.root w:Background_0x0_pass_LOW
+shapes  Background_0x0       pass_SIG ../base.root w:Background_0x0_pass_SIG
+------------------------------------------------------------------------------------------------------------------------
+bin                 fail_LOW             fail_SIG             pass_LOW             pass_SIG            
+observation                   -1                   -1                   -1                   -1
+------------------------------------------------------------------------------------------------------------------------
+bin                                      fail_LOW             fail_SIG             pass_LOW             pass_SIG             fail_LOW             fail_SIG             pass_LOW             pass_SIG             
+process                                  Signal_gluino-1800   Signal_gluino-1800   Signal_gluino-1800   Signal_gluino-1800   Background           Background           Background_0x0       Background_0x0       
+process                                                     0                    0                    0                    0                    1                    1                    2                    2 
+rate                                     -1                   -1                   -1                   -1                   1                    1                    1                    1                    
+------------------------------------------------------------------------------------------------------------------------
+lumi                 lnN                                 1.016                1.016                1.016                1.016 -                    -                    -                    -                    
+pileup               shapes                                1.0                  1.0                  1.0                  1.0 -                    -                    -                    -                    
+systOnF              shapes                                1.0                  1.0                  1.0                  1.0 -                    -                    -                    -                    
+systOnG              shapes                                1.0                  1.0                  1.0                  1.0 -                    -                    -                    -                    
+systOnPt             shapes                                1.0                  1.0                  1.0                  1.0 -                    -                    -                    -                    
+systOnTrigger        shapes                                1.0                  1.0                  1.0                  1.0 -                    -                    -                    -                    
+Background_fail_LOW_bin_1-1              flatParam
+Background_fail_LOW_bin_2-1              flatParam
+Background_fail_LOW_bin_3-1              flatParam
+Background_fail_LOW_bin_4-1              flatParam
+Background_fail_LOW_bin_5-1              flatParam
+Background_fail_LOW_bin_6-1              flatParam
+Background_fail_SIG_bin_1-1              flatParam
+Background_fail_SIG_bin_2-1              flatParam
+Background_fail_SIG_bin_3-1              flatParam
+Background_fail_LOW_bin_1-1              flatParam
+Background_fail_LOW_bin_2-1              flatParam
+Background_fail_LOW_bin_3-1              flatParam
+Background_fail_LOW_bin_4-1              flatParam
+Background_fail_LOW_bin_5-1              flatParam
+Background_fail_LOW_bin_6-1              flatParam
+Background_fail_SIG_bin_1-1              flatParam
+Background_fail_SIG_bin_2-1              flatParam
+Background_fail_SIG_bin_3-1              flatParam
+Background_rpf_0x0_par0                  flatParam

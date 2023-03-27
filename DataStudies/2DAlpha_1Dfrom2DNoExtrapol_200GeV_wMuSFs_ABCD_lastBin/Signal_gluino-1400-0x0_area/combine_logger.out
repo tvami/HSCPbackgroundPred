@@ -1,0 +1,30 @@
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: generateAsimov) ToyMCSamplerOpt.cc: 139 -- Using internal logic for binned/unbinned Asimov dataset generation
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 214 -- Generating asimov with histogram for pdf pdf_binfail_LOW_obsOnly: in 1 x-bins
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
+INFO: (function: generateAsimov) ToyMCSamplerOpt.cc: 139 -- Using internal logic for binned/unbinned Asimov dataset generation
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 214 -- Generating asimov with histogram for pdf pdf_binfail_SIG_obsOnly: in 1 x-bins
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
+INFO: (function: generateAsimov) ToyMCSamplerOpt.cc: 139 -- Using internal logic for binned/unbinned Asimov dataset generation
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 214 -- Generating asimov with histogram for pdf pdf_binpass_LOW_obsOnly: in 1 x-bins
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
+INFO: (function: generateAsimov) ToyMCSamplerOpt.cc: 139 -- Using internal logic for binned/unbinned Asimov dataset generation
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 214 -- Generating asimov with histogram for pdf pdf_binpass_SIG_obsOnly: in 1 x-bins
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
+INFO: (function: runLimitExpected) AsymptoticLimits.cc: 436 -- Median for expected limits = 0.0161133 (Sigma for expected limits = 0.00822121)
+INFO: (function: runLimit) AsymptoticLimits.cc: 193 -- NLL at global minimum of data = -77453.6 (r=0.00483291)
+INFO: (function: runLimit) AsymptoticLimits.cc: 213 -- NLL at global minimum of asimov = -77458.3 (r=7.05426e-08)
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 1.204833:	q_mu = 168.91882	q_A  = 172.54229	CLsb = 0.00000	CLb  = 0.55514	CLs  = 0.00000
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.604833:	q_mu = 103.46404	q_A  = 107.21509	CLsb = 0.00000	CLb  = 0.57250	CLs  = 0.00000
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.304833:	q_mu = 61.34929	q_A  = 65.27511	CLsb = 0.00000	CLb  = 0.59744	CLs  = 0.00000
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.154833:	q_mu = 33.57095	q_A  = 37.62956	CLsb = 0.00000	CLb  = 0.63317	CLs  = 0.00000
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.079833:	q_mu = 16.81674	q_A  = 20.91522	CLsb = 0.00002	CLb  = 0.68171	CLs  = 0.00003
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.042333:	q_mu = 7.77034	q_A  = 11.30136	CLsb = 0.00266	CLb  = 0.71709	CLs  = 0.00370
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.023583:	q_mu = 3.25708	q_A  = 6.08161	CLsb = 0.03556	CLb  = 0.74581	CLs  = 0.04768
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.014208:	q_mu = 1.22663	q_A  = 3.40833	CLsb = 0.13403	CLb  = 0.76993	CLs  = 0.17408
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.018895:	q_mu = 2.19855	q_A  = 4.74362	CLsb = 0.06907	CLb  = 0.75655	CLs  = 0.09130
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.022371:	q_mu = 2.97736	q_A  = 5.73635	CLsb = 0.04222	CLb  = 0.74843	CLs  = 0.05641
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.023066:	q_mu = 3.13740	q_A  = 5.93449	CLsb = 0.03826	CLb  = 0.74691	CLs  = 0.05122
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.023309:	q_mu = 3.19348	q_A  = 6.00354	CLsb = 0.03697	CLb  = 0.74639	CLs  = 0.04953

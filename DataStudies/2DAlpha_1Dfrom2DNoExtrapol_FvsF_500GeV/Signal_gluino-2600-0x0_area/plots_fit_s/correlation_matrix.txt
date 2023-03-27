@@ -1,0 +1,9 @@
+Background_rpf_0x0_par0:lumi = -5.47128735842e-18
+Background_rpf_0x0_par0:pileup = -0.0
+Background_rpf_0x0_par0:systOnF = -0.0
+Background_rpf_0x0_par0:systOnG = -2.24772434977e-13
+Background_rpf_0x0_par0:systOnPt = -0.0
+Background_rpf_0x0_par0:systOnTrigger = -0.0
+lumi:systOnF = -0.0
+lumi:systOnG = 4.45466760353e-13
+lumi:systOnPt = -0.0

@@ -1,0 +1,14 @@
+lumi:systOnF = -0.00137490495627
+lumi:systOnPt = -0.0
+pileup:lumi = -0.00109081920455
+pileup:systOnF = 0.228329142415
+pileup:systOnPt = -0.0
+r:lumi = -0.0161935606971
+r:pileup = -0.331088048195
+r:systOnF = -0.412184808975
+r:systOnPt = -0.0
+r:systOnTrigger = -0.650819037345
+systOnTrigger:lumi = -0.00216574597897
+systOnTrigger:pileup = 0.126134891997
+systOnTrigger:systOnF = 0.344339054487
+systOnTrigger:systOnPt = -0.0

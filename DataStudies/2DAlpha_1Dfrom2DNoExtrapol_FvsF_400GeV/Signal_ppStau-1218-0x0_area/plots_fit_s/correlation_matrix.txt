@@ -1,0 +1,15 @@
+Background_rpf_0x0_par0:lumi = 1.14598988496e-17
+Background_rpf_0x0_par0:pileup = -0.0
+Background_rpf_0x0_par0:systOnF = 1.22473844166e-17
+Background_rpf_0x0_par0:systOnG = 1.70398682111e-13
+Background_rpf_0x0_par0:systOnPt = -0.0
+Background_rpf_0x0_par0:systOnTrigger = -5.07040314776e-18
+lumi:systOnF = 5.93955723562e-13
+lumi:systOnG = 2.16097014402e-24
+lumi:systOnPt = -0.0
+systOnF:systOnG = 5.40103890967e-25
+systOnTrigger:lumi = -5.93955723533e-13
+systOnTrigger:pileup = -0.0
+systOnTrigger:systOnF = -6.22883196027e-25
+systOnTrigger:systOnG = 2.70066361747e-25
+systOnTrigger:systOnPt = -0.0

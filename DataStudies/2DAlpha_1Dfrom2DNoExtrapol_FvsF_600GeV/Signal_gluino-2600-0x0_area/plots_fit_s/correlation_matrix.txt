@@ -1,0 +1,16 @@
+Background_rpf_0x0_par0:lumi = -0.00998380471606
+Background_rpf_0x0_par0:pileup = -0.0
+Background_rpf_0x0_par0:systOnF = -0.0
+Background_rpf_0x0_par0:systOnG = 0.0432744423833
+Background_rpf_0x0_par0:systOnPt = -0.0
+Background_rpf_0x0_par0:systOnTrigger = -0.0
+lumi:systOnF = -0.0
+lumi:systOnG = -0.0483285834596
+lumi:systOnPt = -0.0
+r:Background_rpf_0x0_par0 = -0.189049318259
+r:lumi = -0.031703060153
+r:pileup = -0.0
+r:systOnF = -0.0
+r:systOnG = -0.915156054927
+r:systOnPt = -0.0
+r:systOnTrigger = -0.0
