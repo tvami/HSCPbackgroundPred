@@ -164,7 +164,7 @@ def GOF(signal,tf,condor=True, extra=''):
     # replace the blindedFit option in the config file with COMMENT to effectively "unblind" the GoF
     #findReplace = {"blindedFit": "COMMENT"}
     working_area = workingArea
-    signame = 'HSCP_'+signal
+    signame = signal
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     if not os.path.exists(twoD.tag+'/'+signame+'-{}_area/card.txt'.format(tf)):
         print('{}/{}-area/card.txt does not exist, making card'.format(twoD.tag,signame))
@@ -192,7 +192,7 @@ def load_RPF(twoD):
     params_to_set = twoD.GetParamsOnMatch('rpf.*', 'Signal', 'b')
     return {k:v['val'] for k,v in params_to_set.items()}
 
-def SignalInjection(r, condor=True):
+def SignalInjection(signal, tf, r, condor=False):
     working_area = workingArea
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     #params = load_RPF(twoD)
@@ -207,7 +207,7 @@ def SignalInjection(r, condor=True):
 	condor = condor
     )
 
-def plot_SignalInjection(r, condor=False):
+def plot_SignalInjection(signal, tf, r, condor=False):
     working_area = workingArea
     plot.plot_signalInjection(working_area, '{}-{}_area'.format(signal, tf), injectedAmount=r, condor=condor)
 
@@ -258,16 +258,16 @@ def test_FTest(poly1, poly2, signal=''):
     print("rpfSet1: " + str(rpfSet1))
     nRpfs1  = len(rpfSet1.index)
     print(" >>>>>> Num RPF parameters for poly1: " + str(nRpfs1))
-    _gof_for_FTest(twoD, 'HSCP_gluino-1800-{}_area'.format(poly1), card_or_w='card.txt')
-    gofFile1 = working_area+'/HSCP_gluino-1800-{}_area/higgsCombine_gof_data.GoodnessOfFit.mH120.root'.format(poly1)
+    _gof_for_FTest(twoD, 'gluino-1800-{}_area'.format(poly1), card_or_w='card.txt')
+    gofFile1 = working_area+'/gluino-1800-{}_area/higgsCombine_gof_data.GoodnessOfFit.mH120.root'.format(poly1)
 
     # Get number of RPF params and run GoF for poly2
     params2 = twoD.ledger.select(_select_signal, '{}'.format(signal), poly2).alphaParams
     rpfSet2 = params2[params2["name"].str.contains("rpf")]
     nRpfs2  = len(rpfSet2.index)
     print(" >>>>>> Num RPF parameters for poly2: " + str(nRpfs2))
-    _gof_for_FTest(twoD, 'HSCP_gluino-1800-{}_area'.format(poly2), card_or_w='card.txt')
-    gofFile2 = working_area+'/HSCP_gluino-1800-{}_area/higgsCombine_gof_data.GoodnessOfFit.mH120.root'.format(poly2)
+    _gof_for_FTest(twoD, 'gluino-1800-{}_area'.format(poly2), card_or_w='card.txt')
+    gofFile2 = working_area+'/gluino-1800-{}_area/higgsCombine_gof_data.GoodnessOfFit.mH120.root'.format(poly2)
 
 
     base_fstat = FstatCalc(gofFile1,gofFile2,nRpfs1,nRpfs2,nBins)
@@ -344,8 +344,9 @@ if __name__ == "__main__":
     make_workspace()
 
     #signal_areas = ["Signal_gluino-1800"]
+    signal_areas = ["Signal_ppStau-557"]
     #signal_areas = ["Signal_gluino-1000", "Signal_gluino-1400", "Signal_gluino-1600", "Signal_gluino-1800", "Signal_gluino-2000", "Signal_gluino-2200", "Signal_gluino-2400", "Signal_gluino-2600", "Signal_gluino-800"]
-    signal_areas = ["Signal_gluino-1000", "Signal_gluino-1400", "Signal_gluino-1600", "Signal_gluino-1800", "Signal_gluino-2000", "Signal_gluino-2200", "Signal_gluino-2400", "Signal_gluino-2600", "Signal_gluino-800", "Signal_ppStau-1029", "Signal_ppStau-1218", "Signal_ppStau-247", "Signal_ppStau-308", "Signal_ppStau-432", "Signal_ppStau-557", "Signal_ppStau-651", "Signal_ppStau-745", "Signal_ppStau-871"]
+    #signal_areas = ["Signal_gluino-1000", "Signal_gluino-1400", "Signal_gluino-1600", "Signal_gluino-1800", "Signal_gluino-2000", "Signal_gluino-2200", "Signal_gluino-2400", "Signal_gluino-2600", "Signal_gluino-800", "Signal_ppStau-1029", "Signal_ppStau-1218", "Signal_ppStau-247", "Signal_ppStau-308", "Signal_ppStau-432", "Signal_ppStau-557", "Signal_ppStau-651", "Signal_ppStau-745", "Signal_ppStau-871"]
     #signal_areas = ["Signal_gluino-1000", "Signal_gluino-1400", "Signal_gluino-1600", "Signal_gluino-1800", "Signal_gluino-2000", "Signal_gluino-2200", "Signal_gluino-2400", "Signal_gluino-2600", "Signal_gluino-800", "Signal_ppStau-1029", "Signal_ppStau-1218", "Signal_ppStau-247", "Signal_ppStau-308", "Signal_ppStau-432", "Signal_ppStau-557", "Signal_ppStau-651", "Signal_ppStau-745", "Signal_ppStau-871", "Signal_gluinoCS-1800","Signal_gmsbStau-1218", "Signal_gmsbStau-1409", "Signal_gmsbStau-1599","Signal_gmsbStau-247", "Signal_gmsbStau-308", "Signal_gmsbStau-432", "Signal_gmsbStau-557", "Signal_gmsbStau-651", "Signal_gmsbStau-745", "Signal_gmsbStau-871", "Signal_stop-1000", "Signal_stop-1200", "Signal_stop-1400", "Signal_stop-1600", "Signal_stop-1800", "Signal_stop-2000", "Signal_stop-2200", "Signal_stop-2400", "Signal_stop-2600", "Signal_stop-500", "Signal_stop-800", "Signal_stopCS-1200", "Signal_stopCS-1400", "Signal_stopCS-1600", "Signal_stopCS-1800", "Signal_stopCS-2000", "Signal_stopCS-2200", "Signal_stopCS-2400", "Signal_stopCS-2600", "Signal_stopCS-500", "Signal_stopCS-800","Signal_tauPrime1e-1400", "Signal_tauPrime1e-1800","Signal_tauPrime1e-2200", "Signal_tauPrime1e-2600", "Signal_tauPrime1e-400", "Signal_tauPrime1e-500", "Signal_tauPrime1e-800", "Signal_tauPrime2e-2600", "Signal_tauPrime2e-400", "Signal_tauPrime2e-500"]
     #signal_areas = ["Signal_gluino-1000", "Signal_gluino-1400", "Signal_gluino-1600", "Signal_gluino-1800", "Signal_gluino-2000", "Signal_gluino-2200", "Signal_gluino-2400", "Signal_gluino-2600", "Signal_gluino-800", "Signal_gluinoCS-1800", "Signal_gluinoCS-2000", "Signal_gluinoCS-2200", "Signal_gluinoCS-2400", "Signal_gluinoCS-2600", "Signal_gluinoCS-500", "Signal_gluinoCS-800", "Signal_gmsbStau-1029", "Signal_gmsbStau-1218", "Signal_gmsbStau-1409", "Signal_gmsbStau-1599", "Signal_gmsbStau-200", "Signal_gmsbStau-247", "Signal_gmsbStau-308", "Signal_gmsbStau-432", "Signal_gmsbStau-557", "Signal_gmsbStau-651", "Signal_gmsbStau-745", "Signal_gmsbStau-871", "Signal_ppStau-1029", "Signal_ppStau-1218", "Signal_ppStau-200", "Signal_ppStau-247", "Signal_ppStau-308", "Signal_ppStau-432", "Signal_ppStau-557", "Signal_ppStau-651", "Signal_ppStau-745", "Signal_ppStau-871", "Signal_stop-1000", "Signal_stop-1200", "Signal_stop-1400", "Signal_stop-1600", "Signal_stop-1800", "Signal_stop-2000", "Signal_stop-2200", "Signal_stop-2400", "Signal_stop-2600", "Signal_stop-500", "Signal_stop-800", "Signal_stopCS-1000", "Signal_stopCS-1200", "Signal_stopCS-1400", "Signal_stopCS-1600", "Signal_stopCS-1800", "Signal_stopCS-2000", "Signal_stopCS-2200", "Signal_stopCS-2400", "Signal_stopCS-2600", "Signal_stopCS-500", "Signal_stopCS-800", "Signal_tauPrime1e-1000", "Signal_tauPrime1e-1400", "Signal_tauPrime1e-1800", "Signal_tauPrime1e-200", "Signal_tauPrime1e-2200", "Signal_tauPrime1e-2600", "Signal_tauPrime1e-400", "Signal_tauPrime1e-500", "Signal_tauPrime1e-800", "Signal_tauPrime2e-1000", "Signal_tauPrime2e-1400", "Signal_tauPrime2e-1800", "Signal_tauPrime2e-200", "Signal_tauPrime2e-2200", "Signal_tauPrime2e-2600", "Signal_tauPrime2e-400", "Signal_tauPrime2e-500"]
     #signal_areas = ["Signal_tauPrime1e-1000", "Signal_tauPrime1e-1400", "Signal_tauPrime1e-1800", "Signal_tauPrime1e-200", "Signal_tauPrime1e-2200", "Signal_tauPrime1e-2600", "Signal_tauPrime1e-400", "Signal_tauPrime1e-500", "Signal_tauPrime1e-800", "Signal_tauPrime2e-1000", "Signal_tauPrime2e-1400", "Signal_tauPrime2e-1800", "Signal_tauPrime2e-200", "Signal_tauPrime2e-2200", "Signal_tauPrime2e-2600", "Signal_tauPrime2e-400", "Signal_tauPrime2e-500"]
@@ -368,5 +369,9 @@ if __name__ == "__main__":
       plot_fit(signal,'0x0')
       print("\n\n\nFit is succesful, running limits now for " + str(signal))
       run_limits(signal,'0x0')
+      #GOF(signal,'0x0',condor=False, extra='')
+      #plot_GOF(signal,'0x0',condor=False)
+      SignalInjection(signal, '0x0', r=0, condor=False)
+      plot_SignalInjection(signal, '0x0', r=0, condor=False)
       #Impacts(signal,'0x0')
       open(workingArea + "/" + signal + "-0x0_area/done", 'wa').close()
