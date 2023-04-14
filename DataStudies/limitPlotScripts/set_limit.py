@@ -43,6 +43,18 @@ parser.add_option('-m', '--mod', metavar='F', type='string', action='store',
                 default       =       '',
                 dest          =       'mod',
                 help          =       'Modification to limit title on y-axis. For example, different handedness of the signal')
+parser.add_option('-p', '--particle', type='string', action='store',
+                default       =       '#tilde{g}',
+                dest          =       'particle',
+                help          =       'Name of HSCP. e.g. #tilde{g}')
+parser.add_option('-x', '--process', type='string', action='store',
+                default       =       'pp#rightarrow#tilde{g}#tilde{g}',
+                dest          =       'process',
+                help          =       'Name of HSCP. e.g. pp#rightarrow#tilde{g}#tilde{g}')
+parser.add_option('-o', '--xsorder', type='string', action='store',
+                default       =       'NNLO+NNLL',
+                dest          =       'xsorder',
+                help          =       'Order of XS calculation. e.g. NNLO+NNLL')
 
 (options, args) = parser.parse_args()
 
@@ -179,14 +191,14 @@ if not options.blind:
     g_limit.SetMaximum(0.1)
 else:
     print('Blinded')
-    g_mclimit.GetXaxis().SetTitle("m_{HSCP "+cstr+"} [TeV]")  # NOT GENERIC
-    g_mclimit.GetYaxis().SetTitle("#sigma_{HSCP "+cstr+"} [pb]") # NOT GENERIC
+    g_mclimit.GetXaxis().SetTitle("m("+options.particle+") [TeV]")  # NOT GENERIC
+    g_mclimit.GetYaxis().SetTitle("Cross Section [pb]") # NOT GENERIC
     if ("tau" in cstr) :
       g_mclimit.GetXaxis().SetRangeUser(0.1, 1.5)
     else:
       g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
     g_mclimit.SetMinimum(5e-5) #0.005
-    g_mclimit.SetMaximum(0.03)
+    g_mclimit.SetMaximum(0.2)
 # Expected
 # g_mclimit = TGraph(len(x_mass), x_mass, y_mclimit)
 # g_mclimit.SetTitle("")
@@ -285,8 +297,8 @@ g_error.SetFillColor( kGreen+1)
 g_error.SetLineColor(0)
 
 if not options.blind:
-    g_limit.GetXaxis().SetTitle("m_{HSCP "+cstr+"} [TeV]")  # NOT GENERIC
-    g_limit.GetYaxis().SetTitle("#sigma_{HSCP "+cstr+"} [pb]") # NOT GENERIC
+    g_limit.GetXaxis().SetTitle("m("+options.particle+") [TeV]")  # NOT GENERIC
+    g_limit.GetYaxis().SetTitle("Cross Section [pb]") # NOT GENERIC
     g_limit.GetXaxis().SetTitleSize(0.055)
     g_limit.GetYaxis().SetTitleSize(0.05)
     g_limit.Draw('ap')
@@ -299,8 +311,8 @@ if not options.blind:
     g_limit.GetXaxis().SetTitleOffset(1.25)
 
 else:
-    g_mclimit.GetXaxis().SetTitle("m_{HSCP  "+cstr+"} [TeV]")  # NOT GENERIC
-    g_mclimit.GetYaxis().SetTitle("#sigma_{HSCP "+cstr+"} [pb]") # NOT GENERIC
+    g_mclimit.GetXaxis().SetTitle("m("+options.particle+") [TeV]")  # NOT GENERIC
+    g_mclimit.GetYaxis().SetTitle("Cross Section [pb]") # NOT GENERIC
     g_mclimit.GetXaxis().SetTitleSize(0.055)
     g_mclimit.GetYaxis().SetTitleSize(0.05)
     g_mclimit.Draw("al")
@@ -359,21 +371,35 @@ if not options.blind:
         obsLineLabel.Draw()
 
 # Legend and draw
-gStyle.SetLegendFont(42)
-legend = TLegend(0.60, 0.50, 0.91, 0.87, '')
-legend.SetHeader("95% CL upper limits")
+gStyle.SetLegendFont(62)
+legend = TLegend(0.5, 0.6, 0.92, 0.9, '')
+legend.SetHeader("95% CL Upper Limits")
 if not options.blind:
-    legend.AddEntry(g_limit, "Observed", "l")
-legend.AddEntry(g_mclimit, "Median expected","l")
-legend.AddEntry(g_error, "68% expected", "f")
-legend.AddEntry(g_error95, "95% expected", "f")
-legend.AddEntry(graphWP, "Theory HSCP "+cstr+"", "l")   # NOT GENERIC
+    legend.AddEntry(g_limit, "Observed Limit", "l")
+legend.AddEntry(g_error95, "Expected Limit #pm1#sigma, #pm2#sigma","f")
+# legend.AddEntry(g_error95, "#pm1#sigma, 2#sigma", "f")
+# legend.AddEntry(g_error95, "#pm2#sigma", "f")
+legend.AddEntry(graphWP, "#sigma^{"+options.xsorder+"}_{th}("+options.process+")#pm1#sigma", "l")   # NOT GENERIC
 
 legend.SetBorderSize(0)
 legend.SetFillStyle(0)
 legend.SetLineColor(0)
 
 legend.Draw("same")
+
+# this is to fake the green+yellow band in the legend
+tmpcolor = g_error.GetFillColor()
+tmpline = ROOT.TLine()
+tmpline.SetLineColor(tmpcolor)
+tmpline.SetLineWidth(22)
+tmpyposition = 0.75
+tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
+
+tmpline.SetLineColor(1)
+tmpline.SetLineWidth(2)
+tmpline.SetLineStyle(2)
+tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
+
 
 # text1 = ROOT.TLatex()
 # text1.SetNDC()
@@ -389,6 +415,6 @@ CMS_lumi.lumiTextSize     = 0.5
 CMS_lumi.cmsTextSize      = 0.8
 CMS_lumi.CMS_lumi(climits, 1, 11)
 
-climits.SaveAs("limits_combine_"+options.lumi.replace('.','p')+"fb_"+options.signals[options.signals.find('/')+1:options.signals.find('.')]+'_'+cstr+".png")
+climits.SaveAs("limits_combine_"+options.lumi.replace('.','p')+"fb_"+options.signals[options.signals.find('/')+1:options.signals.find('.')]+'_'+cstr+".pdf")
 
 
