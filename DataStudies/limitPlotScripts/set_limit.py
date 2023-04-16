@@ -195,10 +195,12 @@ else:
     g_mclimit.GetYaxis().SetTitle("Cross Section [pb]") # NOT GENERIC
     if ("tau" in cstr) :
       g_mclimit.GetXaxis().SetRangeUser(0.1, 1.5)
+      g_mclimit.SetMinimum(5e-6) #0.005
+      g_mclimit.SetMaximum(0.02)
     else:
       g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
-    g_mclimit.SetMinimum(5e-5) #0.005
-    g_mclimit.SetMaximum(0.2)
+      g_mclimit.SetMinimum(5e-5) #0.005
+      g_mclimit.SetMaximum(0.2)
 # Expected
 # g_mclimit = TGraph(len(x_mass), x_mass, y_mclimit)
 # g_mclimit.SetTitle("")
@@ -395,10 +397,42 @@ tmpline.SetLineWidth(22)
 tmpyposition = 0.75
 tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
 
+# legend line for median point
 tmpline.SetLineColor(1)
-tmpline.SetLineWidth(2)
+tmpline.SetLineWidth(3)
 tmpline.SetLineStyle(2)
 tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
+
+
+# legend lines for theory
+tmpyposition = 0.66
+tmpline.SetLineColor(4)
+tmpline.SetLineStyle(2)
+tmpline.SetLineWidth(2)
+tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
+
+tmpyposition = 0.64
+tmpline.SetLineColor(4)
+tmpline.SetLineStyle(2)
+tmpline.SetLineWidth(2)
+tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
+
+
+# intersection line
+tmpline.SetLineColor(1)
+tmpline.SetLineWidth(1)
+tmpline.SetLineStyle(2)
+tmpline.SetLineColor(ROOT.kGray+2)
+tmpline.DrawLine(expectedMassLimit,0,expectedMassLimit,expectedCrossLimit)
+
+text1 = ROOT.TLatex()
+# text1.SetNDC()
+text1.SetTextFont(43)
+text1.SetTextSize(14)
+text1.SetTextColor(ROOT.kGray+2)
+text1.SetTextAngle(90)
+text1.DrawLatex(expectedMassLimit-0.005,0, "  %0.2f TeV"%(expectedMassLimit))
+
 
 
 # text1 = ROOT.TLatex()
@@ -409,7 +443,7 @@ tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
 # TPT.Draw()
 climits.RedrawAxis()
 
-CMS_lumi.extraText = 'Internal'
+CMS_lumi.extraText = '            Internal'
 CMS_lumi.lumiTextSize     = 0.5
 
 CMS_lumi.cmsTextSize      = 0.8
