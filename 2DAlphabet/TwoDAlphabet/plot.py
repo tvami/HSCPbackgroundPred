@@ -291,6 +291,7 @@ class Plotter(object):
                             ''
                         )
                         slice_str = '%s < %s < %s %s'%slice_edges
+                        if (slice_edges[2] == 4025) : slice_str = str(slice_edges[1]) + " > " + str(slice_edges[0]) + " GeV"
                         if (region == "pass") :
                             slice_str += ", F^{Pixels}_{i} > 0.9"
                         elif (region == "fail") :
@@ -340,6 +341,7 @@ class Plotter(object):
                         ''
                     )
                     slice_str = '%s < %s < %s %s'%slice_edges
+                    if (slice_edges[2] == 4025) : slice_str = str(slice_edges[1]) + " > " + str(slice_edges[0]) + " GeV"
                     if (region == "pass") :
                         slice_str += ", F^{Pixels}_{i} > 0.9"
                     elif (region == "fail") :
@@ -1153,6 +1155,7 @@ def plot_signalInjection(tag, subtag, injectedAmount, seed=123456, stats=True, c
         hsignstrength.Fit("gaus","L")
         hsignstrength.SetTitle('')
         hsignstrength.GetXaxis().SetTitle('r-%s'%injectedAmount)
+        hsignstrength.GetXaxis().SetRangeUser(-10.,10)
         result_can.cd()
         hsignstrength.Draw('pe')
         result_can.Print('signalInjection_r%s.png'%(str(injectedAmount).replace('.','p')),'png')

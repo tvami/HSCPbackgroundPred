@@ -1,0 +1,7 @@
+,process,region,binning,color,process_type,scale,variation,source_filename,source_histname,alias,title,combine_idx,direction,syst_type,shapes,variation_alias,lnN
+0,data_obs,fail,default,1,DATA,1000.0,nominal,.//HSCP_Data-SR1.root,hfail,Data,Data,,,,,,
+1,Signal_ppStau-557,fail,default,2,SIGNAL,0.1,lumi,.//HSCP_Signal_ppStau-557-SR1.root,hfail,Signal_ppStau-557,HSCP signal,,,lnN,,,1.016
+2,Signal_ppStau-557,fail,default,2,SIGNAL,0.1,nominal,.//HSCP_Signal_ppStau-557-SR1.root,hfail,Signal_ppStau-557,HSCP signal,,,,,,
+3,data_obs,pass,default,1,DATA,1000.0,nominal,.//HSCP_Data-SR1.root,hpass,Data,Data,,,,,,
+4,Signal_ppStau-557,pass,default,2,SIGNAL,0.1,lumi,.//HSCP_Signal_ppStau-557-SR1.root,hpass,Signal_ppStau-557,HSCP signal,,,lnN,,,1.016
+5,Signal_ppStau-557,pass,default,2,SIGNAL,0.1,nominal,.//HSCP_Signal_ppStau-557-SR1.root,hpass,Signal_ppStau-557,HSCP signal,,,,,,

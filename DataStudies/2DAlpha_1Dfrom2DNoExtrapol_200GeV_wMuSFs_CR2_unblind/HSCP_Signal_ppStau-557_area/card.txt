@@ -1,0 +1,28 @@
+imax 4
+jmax 0
+kmax 0
+------------------------------------------------------------------------------------------------------------------------
+shapes  data_obs             fail_LOW ../base.root w:data_obs_fail_LOW
+shapes  data_obs             fail_SIG ../base.root w:data_obs_fail_SIG
+shapes  data_obs             pass_LOW ../base.root w:data_obs_pass_LOW
+shapes  data_obs             pass_SIG ../base.root w:data_obs_pass_SIG
+shapes  Background           fail_LOW ../base.root w:Background_fail_LOW
+shapes  Background           fail_SIG ../base.root w:Background_fail_SIG
+------------------------------------------------------------------------------------------------------------------------
+bin                 fail_LOW             fail_SIG             pass_LOW             pass_SIG            
+observation                   -1                   -1                   -1                   -1
+------------------------------------------------------------------------------------------------------------------------
+bin                                      fail_LOW             fail_SIG             
+process                                  Background           Background           
+process                                                   1.0                  1.0 
+rate                                     1                    1                    
+------------------------------------------------------------------------------------------------------------------------
+Background_fail_LOW_bin_1-1              flatParam
+Background_fail_LOW_bin_2-1              flatParam
+Background_fail_LOW_bin_3-1              flatParam
+Background_fail_LOW_bin_4-1              flatParam
+Background_fail_LOW_bin_5-1              flatParam
+Background_fail_LOW_bin_6-1              flatParam
+Background_fail_SIG_bin_1-1              flatParam
+Background_fail_SIG_bin_2-1              flatParam
+Background_fail_SIG_bin_3-1              flatParam
