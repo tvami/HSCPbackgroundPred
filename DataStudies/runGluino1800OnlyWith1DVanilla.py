@@ -349,7 +349,7 @@ if __name__ == "__main__":
 
     for signal in signal_areas :
       # When there are 100 signals, let's make sure we only run on the ones we didnt do before
-      if os.path.exists(workingArea + "/" + signal + "-0x0_area/done") : continue
+      #if os.path.exists(workingArea + "/" + signal + "-0x0_area/done") : continue
       fitPassed = False
       # If the fit failed iterate on rMax
       rMax = 30
@@ -367,7 +367,15 @@ if __name__ == "__main__":
       run_limits(signal,'0x0')
       GOF(signal,'0x0',condor=False, extra='')
       plot_GOF(signal,'0x0',condor=False)
-      SignalInjection(signal, '0x0', r=0, condor=False)
-      plot_SignalInjection(signal, '0x0', r=0, condor=False)
-      Impacts(signal,'0x0')
-      open(workingArea + "/" + signal + "-0x0_area/done", 'wa').close()
+      #SignalInjection(signal, '0x0', r=0, condor=False)
+      #plot_SignalInjection(signal, '0x0', r=0, condor=False)
+      #SignalInjection(signal, '0x0', r=0.1, condor=False)
+      #plot_SignalInjection(signal, '0x0', r=0.1, condor=False)
+      #SignalInjection(signal, '0x0', r=0.5, condor=False)
+      #plot_SignalInjection(signal, '0x0', r=0.5, condor=False)
+      #SignalInjection(signal, '0x0', r=1, condor=False)
+      #plot_SignalInjection(signal, '0x0', r=1, condor=False)
+      #SignalInjection(signal, '0x0', r=2, condor=False)
+      #plot_SignalInjection(signal, '0x0', r=2, condor=False)
+      #Impacts(signal,'0x0')
+      #open(workingArea + "/" + signal + "-0x0_area/done", 'wa').close()
