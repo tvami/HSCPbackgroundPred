@@ -15,12 +15,12 @@ Running Minos for POI
 >> Found 20 floating parameters
 >> The following parameters are protected in the event of negative eigenvalues: r
 >> Verifying eigenvalues are all positive (iteration 0)
-Eigenvalue 19 : -0.0442692
- - -0.71722	r
- - 0.696758	Background_fail_SIG_bin_4-1
- - 0.0106989	systOnTrigger
- - 0.00283101	pileup
- - 0.00059739	lumi
+Eigenvalue 19 : -0.0502177
+ - 0.75911	Background_fail_SIG_bin_4-1
+ - -0.620909	r
+ - -0.195375	systOnTrigger
+ - -0.00700817	pileup
+ - -0.00151861	lumi
 >> Attempt 0 failed, remove the variable with largest eigenvector component...
 >> Dropping Background_fail_SIG_bin_4-1 from the hessian
 >> Verifying eigenvalues are all positive (iteration 1)
@@ -31,8 +31,8 @@ Eigenvalue 19 : -0.0442692
      - Background_fail_SIG_bin_4-1
 
  --- FitDiagnostics ---
-Best fit r: 2.8185e-09  -2.8185e-09/+3  (68% CL)
-Done in 0.00 min (cpu), 0.01 min (real)
+Best fit r: 5.1435  -5.1435/+24.8565  (68% CL)
+Done in 0.00 min (cpu), 0.00 min (real)
 Printing Message Summary From ... combine_logger.out
 ----------------------------------------------
 Messages of type INFO : 21
@@ -55,7 +55,7 @@ DEBUG: (function: runSpecific) FitDiagnostics.cc: 318 -- Fit B-only, status = 0,
 INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
 INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
 INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
-INFO: (function: anyParameterAtBoundaries) utils.cc: 1039 -- Found parameter Background_fail_SIG_bin_4-1 at boundary (within ~1sigma): 0.000848156+/-0.325213
+INFO: (function: anyParameterAtBoundaries) utils.cc: 1039 -- Found parameter Background_fail_SIG_bin_4-1 at boundary (within ~1sigma): 1.19336+/-1.30751
 INFO: (function: minimize) CascadeMinimizer.cc: 480 -- After fit, some parameters are found at the boundary (within ~1sigma)
 INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
 INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0

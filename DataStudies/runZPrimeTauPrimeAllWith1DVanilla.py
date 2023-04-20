@@ -341,7 +341,7 @@ def test_FTest(poly1, poly2, signal=''):
     plot_FTest(base_fstat,nRpfs1,nRpfs2,nBins)
 
 if __name__ == "__main__":
-    #make_workspace()
+    make_workspace()
 
     signal_areas = ["Signal_tauPrime2e-200-ZPrime-3000", "Signal_tauPrime2e-200-ZPrime-4000", "Signal_tauPrime2e-200-ZPrime-5000", "Signal_tauPrime2e-200-ZPrime-6000", "Signal_tauPrime2e-200-ZPrime-7000", "Signal_tauPrime2e-400-ZPrime-3000", "Signal_tauPrime2e-400-ZPrime-4000", "Signal_tauPrime2e-400-ZPrime-5000", "Signal_tauPrime2e-400-ZPrime-6000", "Signal_tauPrime2e-400-ZPrime-7000", "Signal_tauPrime2e-600-ZPrime-3000", "Signal_tauPrime2e-600-ZPrime-4000", "Signal_tauPrime2e-600-ZPrime-5000", "Signal_tauPrime2e-600-ZPrime-6000", "Signal_tauPrime2e-600-ZPrime-7000", "Signal_tauPrime2e-800-ZPrime-3000", "Signal_tauPrime2e-800-ZPrime-4000", "Signal_tauPrime2e-800-ZPrime-5000", "Signal_tauPrime2e-800-ZPrime-6000", "Signal_tauPrime2e-800-ZPrime-7000", "Signal_tauPrime2e-1000-ZPrime-3000", "Signal_tauPrime2e-1000-ZPrime-4000", "Signal_tauPrime2e-1000-ZPrime-5000", "Signal_tauPrime2e-1000-ZPrime-6000", "Signal_tauPrime2e-1000-ZPrime-7000", "Signal_tauPrime2e-1200-ZPrime-3000", "Signal_tauPrime2e-1200-ZPrime-4000", "Signal_tauPrime2e-1200-ZPrime-5000", "Signal_tauPrime2e-1200-ZPrime-6000", "Signal_tauPrime2e-1200-ZPrime-7000", "Signal_tauPrime2e-1400-ZPrime-3000", "Signal_tauPrime2e-1400-ZPrime-4000", "Signal_tauPrime2e-1400-ZPrime-5000", "Signal_tauPrime2e-1400-ZPrime-6000", "Signal_tauPrime2e-1400-ZPrime-7000"]
 
