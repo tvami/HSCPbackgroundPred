@@ -989,15 +989,16 @@ def plot_correlation_matrix(varsToIgnore, threshold=0, corrText=False):
             corrMtrx, corrTxt = _reduced_corr_matrix(fit_result, varsToIgnore=varsToIgnore, threshold=threshold)
             corrMtrxCan = ROOT.TCanvas('c','c',1400,1000)
             corrMtrxCan.cd()
-            corrMtrxCan.SetBottomMargin(0.22)
-            corrMtrxCan.SetLeftMargin(0.17)
-            corrMtrxCan.SetTopMargin(0.06)
+            corrMtrxCan.SetBottomMargin(0.1)
+            corrMtrxCan.SetLeftMargin(0.05)
+            corrMtrxCan.SetRightMargin(0.05)
+            corrMtrxCan.SetTopMargin(0.1)
 
             corrMtrx.GetXaxis().SetLabelSize(0.01)
             corrMtrx.GetYaxis().SetLabelSize(0.01)
             corrMtrx.Draw('colz text' if corrText else 'colz')
             corrMtrxCan.Print('plots_fit_%s/correlation_matrix.png'%fittag,'png')
-	    #corrMtrxCan.Print('plots_fit_%s/correlation_matrix.pdf'%fittag,'pdf')
+	    corrMtrxCan.Print('plots_fit_%s/correlation_matrix.pdf'%fittag,'pdf')
 
             with open('plots_fit_%s/correlation_matrix.txt'%fittag,'w') as corrTxtFile:
                 corrTxtFile.write(corrTxt)
@@ -1026,6 +1027,7 @@ def plot_gof(tag, subtag, seed=123456, condor=False):
         # Get observation
         ROOT.gROOT.SetBatch(True)
         ROOT.gStyle.SetOptStat(False)
+
         gof_data_file = ROOT.TFile.Open('higgsCombine_gof_data.GoodnessOfFit.mH120.root')
         gof_limit_tree = gof_data_file.Get('limit')
         gof_limit_tree.GetEntry(0)
@@ -1074,7 +1076,7 @@ def plot_gof(tag, subtag, seed=123456, condor=False):
         leg.AddEntry(arrow,"observed = %.1f"%gof_data,"l")
         leg.AddEntry(0,"p-value = %.2f"%(pvalue),"")
 
-        tex2 = ROOT.TLatex(0.13,0.92,"CMS");
+        tex2 = ROOT.TLatex(0.16,0.93,"CMS");
         #tex2 = ROOT.TLatex(0.20,0.94,"CMS");#if there is 10^x
         tex2.SetNDC();
         tex2.SetTextFont(61);
@@ -1083,7 +1085,7 @@ def plot_gof(tag, subtag, seed=123456, condor=False):
 
         #tex3 = ROOT.TLatex(0.27,0.96,"Simulation"); # for square plots
         #tex3 = ROOT.TLatex(0.28,0.94,"Work in Progress 2018"); #if there is 10^x
-        tex3 = ROOT.TLatex(0.27,0.92,"Internal");
+        tex3 = ROOT.TLatex(0.3,0.93,"Internal");
         tex3.SetNDC();
         tex3.SetTextFont(52);
         tex3.SetTextSize(0.0485);
@@ -1091,6 +1093,7 @@ def plot_gof(tag, subtag, seed=123456, condor=False):
 
         # Draw
         cout = ROOT.TCanvas('cout','cout',800,800)
+        cout.SetTopMargin(0.1)
         htoy_gof.SetTitle('')
         htoy_gof.SetStats(0)
         htoy_gof.Draw('pez')
@@ -1100,9 +1103,9 @@ def plot_gof(tag, subtag, seed=123456, condor=False):
         htoy_gof.SetMarkerColor(4)
         htoy_gof.SetLineColor(4)
         htoy_gof.GetXaxis().SetTitle("Saturated log-likelihood")
-        htoy_gof.GetYaxis().SetTitle("Yield / bin")
-        htoy_gof.GetXaxis().SetTitleOffset(0.8)
-        htoy_gof.GetYaxis().SetTitleOffset(0.8)
+        htoy_gof.GetYaxis().SetTitle("Toys / bin")
+        htoy_gof.GetXaxis().SetTitleOffset(1.1)
+        htoy_gof.GetYaxis().SetTitleOffset(1.1)
         htoy_gof.GetXaxis().SetTitleSize(0.05)
         htoy_gof.GetYaxis().SetTitleSize(0.05)
         arrow.Draw()
@@ -1135,6 +1138,7 @@ def plot_signalInjection(tag, subtag, injectedAmount, seed=123456, stats=True, c
         ROOT.gROOT.SetBatch(True)
         if stats:
 	    ROOT.gStyle.SetOptStat(True)
+            ROOT.gStyle.SetOptFit(True)
 	else:
 	    ROOT.gStyle.SetOptStat(False)
         # Final plotting
@@ -1142,12 +1146,14 @@ def plot_signalInjection(tag, subtag, injectedAmount, seed=123456, stats=True, c
 
         tree_fit_sb.Draw("(r-{rinj})/(rHiErr*(r<{rinj})+rLoErr*(r>{rinj}))>>sigpull(20,-5,5)".format(rinj=injectedAmount),"fit_status>=0")
         hsigpull = ROOT.gDirectory.Get('sigpull')
-        tree_fit_sb.Draw("(r-{rinj})>>sigstrength(20,-1,1)".format(rinj=injectedAmount),"fit_status>=0")
+        tree_fit_sb.Draw("(r-{rinj})>>sigstrength(20,-2,2)".format(rinj=injectedAmount),"fit_status>=0")
         hsignstrength = ROOT.gDirectory.Get('sigstrength')
 
         hsigpull.Fit("gaus","L")
         hsigpull.SetTitle('')
         hsigpull.GetXaxis().SetTitle('(r-%s)/rErr'%injectedAmount)
+        hsigpull.GetYaxis().SetTitle('Yield')
+        hsigpull.GetYaxis().SetTitleOffset(1.2)
         result_can.cd()
         hsigpull.Draw('pe')
         result_can.Print('signalInjection_r%s_pull.png'%(str(injectedAmount).replace('.','p')),'png')
@@ -1156,6 +1162,7 @@ def plot_signalInjection(tag, subtag, injectedAmount, seed=123456, stats=True, c
         hsignstrength.SetTitle('')
         hsignstrength.GetXaxis().SetTitle('r-%s'%injectedAmount)
         hsignstrength.GetXaxis().SetRangeUser(-10.,10)
+        hsignstrength.GetYaxis().SetTitle('Yield')
         result_can.cd()
         hsignstrength.Draw('pe')
         result_can.Print('signalInjection_r%s.png'%(str(injectedAmount).replace('.','p')),'png')
