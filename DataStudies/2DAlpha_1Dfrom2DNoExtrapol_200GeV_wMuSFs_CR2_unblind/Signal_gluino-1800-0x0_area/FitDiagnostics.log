@@ -20,7 +20,7 @@ Running Minos for POI
 
  --- FitDiagnostics ---
 Done! fit s+b and fit b should be identical
-Done in 0.00 min (cpu), 0.00 min (real)
+Done in 0.00 min (cpu), 0.01 min (real)
 Printing Message Summary From ... combine_logger.out
 ----------------------------------------------
 Messages of type INFO : 19
