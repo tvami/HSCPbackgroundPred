@@ -13,19 +13,16 @@ INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
 INFO: (function: generateAsimov) ToyMCSamplerOpt.cc: 139 -- Using internal logic for binned/unbinned Asimov dataset generation
 INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 214 -- Generating asimov with histogram for pdf pdf_binpass_SIG_obsOnly: in 4 x-bins
 INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
-INFO: (function: runLimitExpected) AsymptoticLimits.cc: 436 -- Median for expected limits = 0.00244141 (Sigma for expected limits = 0.00124564)
-INFO: (function: runLimit) AsymptoticLimits.cc: 193 -- NLL at global minimum of data = -80223.9 (r=0.000352591)
-INFO: (function: runLimit) AsymptoticLimits.cc: 213 -- NLL at global minimum of asimov = -80229.8 (r=2.22045e-15)
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 1.200353:	q_mu = 156.98252	q_A  = 232.05133	CLsb = 0.00000	CLb  = 0.99657	CLs  = 0.00000
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.600353:	q_mu = 103.95252	q_A  = 108.36172	CLsb = 0.00000	CLb  = 0.58472	CLs  = 0.00000
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.300353:	q_mu = 75.03554	q_A  = 78.77385	CLsb = 0.00000	CLb  = 0.58440	CLs  = 0.00000
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.150353:	q_mu = 56.79900	q_A  = 60.31165	CLsb = 0.00000	CLb  = 0.59078	CLs  = 0.00000
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.075353:	q_mu = 41.53085	q_A  = 44.83289	CLsb = 0.00000	CLb  = 0.59921	CLs  = 0.00000
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.037853:	q_mu = 29.02163	q_A  = 32.12599	CLsb = 0.00000	CLb  = 0.61057	CLs  = 0.00000
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.019103:	q_mu = 19.17972	q_A  = 22.03634	CLsb = 0.00001	CLb  = 0.62355	CLs  = 0.00001
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.009728:	q_mu = 11.79833	q_A  = 14.36783	CLsb = 0.00030	CLb  = 0.63894	CLs  = 0.00046
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.005040:	q_mu = 6.62573	q_A  = 8.86875	CLsb = 0.00503	CLb  = 0.65689	CLs  = 0.00765
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.002696:	q_mu = 3.32037	q_A  = 5.20463	CLsb = 0.03421	CLb  = 0.67695	CLs  = 0.05054
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.003868:	q_mu = 5.05001	q_A  = 7.14722	CLsb = 0.01231	CLb  = 0.66502	CLs  = 0.01852
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.002941:	q_mu = 3.69440	q_A  = 5.63134	CLsb = 0.02730	CLb  = 0.67399	CLs  = 0.04050
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.002755:	q_mu = 3.41033	q_A  = 5.30767	CLsb = 0.03239	CLb  = 0.67621	CLs  = 0.04791
+INFO: (function: runLimitExpected) AsymptoticLimits.cc: 436 -- Median for expected limits = 1.96094 (Sigma for expected limits = 1.0005)
+INFO: (function: runLimit) AsymptoticLimits.cc: 193 -- NLL at global minimum of data = -76466.1 (r=0.353326)
+INFO: (function: runLimit) AsymptoticLimits.cc: 213 -- NLL at global minimum of asimov = -76468.6 (r=0.006748)
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 2.184491:	q_mu = 2.51845	q_A  = 4.27073	CLsb = 0.05626	CLb  = 0.68425	CLs  = 0.08222
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 4.368982:	q_mu = 5.74598	q_A  = 7.91095	CLsb = 0.00826	CLb  = 0.66114	CLs  = 0.01250
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 2.361154:	q_mu = 2.79920	q_A  = 4.60078	CLsb = 0.04716	CLb  = 0.68149	CLs  = 0.06920
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 3.365068:	q_mu = 4.33086	q_A  = 6.34747	CLsb = 0.01871	CLb  = 0.66943	CLs  = 0.02795
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 2.849843:	q_mu = 3.55921	q_A  = 5.47693	CLsb = 0.02961	CLb  = 0.67498	CLs  = 0.04387
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 2.639829:	q_mu = 3.23580	q_A  = 5.10679	CLsb = 0.03602	CLb  = 0.67760	CLs  = 0.05316
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 2.735430:	q_mu = 3.38365	q_A  = 5.27644	CLsb = 0.03292	CLb  = 0.67637	CLs  = 0.04868
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 2.693028:	q_mu = 3.31820	q_A  = 5.20144	CLsb = 0.03426	CLb  = 0.67691	CLs  = 0.05061
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 2.712066:	q_mu = 3.34761	q_A  = 5.23516	CLsb = 0.03365	CLb  = 0.67667	CLs  = 0.04973
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 2.703570:	q_mu = 3.33449	q_A  = 5.22012	CLsb = 0.03392	CLb  = 0.67677	CLs  = 0.05012

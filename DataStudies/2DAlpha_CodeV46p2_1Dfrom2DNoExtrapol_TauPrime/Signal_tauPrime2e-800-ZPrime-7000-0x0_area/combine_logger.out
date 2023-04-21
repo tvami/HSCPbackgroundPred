@@ -13,17 +13,15 @@ INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
 INFO: (function: generateAsimov) ToyMCSamplerOpt.cc: 139 -- Using internal logic for binned/unbinned Asimov dataset generation
 INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 214 -- Generating asimov with histogram for pdf pdf_binpass_SIG_obsOnly: in 4 x-bins
 INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
-INFO: (function: runLimitExpected) AsymptoticLimits.cc: 436 -- Median for expected limits = 0.155273 (Sigma for expected limits = 0.0792226)
-INFO: (function: runLimit) AsymptoticLimits.cc: 193 -- NLL at global minimum of data = -76503.7 (r=0.0305337)
-INFO: (function: runLimit) AsymptoticLimits.cc: 213 -- NLL at global minimum of asimov = -76507.6 (r=2.5805e-08)
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 1.230534:	q_mu = 18.96011	q_A  = 21.92862	CLsb = 0.00001	CLb  = 0.62873	CLs  = 0.00001
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.630534:	q_mu = 10.98241	q_A  = 13.61149	CLsb = 0.00046	CLb  = 0.64632	CLs  = 0.00071
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.330534:	q_mu = 5.74087	q_A  = 7.98779	CLsb = 0.00829	CLb  = 0.66650	CLs  = 0.01243
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.180534:	q_mu = 2.65172	q_A  = 4.48954	CLsb = 0.05172	CLb  = 0.68809	CLs  = 0.07516
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.255534:	q_mu = 4.23399	q_A  = 6.31279	CLsb = 0.01981	CLb  = 0.67539	CLs  = 0.02933
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.221527:	q_mu = 3.52414	q_A  = 5.50580	CLsb = 0.03024	CLb  = 0.68053	CLs  = 0.04444
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.205968:	q_mu = 3.19476	q_A  = 5.12585	CLsb = 0.03694	CLb  = 0.68319	CLs  = 0.05407
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.214041:	q_mu = 3.36599	q_A  = 5.32387	CLsb = 0.03328	CLb  = 0.68178	CLs  = 0.04881
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.210905:	q_mu = 3.29956	q_A  = 5.24717	CLsb = 0.03465	CLb  = 0.68232	CLs  = 0.05078
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.212515:	q_mu = 3.33367	q_A  = 5.28658	CLsb = 0.03394	CLb  = 0.68204	CLs  = 0.04976
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.211887:	q_mu = 3.32036	q_A  = 5.27121	CLsb = 0.03421	CLb  = 0.68215	CLs  = 0.05016
+INFO: (function: runLimitExpected) AsymptoticLimits.cc: 436 -- Median for expected limits = 149 (Sigma for expected limits = 76.0218)
+INFO: (function: runLimit) AsymptoticLimits.cc: 193 -- NLL at global minimum of data = -76464.3 (r=29.3482)
+INFO: (function: runLimit) AsymptoticLimits.cc: 213 -- NLL at global minimum of asimov = -76466 (r=0.20827)
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 188.433858:	q_mu = 3.01533	q_A  = 4.89747	CLsb = 0.04124	CLb  = 0.68316	CLs  = 0.06037
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 376.867715:	q_mu = 7.04194	q_A  = 9.36396	CLsb = 0.00398	CLb  = 0.65777	CLs  = 0.00605
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 203.107955:	q_mu = 3.34656	q_A  = 5.28007	CLsb = 0.03367	CLb  = 0.68028	CLs  = 0.04950
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 116.228075:	q_mu = 1.38767	q_A  = 2.92066	CLsb = 0.11940	CLb  = 0.70229	CLs  = 0.17001
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 159.668015:	q_mu = 2.36267	q_A  = 4.12845	CLsb = 0.06213	CLb  = 0.68962	CLs  = 0.09010
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 193.835093:	q_mu = 3.13745	q_A  = 5.03906	CLsb = 0.03826	CLb  = 0.68207	CLs  = 0.05609
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 200.655102:	q_mu = 3.29133	q_A  = 5.21657	CLsb = 0.03482	CLb  = 0.68074	CLs  = 0.05115
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 202.016390:	q_mu = 3.32199	q_A  = 5.25183	CLsb = 0.03418	CLb  = 0.68049	CLs  = 0.05023
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 202.506480:	q_mu = 3.33302	q_A  = 5.26452	CLsb = 0.03395	CLb  = 0.68039	CLs  = 0.04990

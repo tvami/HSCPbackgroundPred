@@ -11,24 +11,16 @@ SimNLL created with 4 channels, 0 generic constraints, 9 fast gaussian constrain
 Running Minos for POI 
 >> Found 20 floating parameters
 >> The following parameters are protected in the event of negative eigenvalues: r
+>> Parameter r does not have a valid stencil and will be dropped
 >> Verifying eigenvalues are all positive (iteration 0)
-Eigenvalue 19 : -0.0455894
- - -0.727163	r
- - 0.686458	Background_fail_SIG_bin_4-1
- - 0.00287498	pileup
- - -0.000790567	systOnG
- - 0.000606881	lumi
->> Attempt 0 failed, remove the variable with largest eigenvector component...
->> Dropping Background_fail_SIG_bin_4-1 from the hessian
->> Verifying eigenvalues are all positive (iteration 1)
 >> All eigenvalues are positive
 >> Inverting Hessian...
 >> Matrix inverted
->> Note: the following parameters were dropped to make the covariance matrix pos-def:
-     - Background_fail_SIG_bin_4-1
+>> Note: the following parameters were dropped as their ranges are either too narrow or the parameter has no effect on the NLL:
+     - r
 
  --- FitDiagnostics ---
-Best fit r: 1.12594e-07  -1.12594e-07/+30  (68% CL)
+Done! fit s+b and fit b should be identical
 Done in 0.00 min (cpu), 0.00 min (real)
 Printing Message Summary From ... combine_logger.out
 ----------------------------------------------
