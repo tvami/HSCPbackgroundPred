@@ -1,5 +1,4 @@
-Signal_tauPrime1e-400-0x0_area, Signal_tauPrime1e-500-0x0_area, Signal_tauPrime1e-800-0x0_area, Signal_tauPrime1e-1000-0x0_area,  Signal_tauPrime1e-1400-0x0_area, Signal_tauPrime1e-1800-0x0_area
-400, 500, 800, 1000,  1400, 1800 
-7.3E-03, 1.2E-03, 2.6E-04, 7.6E-05,  8.5E-06, 1.2E-06
-7.3E-03, 1.2E-03, 2.6E-04, 7.6E-05,  8.5E-06, 1.2E-06
-
+Signal_tauPrime1e-200-0x0_area, Signal_tauPrime1e-400-0x0_area, Signal_tauPrime1e-600-0x0_area, Signal_tauPrime1e-800-0x0_area, Signal_tauPrime1e-1000-0x0_area,  Signal_tauPrime1e-1400-0x0_area, Signal_tauPrime1e-1800-0x0_area
+200, 400, 600, 800, 1000,  1400, 1800
+1.833e-01, 1.361e-02, 2.340e-03, 5.697e-04, 1.638e-04, 1.869e-05, 2.641e-06
+1.833e-01, 1.361e-02, 2.340e-03, 5.697e-04, 1.638e-04, 1.869e-05, 2.641e-06

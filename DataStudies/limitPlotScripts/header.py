@@ -1396,11 +1396,11 @@ def Inter(g1,g2, interpolationType="exp"):
             g2yi   = g2yi.value
             g2yip1 = g2yip1.value
 
-            print (g1p,g2p)
-            print (g1xi,g1xip1)
-            print (g1yi,g1yip1)
-            print (g2xi,g2xip1)
-            print (g2yi,g2yip1)
+            #print (g1p,g2p)
+            #print (g1xi,g1xip1)
+            #print (g1yi,g1yip1)
+            #print (g2xi,g2xip1)
+            #print (g2yi,g2yip1)
             # Now I have two adjacent points from each graph
 
             if sign( g1yi-g2yi ) != sign( g1yip1-g2yip1 ) and \

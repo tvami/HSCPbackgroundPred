@@ -55,10 +55,14 @@ parser.add_option('-o', '--xsorder', type='string', action='store',
                 default       =       'NNLO+NNLL',
                 dest          =       'xsorder',
                 help          =       'Order of XS calculation. e.g. NNLO+NNLL')
+parser.add_option('-d', '--debug', type='int',
+                default       =       0,
+                dest          =       'debug',
+                help          =       'Debug level')
 
 (options, args) = parser.parse_args()
 
-# tag = options.tag
+debug = options.debug
 
 # Open signal file
 signal_file = open(options.signals,'r')
@@ -116,12 +120,12 @@ for this_index, this_name in enumerate(signal_names):
         # +2 sigma expected
         if round(this_tree.quantileExpected,3) == 0.975:
             y_mclimitup95.append(this_tree.limit*this_xsec)
-        print("For " + str(this_mass) + " mc_limit is " +str(y_mclimit))
+        if (debug > 0) : print("For " + str(this_mass) + " mc_limit is " +str(y_mclimit))
         # Observed (plot only if unblinded)
         if this_tree.quantileExpected == -1:
             if not options.blind:
-                print('DEBUG : appending to y_limit')
-                print('appending: {} to y_limit'.format(this_tree.limit*this_xsec))
+                if (debug > 0) : print('DEBUG : appending to y_limit')
+                if (debug > 0) : print('appending: {} to y_limit'.format(this_tree.limit*this_xsec))
                 y_limit.append(this_tree.limit*this_xsec)
             else:
                 y_limit.append(0.0)
@@ -153,10 +157,11 @@ TPT.SetBorderSize(0)
 TPT.SetTextAlign(12)
 
 # Expected
-print('---------DEBUG-----------')
-print('x_mass: {}'.format(x_mass))
-print('len x_mass: {}'.format(len(x_mass)))
-print('y_mclimit: {}'.format(y_mclimit))
+if (debug > 0) : 
+    print('---------DEBUG-----------')
+    print('x_mass: {}'.format(x_mass))
+    print('len x_mass: {}'.format(len(x_mass)))
+    print('y_mclimit: {}'.format(y_mclimit))
 g_mclimit = TGraph(len(x_mass), x_mass, y_mclimit)
 g_mclimit.SetTitle("")
 g_mclimit.SetMarkerStyle(21)
@@ -186,9 +191,22 @@ if not options.blind:
     g_limit.SetLineColor(1)
     g_limit.SetLineWidth(2)
     g_limit.SetMarkerSize(1) #0.5
-    g_limit.GetXaxis().SetRangeUser(0.8, 3.0)
-    g_limit.SetMinimum(0.8e-4) #0.005
-    g_limit.SetMaximum(0.1)
+    if ("tau" in cstr) :
+      g_limit.GetXaxis().SetRangeUser(0.1, 1.5)
+      g_limit.SetMinimum(5e-6) #0.005
+      g_limit.SetMaximum(0.02)
+    if ("Prime" in cstr) :
+      g_limit.GetXaxis().SetRangeUser(0.8, 3.0)
+      g_limit.SetMinimum(5e-6) #0.005
+      g_limit.SetMaximum(0.02)
+    if ("ZPrime" in cstr) :
+      g_limit.GetXaxis().SetRangeUser(3.0, 7.0)
+      g_limit.SetMinimum(5e-7) #0.005
+      g_limit.SetMaximum(0.002)
+    else:
+      g_limit.GetXaxis().SetRangeUser(0.8, 3.0)
+      g_limit.SetMinimum(5e-5) #0.005
+      g_limit.SetMaximum(0.2)
 else:
     print('Blinded')
     g_mclimit.GetXaxis().SetTitle("m("+options.particle+") [TeV]")  # NOT GENERIC
@@ -197,6 +215,14 @@ else:
       g_mclimit.GetXaxis().SetRangeUser(0.1, 1.5)
       g_mclimit.SetMinimum(5e-6) #0.005
       g_mclimit.SetMaximum(0.02)
+    if ("Prime" in cstr) :
+      g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
+      g_mclimit.SetMinimum(5e-6) #0.005
+      g_mclimit.SetMaximum(0.02)
+    if ("ZPrime" in cstr) :
+      g_mclimit.GetXaxis().SetRangeUser(3.0, 7.0)
+      g_mclimit.SetMinimum(5e-7) #0.005
+      g_mclimit.SetMaximum(0.002)
     else:
       g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
       g_mclimit.SetMinimum(5e-5) #0.005
@@ -366,12 +392,6 @@ if not options.blind:
     obsLine.SetLineStyle(2)
     obsLine.Draw()
 
-    if options.drawIntersection:
-        obsLineLabel = TPaveText(obsMassLimit-300, obsCrossLimit*3, obsMassLimit+300, obsCrossLimit*12,"NB")
-        obsLineLabel.SetFillColorAlpha(kWhite,0)
-        obsLineLabel.AddText(str(round(obsMassLimit,2))+' TeV')
-        obsLineLabel.Draw()
-
 # Legend and draw
 gStyle.SetLegendFont(62)
 legend = TLegend(0.5, 0.6, 0.92, 0.9, '')
@@ -393,8 +413,9 @@ legend.Draw("same")
 tmpcolor = g_error.GetFillColor()
 tmpline = ROOT.TLine()
 tmpline.SetLineColor(tmpcolor)
-tmpline.SetLineWidth(22)
-tmpyposition = 0.75
+tmLineWidth = 22  if options.blind else 15
+tmpline.SetLineWidth(tmLineWidth)
+tmpyposition = 0.75 if options.blind else 0.713
 tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
 
 # legend line for median point
@@ -405,13 +426,13 @@ tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
 
 
 # legend lines for theory
-tmpyposition = 0.66
+tmpyposition = 0.66 if options.blind else 0.65
 tmpline.SetLineColor(4)
 tmpline.SetLineStyle(2)
 tmpline.SetLineWidth(2)
 tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
 
-tmpyposition = 0.64
+tmpyposition = 0.64 if options.blind else 0.625
 tmpline.SetLineColor(4)
 tmpline.SetLineStyle(2)
 tmpline.SetLineWidth(2)
@@ -433,6 +454,14 @@ text1.SetTextColor(ROOT.kGray+2)
 text1.SetTextAngle(90)
 text1.DrawLatex(expectedMassLimit-0.005,0, "  %0.2f TeV"%(expectedMassLimit))
 
+text2 = ROOT.TLatex()
+# text2.SetNDC()
+text2.SetTextFont(43)
+text2.SetTextSize(14)
+text2.SetTextColor(1)
+text2.SetTextAngle(90)
+if not options.blind:
+    text2.DrawLatex(obsMassLimit-0.005,0, "  %0.2f TeV"%(obsMassLimit))
 
 
 # text1 = ROOT.TLatex()
@@ -443,7 +472,7 @@ text1.DrawLatex(expectedMassLimit-0.005,0, "  %0.2f TeV"%(expectedMassLimit))
 # TPT.Draw()
 climits.RedrawAxis()
 
-CMS_lumi.extraText = '            Internal'
+CMS_lumi.extraText = 'Internal'
 CMS_lumi.lumiTextSize     = 0.5
 
 CMS_lumi.cmsTextSize      = 0.8
