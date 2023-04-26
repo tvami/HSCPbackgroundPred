@@ -1,23 +1,29 @@
 INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
 INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
 INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
-INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
-INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
-INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
-INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
-INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
-INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
-INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
-INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
-INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
-DEBUG: (function: runSpecific) FitDiagnostics.cc: 318 -- Fit B-only, status = 0, numBadNLL = 0, covariance quality = -1
-INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
-INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
-INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
-INFO: (function: anyParameterAtBoundaries) utils.cc: 1039 -- Found parameter Background_fail_SIG_bin_4-1 at boundary (within ~1sigma): 0.00280082+/-0.928431
-INFO: (function: minimize) CascadeMinimizer.cc: 480 -- After fit, some parameters are found at the boundary (within ~1sigma)
-INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
-INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
-INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
-INFO: (function: doFit) FitterAlgoBase.cc: 343 -- Running Minos for POI r
-DEBUG: (function: runSpecific) FitDiagnostics.cc: 443 -- Fit S+B, status = 0, numBadNLL = 0, covariance quality = -1
+INFO: (function: generateAsimov) ToyMCSamplerOpt.cc: 139 -- Using internal logic for binned/unbinned Asimov dataset generation
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 214 -- Generating asimov with histogram for pdf pdf_binfail_LOW_obsOnly: in 5 x-bins
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
+INFO: (function: generateAsimov) ToyMCSamplerOpt.cc: 139 -- Using internal logic for binned/unbinned Asimov dataset generation
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 214 -- Generating asimov with histogram for pdf pdf_binfail_SIG_obsOnly: in 4 x-bins
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
+INFO: (function: generateAsimov) ToyMCSamplerOpt.cc: 139 -- Using internal logic for binned/unbinned Asimov dataset generation
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 214 -- Generating asimov with histogram for pdf pdf_binpass_LOW_obsOnly: in 5 x-bins
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
+INFO: (function: generateAsimov) ToyMCSamplerOpt.cc: 139 -- Using internal logic for binned/unbinned Asimov dataset generation
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 214 -- Generating asimov with histogram for pdf pdf_binpass_SIG_obsOnly: in 4 x-bins
+INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
+INFO: (function: runLimitExpected) AsymptoticLimits.cc: 436 -- Median for expected limits = 0.195312 (Sigma for expected limits = 0.0996511)
+INFO: (function: runLimit) AsymptoticLimits.cc: 193 -- NLL at global minimum of data = -76478.5 (r=0.0424948)
+INFO: (function: runLimit) AsymptoticLimits.cc: 213 -- NLL at global minimum of asimov = -76477.7 (r=2.88855e-05)
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 1.242495:	q_mu = 23.95046	q_A  = 26.78264	CLsb = 0.00000	CLb  = 0.61075	CLs  = 0.00000
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.642495:	q_mu = 11.75921	q_A  = 14.32289	CLsb = 0.00030	CLb  = 0.63885	CLs  = 0.00047
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.342495:	q_mu = 5.22295	q_A  = 7.38472	CLsb = 0.01115	CLb  = 0.66717	CLs  = 0.01671
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.192495:	q_mu = 2.07639	q_A  = 3.78289	CLsb = 0.07480	CLb  = 0.69287	CLs  = 0.10795
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.271992:	q_mu = 3.70458	q_A  = 5.69331	CLsb = 0.02713	CLb  = 0.67772	CLs  = 0.04003
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.241840:	q_mu = 3.07127	q_A  = 4.96712	CLsb = 0.03984	CLb  = 0.68303	CLs  = 0.05833
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.257748:	q_mu = 3.40352	q_A  = 5.35030	CLsb = 0.03253	CLb  = 0.68018	CLs  = 0.04782
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.251715:	q_mu = 3.27700	q_A  = 5.20503	CLsb = 0.03513	CLb  = 0.68125	CLs  = 0.05156
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.254896:	q_mu = 3.34363	q_A  = 5.28160	CLsb = 0.03373	CLb  = 0.68068	CLs  = 0.04956
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.253690:	q_mu = 3.31834	q_A  = 5.25260	CLsb = 0.03426	CLb  = 0.68090	CLs  = 0.05031
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 0.254326:	q_mu = 3.33167	q_A  = 5.26786	CLsb = 0.03398	CLb  = 0.68079	CLs  = 0.04991

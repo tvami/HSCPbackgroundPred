@@ -183,16 +183,17 @@
       "Signal_tauPrime1e-2200", 
       "Signal_tauPrime1e-2600", 
       "Signal_tauPrime1e-400", 
-      "Signal_tauPrime1e-500", 
+      "Signal_tauPrime1e-600", 
       "Signal_tauPrime1e-800", 
+      "Signal_tauPrime2e-200", 
+      "Signal_tauPrime2e-400", 
+      "Signal_tauPrime2e-600", 
+      "Signal_tauPrime2e-800", 
       "Signal_tauPrime2e-1000", 
       "Signal_tauPrime2e-1400", 
       "Signal_tauPrime2e-1800", 
-      "Signal_tauPrime2e-200", 
       "Signal_tauPrime2e-2200", 
-      "Signal_tauPrime2e-2600", 
-      "Signal_tauPrime2e-400", 
-      "Signal_tauPrime2e-500"
+      "Signal_tauPrime2e-2600"
     ], 
     "SIGNAME0": [
       "Signal_gluino-1800"
@@ -240,7 +241,7 @@
       "pass"
     ], 
     "plotEvtsPerUnitVolt": true, 
-    "plotTemplateComparisons": true
+    "plotTemplateComparisonsVol": true
   }, 
   "PROCESSES": {
     "SIGNAME": {

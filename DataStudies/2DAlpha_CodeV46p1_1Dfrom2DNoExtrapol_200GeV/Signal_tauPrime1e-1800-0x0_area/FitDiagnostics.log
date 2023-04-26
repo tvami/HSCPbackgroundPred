@@ -11,16 +11,13 @@ SimNLL created with 4 channels, 0 generic constraints, 9 fast gaussian constrain
 Running Minos for POI 
 >> Found 20 floating parameters
 >> The following parameters are protected in the event of negative eigenvalues: r
->> Parameter r does not have a valid stencil and will be dropped
 >> Verifying eigenvalues are all positive (iteration 0)
 >> All eigenvalues are positive
 >> Inverting Hessian...
 >> Matrix inverted
->> Note: the following parameters were dropped as their ranges are either too narrow or the parameter has no effect on the NLL:
-     - r
 
  --- FitDiagnostics ---
-Done! fit s+b and fit b should be identical
+Best fit r: 29.1483  -29.1483/+0.851726  (68% CL)
 Done in 0.00 min (cpu), 0.00 min (real)
 Printing Message Summary From ... combine_logger.out
 ----------------------------------------------

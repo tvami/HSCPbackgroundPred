@@ -13,16 +13,16 @@ INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
 INFO: (function: generateAsimov) ToyMCSamplerOpt.cc: 139 -- Using internal logic for binned/unbinned Asimov dataset generation
 INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 214 -- Generating asimov with histogram for pdf pdf_binpass_SIG_obsOnly: in 4 x-bins
 INFO: (function: generateWithHisto) ToyMCSamplerOpt.cc: 215 -- , in 1 y-bins
-INFO: (function: runLimitExpected) AsymptoticLimits.cc: 436 -- Median for expected limits = 9.34375 (Sigma for expected limits = 4.76731)
-INFO: (function: runLimit) AsymptoticLimits.cc: 193 -- NLL at global minimum of data = -76464 (r=2.10056)
-INFO: (function: runLimit) AsymptoticLimits.cc: 213 -- NLL at global minimum of asimov = -76465.4 (r=0.0228709)
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 12.059891:	q_mu = 3.25961	q_A  = 5.23639	CLsb = 0.03550	CLb  = 0.68541	CLs  = 0.05180
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 24.119783:	q_mu = 8.95977	q_A  = 11.49857	CLsb = 0.00138	CLb  = 0.65456	CLs  = 0.00211
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 13.110171:	q_mu = 3.73008	q_A  = 5.77976	CLsb = 0.02672	CLb  = 0.68181	CLs  = 0.03919
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 7.605365:	q_mu = 1.40407	q_A  = 2.97493	CLsb = 0.11802	CLb  = 0.70535	CLs  = 0.16732
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 10.357768:	q_mu = 2.51935	q_A  = 4.36236	CLsb = 0.05623	CLb  = 0.69195	CLs  = 0.08126
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 11.824164:	q_mu = 3.15530	q_A  = 5.11482	CLsb = 0.03784	CLb  = 0.68626	CLs  = 0.05514
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 12.376197:	q_mu = 3.40025	q_A  = 5.39976	CLsb = 0.03259	CLb  = 0.68430	CLs  = 0.04763
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 12.119310:	q_mu = 3.28591	q_A  = 5.26707	CLsb = 0.03494	CLb  = 0.68520	CLs  = 0.05099
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 12.229785:	q_mu = 3.33501	q_A  = 5.32412	CLsb = 0.03391	CLb  = 0.68481	CLs  = 0.04952
-INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 12.178419:	q_mu = 3.31217	q_A  = 5.29759	CLsb = 0.03438	CLb  = 0.68499	CLs  = 0.05020
+INFO: (function: runLimitExpected) AsymptoticLimits.cc: 436 -- Median for expected limits = 1.26172 (Sigma for expected limits = 0.643746)
+INFO: (function: runLimit) AsymptoticLimits.cc: 193 -- NLL at global minimum of data = -76463.8 (r=0.277855)
+INFO: (function: runLimit) AsymptoticLimits.cc: 213 -- NLL at global minimum of asimov = -76465.3 (r=0.00603108)
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 1.620184:	q_mu = 3.20710	q_A  = 5.17169	CLsb = 0.03666	CLb  = 0.68556	CLs  = 0.05347
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 3.240367:	q_mu = 8.60436	q_A  = 11.10748	CLsb = 0.00168	CLb  = 0.65523	CLs  = 0.00256
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 1.759111:	q_mu = 3.65485	q_A  = 5.68874	CLsb = 0.02795	CLb  = 0.68202	CLs  = 0.04099
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 1.018483:	q_mu = 1.39200	q_A  = 2.95373	CLsb = 0.11903	CLb  = 0.70499	CLs  = 0.16884
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 1.388797:	q_mu = 2.48074	q_A  = 4.31214	CLsb = 0.05762	CLb  = 0.69200	CLs  = 0.08327
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 1.601970:	q_mu = 3.14900	q_A  = 5.10392	CLsb = 0.03799	CLb  = 0.68604	CLs  = 0.05537
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 1.676040:	q_mu = 3.38624	q_A  = 5.37963	CLsb = 0.03287	CLb  = 0.68411	CLs  = 0.04805
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 1.644602:	q_mu = 3.28528	q_A  = 5.26262	CLsb = 0.03495	CLb  = 0.68492	CLs  = 0.05103
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 1.659414:	q_mu = 3.33280	q_A  = 5.31775	CLsb = 0.03396	CLb  = 0.68454	CLs  = 0.04960
+INFO: (function: getCLs) AsymptoticLimits.cc: 343 -- At r = 1.653126:	q_mu = 3.31261	q_A  = 5.29435	CLsb = 0.03438	CLb  = 0.68470	CLs  = 0.05020
