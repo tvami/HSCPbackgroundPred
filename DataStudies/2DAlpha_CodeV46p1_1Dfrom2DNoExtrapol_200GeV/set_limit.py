@@ -195,10 +195,10 @@ if not options.blind:
       g_limit.GetXaxis().SetRangeUser(0.1, 1.5)
       g_limit.SetMinimum(5e-6) #0.005
       g_limit.SetMaximum(0.02)
-    if ("Prime" in cstr) :
-      g_limit.GetXaxis().SetRangeUser(0.8, 3.0)
-      g_limit.SetMinimum(5e-6) #0.005
-      g_limit.SetMaximum(0.02)
+    #if ("Prime" in cstr) :
+    #  g_limit.GetXaxis().SetRangeUser(0.8, 3.0)
+    #  g_limit.SetMinimum(5e-6) #0.005
+    #  g_limit.SetMaximum(0.02)
     else:
       g_limit.GetXaxis().SetRangeUser(0.8, 3.0)
       g_limit.SetMinimum(5e-5) #0.005
@@ -211,6 +211,10 @@ else:
       g_mclimit.GetXaxis().SetRangeUser(0.1, 1.5)
       g_mclimit.SetMinimum(5e-6) #0.005
       g_mclimit.SetMaximum(0.02)
+    #if ("Prime" in cstr) :
+    #  g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
+    #  g_mclimit.SetMinimum(5e-6) #0.005
+    #  g_mclimit.SetMaximum(0.2)
     else:
       g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
       g_mclimit.SetMinimum(5e-5) #0.005
