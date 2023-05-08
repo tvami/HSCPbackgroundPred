@@ -154,7 +154,8 @@ def plot_fit(signal, tf):
     subset = twoD.ledger.select(_select_signal, 'HSCP-{}'.format(signal), tf) 
     print("Doing twoD.StdPlots")
     twoD.StdPlots('HSCP-{}-{}_area'.format(signal, tf), subset)
-    twoD.StdPlots('HSCP-{}-{}_area'.format(signal, tf), subset, True)
+    # in case prefit plots are needed, uncomment below:
+    #twoD.StdPlots('HSCP-{}-{}_area'.format(signal, tf), subset, True)
 
 def GOF(signal,tf,condor=True, extra=''):
     # replace the blindedFit option in the config file with COMMENT to effectively "unblind" the GoF
@@ -341,9 +342,10 @@ if __name__ == "__main__":
     #perform_fit('gluino-1800','1x0',extra='--robustHesse 1')
     #perform_fit('gluino-1800','2x0',extra='--robustHesse 1')
     #plot_fit('gluino-1800','0x0' )
-    #plot_fit('gluino-1800','1x0' )
+    plot_fit('gluino-1800','1x0' )
     #plot_fit('gluino-1800','2x0' )
     #GOF('gluino-1800','0x0',condor=False, extra='--text2workspace "--channel-masks" --setParametersForFit mask_pass_SIG=1 --setParametersForEval mask_pass_SIG=1')
+    #GOF('gluino-1800','1x0',condor=False, extra='--text2workspace "--channel-masks" --setParametersForFit mask_pass_SIG=1 --setParametersForEval mask_pass_SIG=1')
     #GOF(condor=False, extra='')
     #SignalInjection(0, condor=False)	# you can make a loop to run a bunch of injected xsecs
     #run_limits()
@@ -355,5 +357,6 @@ if __name__ == "__main__":
 
 
     # if you ran GOF/SigInj via condor, you need to wait until they're finished to run plotting:
-    plot_GOF('gluino-1800','0x0',condor=False)
+    #plot_GOF('gluino-1800','0x0',condor=False)
+    #plot_GOF('gluino-1800','1x0',condor=False)
     #plot_SignalInjection(0, condor=False)
