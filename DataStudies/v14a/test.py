@@ -81,7 +81,7 @@ def _select_signal(row, args):
 # Make the workspace
 def make_workspace():
   # Create the workspace directory, using info from the specified JSON file
-  twoD = TwoDAlphabet('HSCP_fits', 'test.json', loadPrevious=False)
+  twoD = TwoDAlphabet('./', 'test.json', loadPrevious=False)
 
   # 2DAlphabet wasn't intended for an analysis like this, so the default function 
   # for Looping over all regions and for a given region's data histogram, subtracting
@@ -129,7 +129,7 @@ def perform_fit(signal, tf, rMaxExt = 30, extra=''):
 	extra (str) = any extra flags to pass to Combine when running the ML fit
     '''
     # this is the name of the directory created in the workspace function
-    working_area = 'HSCP_fits'
+    working_area = './'
     # we reuse the workspace from the last step.
     # The runConfig.json is copied from the origin JSON config file, 
     # and we must specify that we want to load the previous workspace
@@ -146,7 +146,7 @@ def perform_fit(signal, tf, rMaxExt = 30, extra=''):
     twoD.MLfit('HSCP_{}-{}_area'.format(signal, tf), rMin=0, rMax=rMaxExt, verbosity=1, extra=extra)
 
 def plot_fit(signal, tf):
-    working_area = 'HSCP_fits'
+    working_area = './'
     print("DoingTwoDAlphabet")
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     print("Doing twoD.ledger.select")
@@ -158,7 +158,7 @@ def plot_fit(signal, tf):
 def GOF(signal,tf,condor=True, extra=''):
     # replace the blindedFit option in the config file with COMMENT to effectively "unblind" the GoF
     findReplace = {"blindedFit": "COMMENT"}
-    working_area = 'HSCP_fits'
+    working_area = './'
     signame = 'HSCP_'+signal
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     if not os.path.exists(twoD.tag+'/'+signame+'-{}_area/card.txt'.format(tf)):
@@ -177,7 +177,7 @@ def GOF(signal,tf,condor=True, extra=''):
         )
 
 def plot_GOF(signal, tf, condor=True):
-    working_area = 'HSCP_fits'
+    working_area = './'
     plot.plot_gof('{}'.format(working_area), 'HSCP_{}-{}_area'.format(signal, tf), condor=condor)
 
 def load_RPF(twoD):
@@ -188,7 +188,7 @@ def load_RPF(twoD):
     return {k:v['val'] for k,v in params_to_set.items()}
 
 def SignalInjection(r, condor=True):
-    working_area = 'HSCP_fits'
+    working_area = './'
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     #params = load_RPF(twoD)
     twoD.SignalInjection(
@@ -203,16 +203,16 @@ def SignalInjection(r, condor=True):
     )
 
 def plot_SignalInjection(r, condor=False):
-    working_area = 'HSCP_fits'
+    working_area = './'
     plot.plot_signalInjection(working_area, 'HSCP_{}-{}_area'.format(signal, tf), injectedAmount=r, condor=condor)
 
 def Impacts():
-    working_area = 'HSCP_fits'
+    working_area = './'
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     twoD.Impacts('HSCP_{}-{}_area'.format(signal, tf), cardOrW='card.txt', extra='-t 1')
 
 def run_limits(signal, tf):
-    working_area = 'HSCP_fits'
+    working_area = './'
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     twoD.Limit(
 	subtag='HSCP_{}-{}_area'.format(signal, tf),
@@ -240,7 +240,7 @@ def test_FTest(poly1, poly2, signal=''):
     '''
     Perform an F-test using existing working areas
     '''
-    working_area = 'HSCP_fits'
+    working_area = './'
     
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
     binning = twoD.binnings['default']
@@ -363,15 +363,15 @@ if __name__ == "__main__":
     #GOF('gluino-1800','0x0',condor=False, extra='--text2workspace "--channel-masks" --setParametersForFit mask_pass_SIG=1 --setParametersForEval mask_pass_SIG=1')
     #GOF('gluino-1800','0x0',condor=False, extra='')
     #SignalInjection(0, condor=False)	# you can make a loop to run a bunch of injected xsecs
-    run_limits('gluino-800','0x0')
-    run_limits('gluino-1000','0x0')
-    run_limits('gluino-1400','0x0')
-    run_limits('gluino-1600','0x0')
-    run_limits('gluino-1800','0x0')
-    run_limits('gluino-2000','0x0')
-    run_limits('gluino-2200','0x0')
-    run_limits('gluino-2400','0x0')
-    run_limits('gluino-2600','0x0')
+    #run_limits('gluino-800','0x0')
+    #run_limits('gluino-1000','0x0')
+    #run_limits('gluino-1400','0x0')
+    #run_limits('gluino-1600','0x0')
+    #run_limits('gluino-1800','0x0')
+    #run_limits('gluino-2000','0x0')
+    #run_limits('gluino-2200','0x0')
+    #run_limits('gluino-2400','0x0')
+    #run_limits('gluino-2600','0x0')
     #Impacts()
 
     #test_FTest('0x0','1x0')
@@ -380,5 +380,5 @@ if __name__ == "__main__":
 
 
     # if you ran GOF/SigInj via condor, you need to wait until they're finished to run plotting:
-    #plot_GOF('gluino-1800','0x0',condor=False)
+    plot_GOF('gluino-1800','0x0',condor=False)
     #plot_SignalInjection(0, condor=False)

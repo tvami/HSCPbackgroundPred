@@ -361,7 +361,7 @@ if __name__ == "__main__":
           content = file.read()
           if not "Fit failed" in content: fitPassed = True
           rMax = rMax / 10.
-      plot_fit(signal,'0x0')
+      #plot_fit(signal,'0x0')
       print("\n\n\nFit is succesful, running limits now for " + str(signal))
       run_limits(signal,'0x0')
       #GOF(signal,'0x0',condor=False, extra='')

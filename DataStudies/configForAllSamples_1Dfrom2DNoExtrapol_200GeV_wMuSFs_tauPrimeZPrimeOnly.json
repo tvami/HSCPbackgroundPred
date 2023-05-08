@@ -130,7 +130,6 @@
     "OPTIONS": {
         "blindedFit": ["pass"],
         "blindedPlots": ["pass"],
-        "plotTemplateComparisons": true,
         "plotEvtsPerUnitVolt" : true
     }
 }

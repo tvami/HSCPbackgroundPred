@@ -291,6 +291,8 @@ class Plotter(object):
                             ''
                         )
                         slice_str = '%s < %s < %s %s'%slice_edges
+                        #slice_str = '50 < p_{T} < 55 GeV'
+                        #slice_str = 'p_{T} > 55 GeV'
                         if (slice_edges[2] == 4025) : slice_str = str(slice_edges[1]) + " > " + str(slice_edges[0]) + " GeV"
                         if (region == "pass") :
                             slice_str += ", F^{Pixels}_{i} > 0.9"
@@ -341,6 +343,8 @@ class Plotter(object):
                         ''
                     )
                     slice_str = '%s < %s < %s %s'%slice_edges
+                    #slice_str = '50 < p_{T} < 55 GeV'
+                    #slice_str = 'p_{T} > 55 GeV'
                     if (slice_edges[2] == 4025) : slice_str = str(slice_edges[1]) + " > " + str(slice_edges[0]) + " GeV"
                     if (region == "pass") :
                         slice_str += ", F^{Pixels}_{i} > 0.9"
@@ -698,7 +702,8 @@ def make_pad_1D(outname, data, bkgs=[], signals=[], title='', subtitle='',
 
         #texInternal = ROOT.TLatex(0.27,0.96,"Simulation"); # for square plots
         #texInternal = ROOT.TLatex(0.28,0.94,"Work in Progress 2018"); #if there is 10^x
-        texInternal = ROOT.TLatex(0.25,0.92,"Internal");
+        #texInternal = ROOT.TLatex(0.25,0.92,"Internal");
+        texInternal = ROOT.TLatex(0.25,0.92,"");
         texInternal.SetNDC();
         texInternal.SetTextFont(52);
         texInternal.SetTextSize(0.0485);
@@ -1076,7 +1081,7 @@ def plot_gof(tag, subtag, seed=123456, condor=False):
         leg.AddEntry(arrow,"observed = %.1f"%gof_data,"l")
         leg.AddEntry(0,"p-value = %.2f"%(pvalue),"")
 
-        tex2 = ROOT.TLatex(0.16,0.93,"CMS");
+        tex2 = ROOT.TLatex(0.1,0.93,"CMS");
         #tex2 = ROOT.TLatex(0.20,0.94,"CMS");#if there is 10^x
         tex2.SetNDC();
         tex2.SetTextFont(61);
@@ -1085,7 +1090,7 @@ def plot_gof(tag, subtag, seed=123456, condor=False):
 
         #tex3 = ROOT.TLatex(0.27,0.96,"Simulation"); # for square plots
         #tex3 = ROOT.TLatex(0.28,0.94,"Work in Progress 2018"); #if there is 10^x
-        tex3 = ROOT.TLatex(0.3,0.93,"Internal");
+        tex3 = ROOT.TLatex(0.3,0.93,"");
         tex3.SetNDC();
         tex3.SetTextFont(52);
         tex3.SetTextSize(0.0485);
@@ -1104,8 +1109,10 @@ def plot_gof(tag, subtag, seed=123456, condor=False):
         htoy_gof.SetLineColor(4)
         htoy_gof.GetXaxis().SetTitle("Saturated log-likelihood")
         htoy_gof.GetYaxis().SetTitle("Toys / bin")
-        htoy_gof.GetXaxis().SetTitleOffset(1.1)
-        htoy_gof.GetYaxis().SetTitleOffset(1.1)
+        #htoy_gof.GetXaxis().SetTitleOffset(1.1)
+        htoy_gof.GetXaxis().SetTitleOffset(0.95)
+        #htoy_gof.GetYaxis().SetTitleOffset(1.1)
+        htoy_gof.GetYaxis().SetTitleOffset(0.95)
         htoy_gof.GetXaxis().SetTitleSize(0.05)
         htoy_gof.GetYaxis().SetTitleSize(0.05)
         arrow.Draw()
