@@ -8,10 +8,7 @@
         "HIST_UP": "h$region_$syst_up",
         "HIST_DOWN": "h$region_$syst_down",
 	"path": "./",
-        "SIGNAME0": ["Signal_gluino-1800"],
-        "SIGNAME1":  ["Signal_gluino-1000", "Signal_gluino-1400", "Signal_gluino-1600", "Signal_gluino-1800", "Signal_gluino-2000", "Signal_gluino-2200", "Signal_gluino-2400", "Signal_gluino-2600", "Signal_gluino-800"], 
-        "SIGNAME2": ["Signal_gluino-1000", "Signal_gluino-1400", "Signal_gluino-1600", "Signal_gluino-1800", "Signal_gluino-2000", "Signal_gluino-2200", "Signal_gluino-2400", "Signal_gluino-2600", "Signal_gluino-800","Signal_ppStau-1029", "Signal_ppStau-1218", "Signal_ppStau-200", "Signal_ppStau-247", "Signal_ppStau-308", "Signal_ppStau-432", "Signal_ppStau-557", "Signal_ppStau-651", "Signal_ppStau-745", "Signal_ppStau-871"],
-        "SIGNAME":   ["Signal_tauPrime2e-200-ZPrime-3000", "Signal_tauPrime2e-200-ZPrime-4000", "Signal_tauPrime2e-200-ZPrime-5000", "Signal_tauPrime2e-200-ZPrime-6000", "Signal_tauPrime2e-200-ZPrime-7000", "Signal_tauPrime2e-400-ZPrime-3000", "Signal_tauPrime2e-400-ZPrime-4000", "Signal_tauPrime2e-400-ZPrime-5000", "Signal_tauPrime2e-400-ZPrime-6000", "Signal_tauPrime2e-400-ZPrime-7000", "Signal_tauPrime2e-600-ZPrime-3000", "Signal_tauPrime2e-600-ZPrime-4000", "Signal_tauPrime2e-600-ZPrime-5000", "Signal_tauPrime2e-600-ZPrime-6000", "Signal_tauPrime2e-600-ZPrime-7000", "Signal_tauPrime2e-800-ZPrime-3000", "Signal_tauPrime2e-800-ZPrime-4000", "Signal_tauPrime2e-800-ZPrime-5000", "Signal_tauPrime2e-800-ZPrime-6000", "Signal_tauPrime2e-800-ZPrime-7000", "Signal_tauPrime2e-1000-ZPrime-3000", "Signal_tauPrime2e-1000-ZPrime-4000", "Signal_tauPrime2e-1000-ZPrime-5000", "Signal_tauPrime2e-1000-ZPrime-6000", "Signal_tauPrime2e-1000-ZPrime-7000", "Signal_tauPrime2e-1200-ZPrime-3000", "Signal_tauPrime2e-1200-ZPrime-4000", "Signal_tauPrime2e-1200-ZPrime-5000", "Signal_tauPrime2e-1200-ZPrime-6000", "Signal_tauPrime2e-1200-ZPrime-7000", "Signal_tauPrime2e-1400-ZPrime-3000", "Signal_tauPrime2e-1400-ZPrime-4000", "Signal_tauPrime2e-1400-ZPrime-5000", "Signal_tauPrime2e-1400-ZPrime-6000", "Signal_tauPrime2e-1400-ZPrime-7000", "Signal_tauPrime1e-200", "Signal_tauPrime1e-400", "Signal_tauPrime1e-600", "Signal_tauPrime1e-800", "Signal_tauPrime1e-1000", "Signal_tauPrime1e-1400", "Signal_tauPrime1e-1800", "Signal_tauPrime1e-2200", "Signal_tauPrime1e-2600", "Signal_tauPrime2e-200", "Signal_tauPrime2e-400", "Signal_tauPrime2e-600", "Signal_tauPrime2e-800", "Signal_tauPrime2e-1000", "Signal_tauPrime2e-1400", "Signal_tauPrime2e-1800", "Signal_tauPrime2e-2200", "Signal_tauPrime2e-2600"] 
+        "SIGNAME":  ["Signal_gluino-1000", "Signal_gluino-1400", "Signal_gluino-1600", "Signal_gluino-1800", "Signal_gluino-2000", "Signal_gluino-2200", "Signal_gluino-2400", "Signal_gluino-2600", "Signal_gluino-800"]
     },
     "REGIONS": {
 	"pass": {
@@ -34,8 +31,8 @@
 	    "LOC": "path/FILE:HIST"
 	},
         "SIGNAME": {
-            "SYSTEMATICS": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt", "systOnMuReco", "systOnMuID", "systOnMuTrigger"],
-            "SYSTEMATICSlumi": ["lumi"],
+            "SYSTEMATICSall": ["lumi","pileup", "systOnF", "systOnG", "systOnTrigger", "systOnPt", "systOnMuReco", "systOnMuID", "systOnMuTrigger"],
+            "SYSTEMATICS": ["lumi"],
             "COLOR": 2,
             "SCALE": 1.0,
             "TYPE": "SIGNAL",
@@ -129,6 +126,7 @@
     "OPTIONS": {
         "blindedFit": ["pass"],
         "blindedPlots": ["pass"],
+        "plotTemplateComparisonsVolt": true,
         "plotEvtsPerUnitVolt" : true
     }
 }

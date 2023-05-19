@@ -6,7 +6,8 @@ import sys
 scale = 1
 
 
-inputFolder = "./2DAlpha_CodeV46p3_1Dfrom2DNoExtrapol_ZPrimeTauPrime/"
+#inputFolder = "./2DAlpha_CodeV46p3_1Dfrom2DNoExtrapol_ZPrimeTauPrime/"
+inputFolder = "./2DAlpha_CodeV46p2_1Dfrom2DNoExtrapol_ZPrimeTauPrimeWithSSM/"
 
 outputPoints = []
 

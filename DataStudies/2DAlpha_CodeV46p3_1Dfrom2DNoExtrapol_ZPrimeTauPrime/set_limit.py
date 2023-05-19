@@ -472,8 +472,8 @@ if not options.blind:
 # TPT.Draw()
 climits.RedrawAxis()
 
-CMS_lumi.extraText = ' '
-#CMS_lumi.extraText = 'Internal'
+#CMS_lumi.extraText = ' '
+CMS_lumi.extraText = 'Internal'
 CMS_lumi.lumiTextSize     = 0.5
 
 CMS_lumi.cmsTextSize      = 0.8
