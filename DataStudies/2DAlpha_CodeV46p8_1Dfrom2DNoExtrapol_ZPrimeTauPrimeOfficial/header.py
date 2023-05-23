@@ -11,6 +11,11 @@ import pprint
 import ctypes
 pp = pprint.PrettyPrinter(indent = 2)
 
+
+useCTypes = False
+if float(ROOT.__version__.split("/")[0]) > 6.22:
+    useCTypes = True
+
 def setSnapshot(d=''):
     # header.executeCmd('combine -M MultiDimFit -d '+base_workspace+' --saveWorkspace --freezeParameters r --setParameters r=0,'+mask_string)
     # f = TFile.Open('higgsCombineTest.MultiDimFit.mH120.root')
@@ -1222,7 +1227,10 @@ def make_smooth_graph(h2,h3):
     npoints = h3.GetN()
     h3.Set(2*npoints+2)
     for b in range(npoints+2):
-        x1, y1 = (ROOT.Double(), ROOT.Double())
+        if useCTypes:
+            x1,y1 = ctypes.c_double(), ctypes.c_double()
+        else:
+            x1, y1 = (ROOT.Double(), ROOT.Double())
         if b == 0:
             h3.GetPoint(npoints-1, x1, y1)
         elif b == 1:
