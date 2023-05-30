@@ -1,68 +1,57 @@
 import ROOT
 import sys
+import pickle
 
-
-#######################
-#######################
-#######################
-#######################
-#######################
-#######################
-#  To add:
-#  Change color scale to be excluded XS
-#  Show contour at XS excluded XS from ATLAS
-#  Show contour at XS expected from ATLAS
-
-
-outputFile = ROOT.TFile("output_BR100pct.root")
-#outputFile10 = ROOT.TFile("output_BR10pct.root")
-#outputFile1 = ROOT.TFile("output_BR1pct.root")
-
-canvas = ROOT.TCanvas("FinalCurves","FinalCurves")
-
-
-#setup
-dummy = ROOT.TH2D("dummy",";m(#tau'^{#pm#pm}) [GeV];m(Z') [GeV];thing",10,200,1400,10,3000,7000)
-dummy.Draw("axis")
-outputFile.Get("expectedUpperLimit_gr").Draw("colz same")
-#outputFile.Get("upperLimit_gr").Draw("colz same")
-dummy.SetMinimum(1e-5)
-dummy.SetMaximum(1e+2)
-ROOT.gPad.SetLogz()
-ROOT.gPad.SetRightMargin(0.15)
-ROOT.gStyle.SetOptStat(0)
-
+ROOT.gStyle.SetPadRightMargin(0.13);
+ROOT.gROOT.SetBatch(True)
 
 phenoContour = ROOT.TGraph("limitPlotScripts/phenoContour.csv", "%lg,%lg")
-phenoContour.Draw("LF")
-phenoContour.SetFillColorAlpha(ROOT.kBlue-2,0.2)
-phenoContour.SetLineColor(ROOT.kBlue-2)
+#phenoContour.SetFillColorAlpha(ROOT.kBlue-2,0.2)
+phenoContour.SetFillColorAlpha(ROOT.kBlack,0.99)
+phenoContour.SetFillStyle(3005)
+phenoContour.SetLineColor(ROOT.kBlack)
 phenoContour.SetLineWidth(2)
 
-if outputFile.Get("Band_1s_0"):
-    for iGraph in range(3):
-        try:
-            outputFile.Get("Band_1s_%d"%iGraph).Draw("L")
-        except:
-            pass
+with open('output_BR100pct.root.expectedSurface.pkl', 'rb') as f:
+#with open('output_BR100pct.root.observedSurface.pkl', 'rb') as f:
+    data = pickle.load(f)
 
-for iGraph in range(3 ):
-    try:
-        outputFile.Get("Exp_%d"%iGraph).Draw("L")
-        # outputFile10.Get("Exp_%d"%iGraph).Draw("L")
-        # outputFile1.Get("Exp_%d"%iGraph).Draw("L")
+xPoints = data["x"].flatten()
+yPoints = data["y"].flatten()
+zPoints = data["z"].flatten()
 
-    except:
-        pass
+result = list(zip(xPoints, yPoints, zPoints))
 
+tauPrimeMass = (200, 400, 600, 800, 1000, 1200, 1400)
+ZPrimeMass = (3000, 4000, 5000, 6000, 7000)
 
-'''
-for iGraph in range(3 ):
-    try:
-        outputFile.Get("Obs_%d"%iGraph).Draw("L")
-    except:
-        pass
-'''
+graph = ROOT.TGraph2D()
+
+for point in result:
+    x, y, z = point
+    graph.SetPoint(graph.GetN(), x, y, z)
+    
+graphOrig = ROOT.TGraph()
+for x in tauPrimeMass :
+  for y in ZPrimeMass :
+    graphOrig.SetPoint(graphOrig.GetN(), x, y)
+
+graph.SetMinimum(0.00001)
+#graph.SetNpy(500);
+#graph.SetNpx(500);
+graph.SetTitle("")
+canvas = ROOT.TCanvas("canvas", "Graph", 800, 600)
+canvas.SetLogz()
+graph.Draw("colz")
+graph.GetXaxis().SetTitle("m(#tau'^{2e}) [GeV]")
+graph.GetYaxis().SetTitle("m(Z') [GeV]")
+graph.GetYaxis().SetTitleOffset(1.4)
+graphOrig.SetMarkerColor(1)
+graphOrig.SetMarkerStyle(ROOT.kCircle)
+graphOrig.SetMarkerSize(0.75)
+graphOrig.Draw("PSAME")
+phenoContour.Draw("LFSAME")
+canvas.Update()
 
 marker = ROOT.TGraph()
 marker.SetPoint(0,650,5200)
@@ -76,9 +65,25 @@ latex.SetTextFont(63)
 latex.SetTextSize(14)
 latex.DrawLatex(650,5200,"    Best fit from\n [2205.04473]")
 
+tex2 = ROOT.TLatex(0.12,0.93,"CMS");
+#tex2 = ROOT.TLatex(0.20,0.94,"CMS");#if there is 10^x
+tex2.SetNDC();
+tex2.SetTextFont(61);
+tex2.SetTextSize(0.0675);
+tex2.SetLineWidth(2);
 
+#tex3 = ROOT.TLatex(0.27,0.94,"Simulation"); # for square plots
+#tex3 = ROOT.TLatex(0.28,0.94,"Work in Progress 2018"); #if there is 10^x
+tex3 = ROOT.TLatex(0.65,0.93,"100 fb^{-1} (13 TeV)");
+tex3.SetNDC();
+tex3.SetTextFont(52);
+tex3.SetTextSize(0.0485);
+tex3.SetLineWidth(2);
 
+tex2.Draw("SAME")
+tex3.Draw("SAME")
 ROOT.gPad.RedrawAxis()
-canvas.SaveAs("test.pdf")
+canvas.SaveAs("ZPrimeVsTauPrimeExcludedXsection.png")
+canvas.SaveAs("ZPrimeVsTauPrimeExcludedXsection.pdf")
 
 

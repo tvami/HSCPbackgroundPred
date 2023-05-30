@@ -614,11 +614,9 @@ def make_pad_1D(outname, data, bkgs=[], signals=[], title='', subtitle='',
         pad.cd()
         main_pad.Draw()
         sub_pad.Draw()
-
         if len(signals) == 0: nsignals = 0
         elif addSignals:      nsignals = 1
         else:                 nsignals = len(signals)
-
         legend_bottomY = 0.73-0.03*(min(len(bkgs),6)+nsignals+1)
         legend = ROOT.TLegend(0.65,legend_bottomY,0.90,0.88)
         legend.SetBorderSize(0)
