@@ -1,0 +1,7 @@
+,process,region,process_type,title
+0,data_obs,fail,DATA,Data
+1,Background,fail,BKG,Background
+2,TotalBkg,fail,TOTAL,TotalBkg
+3,data_obs,pass,DATA,Data
+4,Background_0x0,pass,BKG,Background
+5,TotalBkg,pass,TOTAL,TotalBkg
