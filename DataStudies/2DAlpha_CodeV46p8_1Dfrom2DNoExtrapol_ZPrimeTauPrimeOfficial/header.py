@@ -13,7 +13,7 @@ pp = pprint.PrettyPrinter(indent = 2)
 
 
 useCTypes = False
-if float(ROOT.__version__.split("/")[0]) > 6.22:
+if float(ROOT.gROOT.GetVersion().split("/")[0]) > 6.22:
     useCTypes = True
 
 def setSnapshot(d=''):
