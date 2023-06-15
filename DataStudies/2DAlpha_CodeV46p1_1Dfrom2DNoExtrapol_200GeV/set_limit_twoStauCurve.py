@@ -52,9 +52,9 @@ parser.add_option('-x', '--process', type='string', action='store',
                 dest          =       'process',
                 help          =       'Name of HSCP. e.g. pp#rightarrow#tilde{g}#tilde{g}')
 parser.add_option('-o', '--xsorder', type='string', action='store',
-                default       =       'NNLO+NNLL',
+                default       =       'NLO+NLL',
                 dest          =       'xsorder',
-                help          =       'Order of XS calculation. e.g. NNLO+NNLL')
+                help          =       'Order of XS calculation. e.g. NLO+NLL')
 parser.add_option('-d', '--debug', type='int',
                 default       =       0,
                 dest          =       'debug',
@@ -260,14 +260,14 @@ graphWP.SetLineColor(4)
 graphWP_v2 = ROOT.TGraph()
 graphWP_v2.SetTitle("")
 graphWP_v2.SetMarkerStyle(23)
-graphWP_v2.SetMarkerColor(3)
+graphWP_v2.SetMarkerColor(6)
 graphWP_v2.SetMarkerSize(0.5)
 graphWP_v2.GetYaxis().SetRangeUser(0., 80.)
 graphWP_v2.GetXaxis().SetRangeUser(1.0, 3.0)
 graphWP_v2.SetMinimum(0.3e-3) #0.005
 graphWP_v2.SetMaximum(100.)
 graphWP_v2.SetLineWidth(3)
-graphWP_v2.SetLineColor(3)
+graphWP_v2.SetLineColor(6)
 
 xsecAt1800 = 0
 for index,mass in enumerate(signal_mass):
@@ -297,8 +297,8 @@ graphWPup.SetMarkerSize(0.5)
 graphWPup_v2 = ROOT.TGraph()
 graphWPup_v2.SetTitle("")
 graphWPup_v2.SetMarkerStyle(23)
-graphWPup_v2.SetMarkerColor(3)
-graphWPup_v2.SetLineColor(3)
+graphWPup_v2.SetMarkerColor(6)
+graphWPup_v2.SetLineColor(6)
 graphWPup_v2.SetLineWidth(2)
 graphWPup_v2.SetMarkerSize(0.5)
 
@@ -312,7 +312,6 @@ for index,mass in enumerate(signal_mass):
 
 # # Theory down
 graphWPdown = ROOT.TGraph()
-
 graphWPdown.SetTitle("")
 graphWPdown.SetMarkerStyle(23)
 graphWPdown.SetMarkerColor(4)
@@ -321,11 +320,10 @@ graphWPdown.SetLineWidth(2)
 graphWPdown.SetMarkerSize(0.5)
 
 graphWPdown_v2 = ROOT.TGraph()
-
 graphWPdown_v2.SetTitle("")
 graphWPdown_v2.SetMarkerStyle(23)
-graphWPdown_v2.SetMarkerColor(3)
-graphWPdown_v2.SetLineColor(3)
+graphWPdown_v2.SetMarkerColor(6)
+graphWPdown_v2.SetLineColor(6)
 graphWPdown_v2.SetLineWidth(2)
 graphWPdown_v2.SetMarkerSize(0.5)
 
@@ -435,7 +433,7 @@ if not options.blind:
 legend.AddEntry(g_error95, "Expected Limit #pm1#sigma, #pm2#sigma","f")
 # legend.AddEntry(g_error95, "#pm1#sigma, 2#sigma", "f")
 # legend.AddEntry(g_error95, "#pm2#sigma", "f")
-legend.AddEntry(graphWP, "#sigma^{"+options.xsorder+"}_{th}(pp#rightarrow#tilde{#tau}_{L/R}#tilde{#tau}_{L/R})#pm1#sigma", "l")
+legend.AddEntry(graphWP, "#sigma^{"+options.xsorder+"}_{th}(pp#rightarrow#tilde{#tau}_{L}#tilde{#tau}_{L})#pm1#sigma", "l")
 legend.AddEntry(graphWP_v2, "#sigma^{"+options.xsorder+"}_{th}(pp#rightarrow#tilde{#tau}_{R}#tilde{#tau}_{R})#pm1#sigma", "l") 
 
 legend.SetBorderSize(0)
