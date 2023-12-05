@@ -151,7 +151,7 @@ def perform_fit(signal, tf, rMaxExt = 30, extra=''):
 
 def plot_fit(signal, tf):
     print("DoingTwoDAlphabet")
-    twoD = TwoDAlphabet("2DAlpha_CodeV46p8_1Dfrom2DNoExtrapol_Glu1800Stau557", '2DAlpha_CodeV46p8_1Dfrom2DNoExtrapol_Glu1800Stau557/runConfig.json', loadPrevious=True)
+    twoD = TwoDAlphabet("2DAlpha_CodeV47p6_1Dfrom2DNoExtrapol_Glu1800Stau557_unblind", 'configForGlu1800Stau557Samples_1Dfrom2DNoExtrapol_200GeV_wMuSFs_unB.json', loadPrevious=True)
     print("Doing twoD.ledger.select")
     subset = twoD.ledger.select(_select_signal, '{}'.format(""), tf) 
     #subset = twoD.ledger.select(_select_signal, '{}'.format(signal), tf)

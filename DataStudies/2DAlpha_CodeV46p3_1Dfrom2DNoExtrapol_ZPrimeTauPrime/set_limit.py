@@ -480,5 +480,6 @@ CMS_lumi.cmsTextSize      = 0.8
 CMS_lumi.CMS_lumi(climits, 1, 11)
 
 climits.SaveAs("limits_combine_"+options.lumi.replace('.','p')+"fb_"+options.signals[options.signals.find('/')+1:options.signals.find('.')]+'_'+cstr+".pdf")
+climits.SaveAs("limits_combine_"+options.lumi.replace('.','p')+"fb_"+options.signals[options.signals.find('/')+1:options.signals.find('.')]+'_'+cstr+".root")
 
 

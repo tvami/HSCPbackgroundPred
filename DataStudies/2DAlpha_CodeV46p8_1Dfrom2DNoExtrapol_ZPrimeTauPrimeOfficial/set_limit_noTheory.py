@@ -36,7 +36,7 @@ parser.add_option('--drawIntersection', action="store_true",
                 dest      =   'drawIntersection',
                 help      =   'Draw intersection values')
 parser.add_option('-l', '--lumi', metavar='F', type='string', action='store',
-                default       =       '100', #137.44
+                default       =       '101', #137.44
                 dest          =       'lumi',
                 help          =       'Luminosity option')
 parser.add_option('-m', '--mod', metavar='F', type='string', action='store',
@@ -383,9 +383,9 @@ if not options.blind:
 # Legend and draw
 gStyle.SetLegendFont(62)
 if ("ZPrime" in cstr) :
-    legend = TLegend(0.18, 0.6, 0.55, 0.9, '')
+    legend = TLegend(0.18, 0.6, 0.55, 0.89, '')
 else:
-    legend = TLegend(0.5, 0.6, 0.92, 0.9, '')
+    legend = TLegend(0.5, 0.6, 0.92, 0.89, '')
 legend.SetHeader("95% CL Upper Limits")
 if not options.blind:
    legend.AddEntry(g_limit, "Observed Limit", "l")
@@ -575,7 +575,8 @@ climits.RedrawAxis()
 if not options.blind :
     CMS_lumi.extraText = ' '
 else:
-    CMS_lumi.extraText = 'Internal'
+    #CMS_lumi.extraText = 'Internal'
+    CMS_lumi.extraText = ''
 
 CMS_lumi.lumiTextSize     = 0.5
 

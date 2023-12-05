@@ -36,7 +36,7 @@ parser.add_option('--drawIntersection', action="store_true",
                 dest      =   'drawIntersection',
                 help      =   'Draw intersection values')
 parser.add_option('-l', '--lumi', metavar='F', type='string', action='store',
-                default       =       '100', #137.44
+                default       =       '101', #137.44
                 dest          =       'lumi',
                 help          =       'Luminosity option')
 parser.add_option('-m', '--mod', metavar='F', type='string', action='store',
@@ -195,6 +195,10 @@ if not options.blind:
       g_limit.GetXaxis().SetRangeUser(0.1, 1.5)
       g_limit.SetMinimum(5e-6) #0.005
       g_limit.SetMaximum(0.02)
+    else:
+      g_limit.GetXaxis().SetRangeUser(0.8, 3.0)
+      g_limit.SetMinimum(5e-5) #0.005
+      g_limit.SetMaximum(0.2)
     if ("Prime" in cstr) :
       g_limit.GetXaxis().SetRangeUser(0.8, 3.0)
       g_limit.SetMinimum(5e-6) #0.005
@@ -203,10 +207,6 @@ if not options.blind:
       g_limit.GetXaxis().SetRangeUser(3.0, 7.0)
       g_limit.SetMinimum(5e-7) #0.005
       g_limit.SetMaximum(0.002)
-    else:
-      g_limit.GetXaxis().SetRangeUser(0.8, 3.0)
-      g_limit.SetMinimum(5e-5) #0.005
-      g_limit.SetMaximum(0.2)
 else:
     print('Blinded')
     g_mclimit.GetXaxis().SetTitle("m("+options.particle+") [TeV]")  # NOT GENERIC
@@ -215,6 +215,10 @@ else:
       g_mclimit.GetXaxis().SetRangeUser(0.1, 1.5)
       g_mclimit.SetMinimum(5e-6) #0.005
       g_mclimit.SetMaximum(0.02)
+    else:
+      g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
+      g_mclimit.SetMinimum(5e-5) #0.005
+      g_mclimit.SetMaximum(0.2)
     if ("Prime" in cstr) :
       g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
       g_mclimit.SetMinimum(5e-6) #0.005
@@ -223,10 +227,6 @@ else:
       g_mclimit.GetXaxis().SetRangeUser(3.0, 7.0)
       g_mclimit.SetMinimum(5e-7) #0.005
       g_mclimit.SetMaximum(0.002)
-    else:
-      g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
-      g_mclimit.SetMinimum(5e-5) #0.005
-      g_mclimit.SetMaximum(0.2)
 # Expected
 # g_mclimit = TGraph(len(x_mass), x_mass, y_mclimit)
 # g_mclimit.SetTitle("")
@@ -378,7 +378,7 @@ if options.drawIntersection:
     expLineLabel.AddText(str(round(expectedMassLimit,2))+' TeV')
     expLineLabel.Draw()
 
-print('Expected mass limit: '+str(round(expectedMassLimit,3)) + ' +'+str(round(upLimit-expectedMassLimit,3)) +' -'+str(round(expectedMassLimit-lowLimit,3)) + ' TeV')
+print('Expected mass limit: '+str(round(expectedMassLimit,3)) + '\\twoErr{'+str(round(upLimit-expectedMassLimit,3)) +'}{'+str(round(expectedMassLimit-lowLimit,3)) + '} \\TeV')
 print('Expected xsection limit at excluded mass: '+str(round(expectedCrossLimit,6)) + ' +'+str(round(expectedCrossLimit-upXsectionLim,6)) +' -'+str(round(lowXsectionLim-expectedCrossLimit,6)) + ' pb') 
 print('Expected xsection limit @1800GeV: '+str(round(expectedCrossLimitAt1800,6)) + ' +'+str(round(expectedCrossLimitAt1800-upXsectionLimAt1800,6)) +' -'+str(round(lowXsectionLimAt1800-expectedCrossLimitAt1800,6)) + ' pb') 
 print('Theory xsection limit @1800GeV: '+str(round(graphWP.Eval(1.8),6)) + ' pb')
@@ -394,7 +394,7 @@ if not options.blind:
 
 # Legend and draw
 gStyle.SetLegendFont(62)
-legend = TLegend(0.5, 0.6, 0.92, 0.9, '')
+legend = TLegend(0.5, 0.6, 0.92, 0.89, '')
 legend.SetHeader("95% CL Upper Limits")
 if not options.blind:
     legend.AddEntry(g_limit, "Observed Limit", "l")
@@ -472,7 +472,8 @@ if not options.blind:
 # TPT.Draw()
 climits.RedrawAxis()
 
-CMS_lumi.extraText = 'Internal'
+#CMS_lumi.extraText = 'Preliminary'
+CMS_lumi.extraText = ''
 CMS_lumi.lumiTextSize     = 0.5
 
 CMS_lumi.cmsTextSize      = 0.8

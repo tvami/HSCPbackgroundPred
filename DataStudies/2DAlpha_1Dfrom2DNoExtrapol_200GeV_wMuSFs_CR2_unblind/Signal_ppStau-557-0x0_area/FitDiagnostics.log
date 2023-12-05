@@ -16,8 +16,8 @@ Running Minos for POI
 >> Matrix inverted
 
  --- FitDiagnostics ---
-Best fit r: 5.22855e-07  -5.22855e-07/+30  (68% CL)
-Done in 0.00 min (cpu), 0.00 min (real)
+Best fit r: 23.5229  -23.5229/+6.47711  (68% CL)
+Done in 0.00 min (cpu), 0.01 min (real)
 Printing Message Summary From ... combine_logger.out
 ----------------------------------------------
 Messages of type INFO : 19

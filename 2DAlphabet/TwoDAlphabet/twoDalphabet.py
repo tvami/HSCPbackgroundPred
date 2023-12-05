@@ -901,6 +901,20 @@ def _runLimit(blindData, verbosity, setParams, card_or_w='card.txt', condor=Fals
         param_options = '--setParameters '+','.join('%s=%s'%(k,v) for k,v in setParams.items())
 
     limit_cmd = 'combine -M AsymptoticLimits -d {card_or_w} --saveWorkspace --cminDefaultMinimizerStrategy 0 {param_opt} {blind_opt} -v {verb}' 
+    #limit_cmd = 'combine -M HybridNew  -d {card_or_w} --saveWorkspace --LHCmode LHC-limits {param_opt} {blind_opt} -v {verb}' 
+    '''
+combine -M HybridNew  -d card.txt --saveWorkspace --LHCmode LHC-limits -v 1 --rRelAcc 0.000005 --rAbsAcc 0.000005 --adaptiveToys 1
+
+combine -M HybridNew -d card.txt --saveWorkspace --LHCmode LHC-limits -v 1 --expectedFromGrid=0.025 --rRelAcc 0.000005 --rAbsAcc 0.000005  --adaptiveToys 1 --setParameterRanges r=0.0001,0.1
+
+combine -M HybridNew -d card.txt --saveWorkspace --LHCmode LHC-limits -v 1 --expectedFromGrid=0.16 --rRelAcc 0.000005 --rAbsAcc 0.000005 --adaptiveToys 1 --setParameterRanges r=0.0001,0.1
+
+combine -M HybridNew -d card.txt --saveWorkspace --LHCmode LHC-limits -v 1 --expectedFromGrid=0.5 --rRelAcc 0.000005 --rAbsAcc 0.000005 --adaptiveToys 1 --setParameterRanges r=0.0001,0.1
+
+combine -M HybridNew -d card.txt --saveWorkspace --LHCmode LHC-limits -v 1 --expectedFromGrid=0.84 --rRelAcc 0.000005 --rAbsAcc 0.000005 --adaptiveToys 1 --setParameterRanges r=0.0001,0.1
+
+combine -M HybridNew -d card.txt --saveWorkspace --LHCmode LHC-limits -v 1 --expectedFromGrid=0.975 --rRelAcc 0.000005 --rAbsAcc 0.000005  --adaptiveToys 1 --setParameterRanges r=0.0001,0.1
+'''
     limit_cmd = limit_cmd.format(
         card_or_w=card_or_w,
         blind_opt='--run=blind' if blindData else '',

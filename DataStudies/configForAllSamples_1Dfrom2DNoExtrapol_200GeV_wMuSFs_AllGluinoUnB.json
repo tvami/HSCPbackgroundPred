@@ -126,7 +126,7 @@
     "OPTIONS": {
         "blindedFit": [],
         "blindedPlots": [],
-        "plotTemplateComparisons": true,
+        "plotTemplateComparisonsV": true,
         "plotEvtsPerUnitVolt" : true
     }
 }

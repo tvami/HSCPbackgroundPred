@@ -293,6 +293,7 @@ class Plotter(object):
                         slice_str = '%s < %s < %s %s'%slice_edges
                         #slice_str = '50 < p_{T} < 55 GeV'
                         #slice_str = 'p_{T} > 55 GeV'
+                        #slice_str = '55 < p_{T} < 200 GeV'
                         if (slice_edges[2] == 4025) : slice_str = str(slice_edges[1]) + " > " + str(slice_edges[0]) + " GeV"
                         if (region == "pass") :
                             slice_str += ", F^{Pixels}_{i} > 0.9"
@@ -564,7 +565,7 @@ def make_pad_1D(outname, data, bkgs=[], signals=[], title='', subtitle='',
         lumiE.SetTextFont(42)
         lumiE.SetTextAlign(31) 
         lumiE.SetTextSize(0.7*0.1)
-        lumiE.DrawLatex(1-0.05,1-0.1+0.2*0.1,"137 fb^{-1} (13 TeV)")
+        lumiE.DrawLatex(1-0.05,1-0.1+0.2*0.1,"101 fb^{-1} (13 TeV)")
 
     pad = _make_pad_gen(outname)
 
@@ -701,7 +702,7 @@ def make_pad_1D(outname, data, bkgs=[], signals=[], title='', subtitle='',
         #texInternal = ROOT.TLatex(0.27,0.96,"Simulation"); # for square plots
         #texInternal = ROOT.TLatex(0.28,0.94,"Work in Progress 2018"); #if there is 10^x
         #texInternal = ROOT.TLatex(0.25,0.92,"Internal");
-        texInternal = ROOT.TLatex(0.25,0.92,"");
+        texInternal = ROOT.TLatex(0.25,0.92,"Preliminary")
         texInternal.SetNDC();
         texInternal.SetTextFont(52);
         texInternal.SetTextSize(0.0485);
@@ -718,6 +719,7 @@ def make_pad_1D(outname, data, bkgs=[], signals=[], title='', subtitle='',
         subtitle_tex.DrawLatex(0.21,0.83,subtitle)
         texCMS.Draw()
         texInternal.Draw()
+        _draw_extralumi_tex()
 
         sub_pad.cd()
         pull = _make_pull_plot(data,totalBkg)

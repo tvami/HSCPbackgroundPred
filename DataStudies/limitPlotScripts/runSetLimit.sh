@@ -1,4 +1,8 @@
 python set_limit.py -s signals_ZPrimePsi_TauAt600.txt -m ZPrime -p "Z'" -x "pp#rightarrow Z_{#psi}' #rightarrow #tau'^{2e}#tau'^{2e}"
 python set_limit.py -s signals_ZPrimeSSM_TauAt600.txt -m ZPrime -p "Z'" -x "pp#rightarrow Z_{SSM}' #rightarrow #tau'^{2e}#tau'^{2e}"
-
-
+python set_limit.py -s signals_gluino_v1.txt -p "#tilde{g}" -x "pp#rightarrow#tilde{g}#tilde{g}" -m HSCPgluino
+python set_limit.py -s signals_ppStau.txt -p "#tilde{#tau}" -x "pp#rightarrow#tilde{#tau}#tilde{#tau}" -m ppStau
+python set_limit.py -s signals_gmsbStau.txt -p '#tilde{#tau}' -x 'pp#rightarrow#tilde{#tau}#tilde{#tau} (GMSB)' -m gmsbStau
+python set_limit.py -s signals_stop_v1.txt -p '#tilde{t}' -x 'pp#rightarrow#tilde{t}#tilde{t}' -m HSCPstop
+python set_limit.py -s signals_tauPrime1e_v2.txt -p "#tau'^{1e}" -x "pp#rightarrow#tau'^{1e}#tau'^{1e}" -m HSCPTauPrime1e
+python set_limit.py -s signals_tauPrime2e_v2.txt -p "#tau'^{2e}" -x "pp#rightarrow#tau'^{2e}#tau'^{2e}" -m HSCPTauPrime2e
