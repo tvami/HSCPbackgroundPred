@@ -23,10 +23,10 @@ parser.add_option('-s', '--signals', metavar='FILE', type='string', action='stor
                 default   =   'bstar_signalsLH.txt',
                 dest      =   'signals',
                 help      =   'Text file containing the signal names and their corresponding cross sections')
-parser.add_option('-P', '--plotOnly', action="store_true",
+parser.add_option('-T', '--hideTheory', action="store_true",
                 default   =   False,
-                dest      =   'plotOnly',
-                help      =   'Only plots if True')
+                dest      =   'hideTheory',
+                help      =   'Dont show the theory curve')
 parser.add_option('--unblind', action="store_false",
                 default   =   True,
                 dest      =   'blind',
@@ -36,7 +36,7 @@ parser.add_option('--drawIntersection', action="store_true",
                 dest      =   'drawIntersection',
                 help      =   'Draw intersection values')
 parser.add_option('-l', '--lumi', metavar='F', type='string', action='store',
-                default       =       '101', #137.44
+                default       =       '100', #137.44
                 dest          =       'lumi',
                 help          =       'Luminosity option')
 parser.add_option('-m', '--mod', metavar='F', type='string', action='store',
@@ -87,6 +87,8 @@ y_mclimitlow68 = array('d')
 y_mclimitup68 = array('d')
 y_mclimitlow95 = array('d')
 y_mclimitup95 = array('d')
+
+ZPrimeYMax = 0.4
 
 tdrstyle.setTDRStyle()
 
@@ -150,11 +152,6 @@ climits.SetRightMargin(0.05)
 cstr = options.mod
 
 gStyle.SetTextFont(42)
-TPT = ROOT.TPaveText(.20, .22, .5, .27,"NDC")
-TPT.AddText("All-Hadronic Channel") # NOT GENERIC
-TPT.SetFillColor(0)
-TPT.SetBorderSize(0)
-TPT.SetTextAlign(12)
 
 # Expected
 if (debug > 0) : 
@@ -195,10 +192,6 @@ if not options.blind:
       g_limit.GetXaxis().SetRangeUser(0.1, 1.5)
       g_limit.SetMinimum(5e-6) #0.005
       g_limit.SetMaximum(0.02)
-    else:
-      g_limit.GetXaxis().SetRangeUser(0.8, 3.0)
-      g_limit.SetMinimum(5e-5) #0.005
-      g_limit.SetMaximum(0.2)
     if ("Prime" in cstr) :
       g_limit.GetXaxis().SetRangeUser(0.8, 3.0)
       g_limit.SetMinimum(5e-6) #0.005
@@ -206,19 +199,19 @@ if not options.blind:
     if ("ZPrime" in cstr) :
       g_limit.GetXaxis().SetRangeUser(3.0, 7.0)
       g_limit.SetMinimum(5e-7) #0.005
-      g_limit.SetMaximum(0.002)
+      g_limit.SetMaximum(ZPrimeYMax)
+    else:
+      g_limit.GetXaxis().SetRangeUser(0.8, 3.0)
+      g_limit.SetMinimum(5e-5) #0.005
+      g_limit.SetMaximum(0.2)
 else:
     print('Blinded')
-    g_mclimit.GetXaxis().SetTitle("m("+options.particle+") [TeV]")  # NOT GENERIC
-    g_mclimit.GetYaxis().SetTitle("Cross Section [pb]") # NOT GENERIC
+    g_mclimit.GetXaxis().SetTitle("m("+options.particle+") [TeV]") 
+    g_mclimit.GetYaxis().SetTitle("Cross Section [pb]")
     if ("tau" in cstr) :
       g_mclimit.GetXaxis().SetRangeUser(0.1, 1.5)
       g_mclimit.SetMinimum(5e-6) #0.005
       g_mclimit.SetMaximum(0.02)
-    else:
-      g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
-      g_mclimit.SetMinimum(5e-5) #0.005
-      g_mclimit.SetMaximum(0.2)
     if ("Prime" in cstr) :
       g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
       g_mclimit.SetMinimum(5e-6) #0.005
@@ -226,7 +219,11 @@ else:
     if ("ZPrime" in cstr) :
       g_mclimit.GetXaxis().SetRangeUser(3.0, 7.0)
       g_mclimit.SetMinimum(5e-7) #0.005
-      g_mclimit.SetMaximum(0.002)
+      g_mclimit.SetMaximum(ZPrimeYMax)
+    else:
+      g_mclimit.GetXaxis().SetRangeUser(0.8, 3.0)
+      g_mclimit.SetMinimum(5e-5) #0.005
+      g_mclimit.SetMaximum(0.2)
 # Expected
 # g_mclimit = TGraph(len(x_mass), x_mass, y_mclimit)
 # g_mclimit.SetTitle("")
@@ -325,8 +322,8 @@ g_error.SetFillColor( kGreen+1)
 g_error.SetLineColor(0)
 
 if not options.blind:
-    g_limit.GetXaxis().SetTitle("m("+options.particle+") [TeV]")  # NOT GENERIC
-    g_limit.GetYaxis().SetTitle("Cross Section [pb]") # NOT GENERIC
+    g_limit.GetXaxis().SetTitle("m("+options.particle+") [TeV]") 
+    g_limit.GetYaxis().SetTitle("Cross Section [pb]")
     g_limit.GetXaxis().SetTitleSize(0.055)
     g_limit.GetYaxis().SetTitleSize(0.05)
     g_limit.Draw('ap')
@@ -334,28 +331,26 @@ if not options.blind:
     g_error.Draw("lf")
     g_mclimit.Draw("l")
     g_limit.Draw("lp")
-    graphWP.Draw("l")
     g_limit.GetYaxis().SetTitleOffset(1.5)
     g_limit.GetXaxis().SetTitleOffset(1.25)
 
 else:
-    g_mclimit.GetXaxis().SetTitle("m("+options.particle+") [TeV]")  # NOT GENERIC
-    g_mclimit.GetYaxis().SetTitle("Cross Section [pb]") # NOT GENERIC
+    g_mclimit.GetXaxis().SetTitle("m("+options.particle+") [TeV]") 
+    g_mclimit.GetYaxis().SetTitle("Cross Section [pb]")
     g_mclimit.GetXaxis().SetTitleSize(0.055)
     g_mclimit.GetYaxis().SetTitleSize(0.05)
     g_mclimit.Draw("al")
     g_error95.Draw("lf")
     g_error.Draw("lf")
     g_mclimit.Draw("l")
-    graphWP.Draw("l")
     g_mclimit.GetYaxis().SetTitleOffset(1.5)
     g_mclimit.GetXaxis().SetTitleOffset(1.25)
 
-graphWPdown.Draw("l")
-graphWPup.Draw("l")
-
-#graphWPFixedAt1800.SetMarkerStyle(29)
-#graphWPFixedAt1800.Draw("samep")
+#Draw theory lines
+if not options.hideTheory :
+    graphWP.Draw("l")
+    graphWPdown.Draw("l")
+    graphWPup.Draw("l")
 
 # Finally calculate the intercept
 expectedMassLimit,expectedCrossLimit = Inter(g_mclimit,graphWP) #if len(Inter(g_mclimit,graphWP)) > 0 else -1.0
@@ -370,19 +365,11 @@ a,lowXsectionLimAt1800 = Inter(g_mcplus,graphWPFixedAt1800) if len(Inter(g_mcplu
 expLine = TLine(expectedMassLimit,g_mclimit.GetMinimum(),expectedMassLimit,expectedCrossLimit)
 expLine.SetLineStyle(2)
 
-#expLine.Draw()
-
-if options.drawIntersection:
-    expLineLabel = TPaveText(expectedMassLimit-300, expectedCrossLimit*2, expectedMassLimit+300, expectedCrossLimit*15, "NB")
-    expLineLabel.SetFillColorAlpha(kWhite,0)
-    expLineLabel.AddText(str(round(expectedMassLimit,2))+' TeV')
-    expLineLabel.Draw()
-
-print('Expected mass limit: '+str(round(expectedMassLimit,3)) + '\\twoErr{'+str(round(upLimit-expectedMassLimit,3)) +'}{'+str(round(expectedMassLimit-lowLimit,3)) + '} \\TeV')
+## PRINT OUTS
+print('Expected mass limit: '+str(round(expectedMassLimit,3)) + ' +'+str(round(upLimit-expectedMassLimit,3)) +' -'+str(round(expectedMassLimit-lowLimit,3)) + ' TeV')
 print('Expected xsection limit at excluded mass: '+str(round(expectedCrossLimit,6)) + ' +'+str(round(expectedCrossLimit-upXsectionLim,6)) +' -'+str(round(lowXsectionLim-expectedCrossLimit,6)) + ' pb') 
 print('Expected xsection limit @1800GeV: '+str(round(expectedCrossLimitAt1800,6)) + ' +'+str(round(expectedCrossLimitAt1800-upXsectionLimAt1800,6)) +' -'+str(round(lowXsectionLimAt1800-expectedCrossLimitAt1800,6)) + ' pb') 
 print('Theory xsection limit @1800GeV: '+str(round(graphWP.Eval(1.8),6)) + ' pb')
-
 
 if not options.blind:
     obsMassLimit,obsCrossLimit = Inter(g_limit,graphWP) if len(Inter(g_limit,graphWP)) > 0 else -1.0
@@ -390,18 +377,25 @@ if not options.blind:
 
     obsLine = TLine(obsMassLimit,g_mclimit.GetMinimum(),obsMassLimit,obsCrossLimit)
     obsLine.SetLineStyle(2)
-    obsLine.Draw()
+    if options.drawIntersection :
+        obsLine.Draw()
 
 # Legend and draw
 gStyle.SetLegendFont(62)
-legend = TLegend(0.5, 0.6, 0.92, 0.89, '')
+if ("ZPrime" in cstr) :
+    legend = TLegend(0.18, 0.6, 0.55, 0.9, '')
+else:
+    legend = TLegend(0.5, 0.6, 0.92, 0.9, '')
 legend.SetHeader("95% CL Upper Limits")
 if not options.blind:
-    legend.AddEntry(g_limit, "Observed Limit", "l")
+   legend.AddEntry(g_limit, "Observed Limit", "l")
 legend.AddEntry(g_error95, "Expected Limit #pm1#sigma, #pm2#sigma","f")
 # legend.AddEntry(g_error95, "#pm1#sigma, 2#sigma", "f")
 # legend.AddEntry(g_error95, "#pm2#sigma", "f")
-legend.AddEntry(graphWP, "#sigma^{"+options.xsorder+"}_{th}("+options.process+")#pm1#sigma", "l")   # NOT GENERIC
+if not options.hideTheory :
+    legend.AddEntry(graphWP, "#sigma^{"+options.xsorder+"}_{th}("+options.process+")#pm1#sigma", "l")  
+else :
+    legend.AddEntry(None,"","")
 
 legend.SetBorderSize(0)
 legend.SetFillStyle(0)
@@ -409,20 +403,31 @@ legend.SetLineColor(0)
 
 legend.Draw("same")
 
+
+if ("ZPrime" in cstr) :
+    legendDecoratorXLimits = (0.195, 0.258)
+else:
+    legendDecoratorXLimits = (0.517, 0.588)
+
 # this is to fake the green+yellow band in the legend
 tmpcolor = g_error.GetFillColor()
 tmpline = ROOT.TLine()
 tmpline.SetLineColor(tmpcolor)
-tmLineWidth = 22  if options.blind else 15
+if options.hideTheory :
+    tmLineWidth = 22  if options.blind else 15
+    tmpyposition = 0.75 if options.blind else 0.713
+else :
+    tmLineWidth = 22  if options.blind else 15
+    tmpyposition = 0.75 if options.blind else 0.713
 tmpline.SetLineWidth(tmLineWidth)
-tmpyposition = 0.75 if options.blind else 0.713
-tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
+tmpline.DrawLineNDC(legendDecoratorXLimits[0],tmpyposition,legendDecoratorXLimits[1],tmpyposition)
+
 
 # legend line for median point
 tmpline.SetLineColor(1)
 tmpline.SetLineWidth(3)
 tmpline.SetLineStyle(2)
-tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
+tmpline.DrawLineNDC(legendDecoratorXLimits[0],tmpyposition,legendDecoratorXLimits[1],tmpyposition)
 
 
 # legend lines for theory
@@ -430,21 +435,24 @@ tmpyposition = 0.66 if options.blind else 0.65
 tmpline.SetLineColor(4)
 tmpline.SetLineStyle(2)
 tmpline.SetLineWidth(2)
-tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
+if not options.hideTheory :
+    tmpline.DrawLineNDC(legendDecoratorXLimits[0],tmpyposition,legendDecoratorXLimits[1],tmpyposition)
 
 tmpyposition = 0.64 if options.blind else 0.625
 tmpline.SetLineColor(4)
 tmpline.SetLineStyle(2)
 tmpline.SetLineWidth(2)
-tmpline.DrawLineNDC(0.517,tmpyposition,0.588,tmpyposition)
+if not options.hideTheory :
+    tmpline.DrawLineNDC(legendDecoratorXLimits[0],tmpyposition,legendDecoratorXLimits[1],tmpyposition)
 
 
-# intersection line
+###### intersection line
 tmpline.SetLineColor(1)
 tmpline.SetLineWidth(1)
 tmpline.SetLineStyle(2)
 tmpline.SetLineColor(ROOT.kGray+2)
-tmpline.DrawLine(expectedMassLimit,0,expectedMassLimit,expectedCrossLimit)
+if options.drawIntersection:
+    tmpline.DrawLine(expectedMassLimit,0,expectedMassLimit,expectedCrossLimit)
 
 text1 = ROOT.TLatex()
 # text1.SetNDC()
@@ -452,7 +460,8 @@ text1.SetTextFont(43)
 text1.SetTextSize(14)
 text1.SetTextColor(ROOT.kGray+2)
 text1.SetTextAngle(90)
-text1.DrawLatex(expectedMassLimit-0.005,0, "  %0.2f TeV"%(expectedMassLimit))
+if options.drawIntersection:
+    text1.DrawLatex(expectedMassLimit-0.005,0, "   %0.2f TeV"%(expectedMassLimit))
 
 text2 = ROOT.TLatex()
 # text2.SetNDC()
@@ -460,25 +469,118 @@ text2.SetTextFont(43)
 text2.SetTextSize(14)
 text2.SetTextColor(1)
 text2.SetTextAngle(90)
-if not options.blind:
-    text2.DrawLatex(obsMassLimit-0.005,0, "  %0.2f TeV"%(obsMassLimit))
+if not options.blind and options.drawIntersection:
+    text2.DrawLatex(obsMassLimit-0.005,0, "   %0.2f TeV"%(obsMassLimit))
+
+
+
+
+#############################
+
+
+
+# ZPrime pheno best fit line
+if ("ZPrime" in cstr) :
+    tmpline.SetLineColor(1)
+    tmpline.SetLineWidth(1)
+    tmpline.SetLineStyle(3)
+    tmpline.SetLineColor(ROOT.kGray+2)
+    tmpline.DrawLine(5.2,0,5.2, ZPrimeYMax )
+
+    text1.SetTextAngle(0)
+    # text1.DrawLatex(5.2-0.005,1.4e-4, "Best fit from 10.1007/JHEP08(2022)012")
+    text1.SetTextAlign(13)
+    text1.DrawLatex(5.2+0.03 ,ZPrimeYMax*0.9, "Best fit from ")
+    text1.DrawLatex(5.2+0.03 ,ZPrimeYMax*0.6, "Giudice, McCullough, and Teresi (2022)")
+
+
+    # All numbers from https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2018-42/
+    # XS numbers from table 5:
+    # Acceptance numbers are from Aux table 05: https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2018-42/tabaux_05.pdf
+    #    For masses > 400 GeV, the acc is >90%
+    # Efficiency numbers are from Aux table 13: https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/SUSY-2018-42/tabaux_13.pdf
+    #    Range from 0.001 @ 300 GeV to 0.042 @ 1 TeV
+
+    ATLASLumi = 139000
+    ATLASATimesE = 0.01 #assumed
+    ATLASExpectedXS = 3.2/ATLASLumi/ATLASATimesE # (exp S95 for most significant excess region) / (atlas lumi) / (assumed 1% A*e)
+    ATLASObservedXS = 11.9/ATLASLumi/ATLASATimesE # (exp S95 for most significant excess region) / (atlas lumi) / (assumed 1% A*e)
+
+    markerExp = ROOT.TGraphAsymmErrors()
+    markerExp.SetPoint(0,5.2,
+        ATLASExpectedXS
+        )
+    markerExp.SetPointError(0,
+        0.045,0.045, #x unc
+        0.1/139000/0.01, #negative unc
+        1.1/139000/0.01, #positive unc
+        )
+    #markerExp.SetMarkerStyle(72)
+    #markerExp.SetMarkerSize(1.5)
+    #markerExp.SetMarkerColor(ROOT.kBlack)
+    #markerExp.SetLineWidth(2)
+    markerExp.SetFillColor(ROOT.kGray)
+    markerExp.Draw("P2")
+    markerExpLine = ROOT.TLine()
+    markerExpLine.SetLineColor(1)
+    markerExpLine.SetLineWidth(1)
+    markerExpLine.SetLineStyle(1)
+    markerExpLine.DrawLine(5.2-0.045,ATLASExpectedXS,5.2+0.045, ATLASExpectedXS )
+
+    markerObs = ROOT.TGraph()
+    markerObs.SetPoint(0,5.2,
+        ATLASObservedXS
+        )
+    markerObs.SetMarkerStyle(5)
+    markerObs.SetMarkerSize(1.5)
+    markerObs.SetMarkerColor(ROOT.kBlack)
+    markerObs.Draw("P")
+
+
+
+    # ATLAS MCP: https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/EXOT-2018-54/fig_08.png
+    # @600 GeV, their limit from DY+PF production is 0.0001372 pb
+
+    # markerMCPObs = ROOT.TGraph()
+    # markerMCPObs.SetPoint(0,5.2,
+    #     0.0001372
+    #     )
+    # markerMCPObs.SetMarkerStyle(22)
+    # markerMCPObs.SetMarkerSize(1.5)
+    # markerMCPObs.SetMarkerColor(ROOT.kBlack)
+    # markerMCPObs.Draw("P")
+
+
+    textATLAS = ROOT.TLatex()
+    # textATLAS.SetNDC()
+    textATLAS.SetTextFont(43)
+    textATLAS.SetTextSize(14)
+    textATLAS.SetTextAlign(12)
+    textATLAS.SetTextColor(ROOT.kGray+2)
+    # textATLAS.SetTextAngle(90)
+    textATLAS.DrawLatex(5.2+0.1,ATLASObservedXS, "ATLAS Observed Limit (w/ #Alpha #times #varepsilon = 1%)")
+    textATLAS.DrawLatex(5.2+0.1,ATLASExpectedXS, "ATLAS Expected Limit #pm1#sigma")
+
+    # textATLAS.DrawLatex()
 
 
 # text1 = ROOT.TLatex()
 # text1.SetNDC()
 # text1.SetTextFont(42)
-# text1.DrawLatex(0.17,0.88, "#scale[1.0]{CMS, L = "+options.lumi+" fb^{-1} at  #sqrt{s} = 13 TeV}") # NOT GENERIC
+# text1.DrawLatex(0.17,0.88, "#scale[1.0]{CMS, L = "+options.lumi+" fb^{-1} at  #sqrt{s} = 13 TeV}")
 
 # TPT.Draw()
 climits.RedrawAxis()
 
-#CMS_lumi.extraText = 'Preliminary'
-CMS_lumi.extraText = ''
+if not options.blind :
+    CMS_lumi.extraText = ' '
+else:
+    CMS_lumi.extraText = 'Internal'
+
 CMS_lumi.lumiTextSize     = 0.5
 
 CMS_lumi.cmsTextSize      = 0.8
 CMS_lumi.CMS_lumi(climits, 1, 11)
-
-climits.SaveAs("limits_combine_"+options.lumi.replace('.','p')+"fb_"+options.signals[options.signals.find('/')+1:options.signals.find('.')]+'_'+cstr+".pdf")
+climits.SaveAs("limits_combine_"+options.lumi.replace('.','p')+"fb_"+options.signals[options.signals.find('/')+1:options.signals.find('.')]+'_'+cstr+"_NoTheo.pdf")
 
 
