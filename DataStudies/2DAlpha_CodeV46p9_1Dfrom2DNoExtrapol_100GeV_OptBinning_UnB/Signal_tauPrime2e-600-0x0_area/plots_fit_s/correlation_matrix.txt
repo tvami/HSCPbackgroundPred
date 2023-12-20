@@ -1,0 +1,15 @@
+Background_rpf_0x0_par0:r = 7.54883555503e-05
+Background_rpf_0x0_par0:systOnMuID = -6.43861670775e-05
+Background_rpf_0x0_par0:systOnMuReco = 2.32601061327e-10
+Background_rpf_0x0_par0:systOnMuTrigger = -5.07747794952e-05
+Background_rpf_0x0_par0:systOnPt = -9.91699656883e-20
+r:systOnMuID = -0.852928458255
+r:systOnMuReco = 3.08128398919e-06
+r:systOnMuTrigger = -0.67261737423
+r:systOnPt = 4.73101858851e-22
+systOnMuID:systOnMuReco = -2.62811480234e-06
+systOnMuID:systOnPt = -4.03521970938e-22
+systOnMuTrigger:systOnMuID = 0.573694499998
+systOnMuTrigger:systOnMuReco = -2.07252514607e-06
+systOnMuTrigger:systOnPt = -3.18216530044e-22
+systOnPt:systOnMuReco = 1.45776118293e-27

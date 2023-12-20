@@ -1,0 +1,205 @@
+{
+  "POIs": [
+    {
+      "fit": [
+        -0.007630411069840193,
+        0.04339144378900528,
+        0.14013536274433136
+      ],
+      "name": "r"
+    }
+  ],
+  "method": "default",
+  "params": [
+    {
+      "groups": [],
+      "name": "Background_fail_LOW_bin_1-1",
+      "prefit": [
+        219243.0,
+        219243.0,
+        219243.0
+      ],
+      "type": "Unconstrained"
+    },
+    {
+      "groups": [],
+      "name": "Background_fail_LOW_bin_2-1",
+      "prefit": [
+        20514.0,
+        20514.0,
+        20514.0
+      ],
+      "type": "Unconstrained"
+    },
+    {
+      "groups": [],
+      "name": "Background_fail_LOW_bin_3-1",
+      "prefit": [
+        3530.0,
+        3530.0,
+        3530.0
+      ],
+      "type": "Unconstrained"
+    },
+    {
+      "groups": [],
+      "name": "Background_fail_LOW_bin_4-1",
+      "prefit": [
+        867.0,
+        867.0,
+        867.0
+      ],
+      "type": "Unconstrained"
+    },
+    {
+      "groups": [],
+      "name": "Background_fail_LOW_bin_5-1",
+      "prefit": [
+        235.0,
+        235.0,
+        235.0
+      ],
+      "type": "Unconstrained"
+    },
+    {
+      "groups": [],
+      "name": "Background_fail_SIG_bin_1-1",
+      "prefit": [
+        81.0,
+        81.0,
+        81.0
+      ],
+      "type": "Unconstrained"
+    },
+    {
+      "groups": [],
+      "name": "Background_fail_SIG_bin_2-1",
+      "prefit": [
+        17.0,
+        17.0,
+        17.0
+      ],
+      "type": "Unconstrained"
+    },
+    {
+      "groups": [],
+      "name": "Background_fail_SIG_bin_3-1",
+      "prefit": [
+        10.0,
+        10.0,
+        10.0
+      ],
+      "type": "Unconstrained"
+    },
+    {
+      "groups": [],
+      "name": "Background_fail_SIG_bin_4-1",
+      "prefit": [
+        5.0,
+        5.0,
+        5.0
+      ],
+      "type": "Unconstrained"
+    },
+    {
+      "groups": [],
+      "name": "Background_rpf_0x0_par0",
+      "prefit": [
+        0.1,
+        0.1,
+        0.1
+      ],
+      "type": "Unconstrained"
+    },
+    {
+      "groups": [],
+      "name": "lumi",
+      "prefit": [
+        -0.9999999999999999,
+        0.0,
+        0.9999999999999999
+      ],
+      "type": "Gaussian"
+    },
+    {
+      "groups": [],
+      "name": "pileup",
+      "prefit": [
+        -0.9999999999999999,
+        0.0,
+        0.9999999999999999
+      ],
+      "type": "Gaussian"
+    },
+    {
+      "groups": [],
+      "name": "systOnF",
+      "prefit": [
+        -0.9999999999999999,
+        0.0,
+        0.9999999999999999
+      ],
+      "type": "Gaussian"
+    },
+    {
+      "groups": [],
+      "name": "systOnG",
+      "prefit": [
+        -0.9999999999999999,
+        0.0,
+        0.9999999999999999
+      ],
+      "type": "Gaussian"
+    },
+    {
+      "groups": [],
+      "name": "systOnMuID",
+      "prefit": [
+        -0.9999999999999999,
+        0.0,
+        0.9999999999999999
+      ],
+      "type": "Gaussian"
+    },
+    {
+      "groups": [],
+      "name": "systOnMuReco",
+      "prefit": [
+        -0.9999999999999999,
+        0.0,
+        0.9999999999999999
+      ],
+      "type": "Gaussian"
+    },
+    {
+      "groups": [],
+      "name": "systOnMuTrigger",
+      "prefit": [
+        -0.9999999999999999,
+        0.0,
+        0.9999999999999999
+      ],
+      "type": "Gaussian"
+    },
+    {
+      "groups": [],
+      "name": "systOnPt",
+      "prefit": [
+        -0.9999999999999999,
+        0.0,
+        0.9999999999999999
+      ],
+      "type": "Gaussian"
+    },
+    {
+      "groups": [],
+      "name": "systOnTrigger",
+      "prefit": [
+        -0.9999999999999999,
+        0.0,
+        0.9999999999999999
+      ],
+      "type": "Gaussian"
+    }
+  ]
+}

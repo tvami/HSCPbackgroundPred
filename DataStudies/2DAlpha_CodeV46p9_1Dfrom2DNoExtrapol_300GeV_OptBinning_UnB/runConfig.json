@@ -1,0 +1,361 @@
+{
+  "BINNING": {
+    "default": {
+      "X": {
+        "BINS": [
+          0.0, 
+          0.05, 
+          0.1, 
+          0.15, 
+          0.2, 
+          0.25, 
+          0.3, 
+          0.35, 
+          1.0
+        ], 
+        "BINSF": [
+          0.0, 
+          0.05, 
+          0.1, 
+          0.15, 
+          0.2, 
+          0.25, 
+          0.3, 
+          0.35, 
+          0.4, 
+          1.0
+        ], 
+        "BINSv1": [
+          0.0, 
+          0.05, 
+          0.1, 
+          0.15, 
+          0.2, 
+          0.25, 
+          0.3, 
+          0.35, 
+          0.4, 
+          0.45, 
+          0.5, 
+          1.0
+        ], 
+        "BINSv2": [
+          0.0, 
+          0.04, 
+          0.08, 
+          0.12, 
+          0.16, 
+          0.2, 
+          0.24, 
+          0.28, 
+          0.32, 
+          1.0
+        ], 
+        "BINSv3": [
+          0.0, 
+          0.05, 
+          0.1, 
+          0.15, 
+          0.2, 
+          0.25, 
+          0.3, 
+          0.35, 
+          0.4, 
+          0.45, 
+          0.5, 
+          0.55, 
+          0.6, 
+          1.0
+        ], 
+        "BINSv4": [
+          0.0, 
+          0.05, 
+          0.1, 
+          0.15, 
+          0.2, 
+          0.25, 
+          0.3, 
+          0.35, 
+          0.4, 
+          0.45, 
+          0.5, 
+          0.55, 
+          0.6, 
+          0.65, 
+          0.7, 
+          0.75, 
+          0.8, 
+          0.85, 
+          0.95, 
+          1.0
+        ], 
+        "MAX": 1.0, 
+        "MIN": 0.0, 
+        "NAME": "Ias", 
+        "NBINSvolt": 25, 
+        "SIGEND": 1.0, 
+        "SIGSTART": 0.25, 
+        "TITLE": "G_{i}^{Strips}"
+      }, 
+      "Y": {
+        "BINSvolt": [
+          0.0, 
+          400.0, 
+          800.0, 
+          4000.0
+        ], 
+        "MAX": 4025.0, 
+        "MIN": 300.0, 
+        "NAME": "pT", 
+        "NBINS": 1, 
+        "SLICESvolt": [
+          400, 
+          800, 
+          1600, 
+          4000
+        ], 
+        "TITLE": "p_{T}", 
+        "TITLEvolt": "F_{i}^{Pixels}"
+      }
+    }
+  }, 
+  "GLOBAL": {
+    "FILE": "HSCP_$process-SR1.root", 
+    "FILE2": "HSCP_$process-SR2.root", 
+    "FILE3": "HSCP_$process-SR3.root", 
+    "HIST": "h$region", 
+    "HIST_DOWN": "h$region_$syst_down", 
+    "HIST_UP": "h$region_$syst_up", 
+    "SIGNAME": [
+      "Signal_gluino-1000", 
+      "Signal_gluino-1400", 
+      "Signal_gluino-1600", 
+      "Signal_gluino-1800", 
+      "Signal_gluino-2000", 
+      "Signal_gluino-2200", 
+      "Signal_gluino-2400", 
+      "Signal_gluino-2600", 
+      "Signal_gluino-800", 
+      "Signal_gluinoCS-1800", 
+      "Signal_gluinoCS-2000", 
+      "Signal_gluinoCS-2200", 
+      "Signal_gluinoCS-2400", 
+      "Signal_gluinoCS-2600", 
+      "Signal_gluinoCS-500", 
+      "Signal_gluinoCS-800", 
+      "Signal_gmsbStau-1029", 
+      "Signal_gmsbStau-1218", 
+      "Signal_gmsbStau-1409", 
+      "Signal_gmsbStau-1599", 
+      "Signal_gmsbStau-200", 
+      "Signal_gmsbStau-247", 
+      "Signal_gmsbStau-308", 
+      "Signal_gmsbStau-432", 
+      "Signal_gmsbStau-557", 
+      "Signal_gmsbStau-651", 
+      "Signal_gmsbStau-745", 
+      "Signal_gmsbStau-871", 
+      "Signal_ppStau-1029", 
+      "Signal_ppStau-1218", 
+      "Signal_ppStau-200", 
+      "Signal_ppStau-247", 
+      "Signal_ppStau-308", 
+      "Signal_ppStau-432", 
+      "Signal_ppStau-557", 
+      "Signal_ppStau-651", 
+      "Signal_ppStau-745", 
+      "Signal_ppStau-871", 
+      "Signal_stop-1000", 
+      "Signal_stop-1200", 
+      "Signal_stop-1400", 
+      "Signal_stop-1600", 
+      "Signal_stop-1800", 
+      "Signal_stop-2000", 
+      "Signal_stop-2200", 
+      "Signal_stop-2400", 
+      "Signal_stop-2600", 
+      "Signal_stop-500", 
+      "Signal_stop-800", 
+      "Signal_stopCS-1000", 
+      "Signal_stopCS-1200", 
+      "Signal_stopCS-1400", 
+      "Signal_stopCS-1600", 
+      "Signal_stopCS-1800", 
+      "Signal_stopCS-2000", 
+      "Signal_stopCS-2200", 
+      "Signal_stopCS-2400", 
+      "Signal_stopCS-2600", 
+      "Signal_stopCS-500", 
+      "Signal_stopCS-800", 
+      "Signal_tauPrime1e-1000", 
+      "Signal_tauPrime1e-1400", 
+      "Signal_tauPrime1e-1800", 
+      "Signal_tauPrime1e-200", 
+      "Signal_tauPrime1e-2200", 
+      "Signal_tauPrime1e-2600", 
+      "Signal_tauPrime1e-400", 
+      "Signal_tauPrime1e-600", 
+      "Signal_tauPrime1e-800", 
+      "Signal_tauPrime2e-200", 
+      "Signal_tauPrime2e-400", 
+      "Signal_tauPrime2e-600", 
+      "Signal_tauPrime2e-800", 
+      "Signal_tauPrime2e-1000", 
+      "Signal_tauPrime2e-1400", 
+      "Signal_tauPrime2e-1800", 
+      "Signal_tauPrime2e-2200", 
+      "Signal_tauPrime2e-2600"
+    ], 
+    "SIGNAME0": [
+      "Signal_gluino-1800"
+    ], 
+    "SIGNAME1": [
+      "Signal_gluino-1000", 
+      "Signal_gluino-1400", 
+      "Signal_gluino-1600", 
+      "Signal_gluino-1800", 
+      "Signal_gluino-2000", 
+      "Signal_gluino-2200", 
+      "Signal_gluino-2400", 
+      "Signal_gluino-2600", 
+      "Signal_gluino-800"
+    ], 
+    "SIGNAME2": [
+      "Signal_gluino-1000", 
+      "Signal_gluino-1400", 
+      "Signal_gluino-1600", 
+      "Signal_gluino-1800", 
+      "Signal_gluino-2000", 
+      "Signal_gluino-2200", 
+      "Signal_gluino-2400", 
+      "Signal_gluino-2600", 
+      "Signal_gluino-800", 
+      "Signal_ppStau-1029", 
+      "Signal_ppStau-1218", 
+      "Signal_ppStau-200", 
+      "Signal_ppStau-247", 
+      "Signal_ppStau-308", 
+      "Signal_ppStau-432", 
+      "Signal_ppStau-557", 
+      "Signal_ppStau-651", 
+      "Signal_ppStau-745", 
+      "Signal_ppStau-871"
+    ], 
+    "path": "./"
+  }, 
+  "NAME": "NotRelevantString", 
+  "OPTIONS": {
+    "blindedFit": [
+      "pass"
+    ], 
+    "blindedPlots": [
+      "pass"
+    ], 
+    "plotEvtsPerUnitVolt": true, 
+    "plotTemplateComparisonsVol": true
+  }, 
+  "PROCESSES": {
+    "SIGNAME": {
+      "COLOR": 2, 
+      "LOC": ".//HSCP_$process-SR1.root:h$region", 
+      "NAME": "SIGNAME", 
+      "SCALE": 1.0, 
+      "SYSTEMATICS": [
+        "lumi", 
+        "pileup", 
+        "systOnF", 
+        "systOnG", 
+        "systOnTrigger", 
+        "systOnPt", 
+        "systOnMuReco", 
+        "systOnMuID", 
+        "systOnMuTrigger"
+      ], 
+      "SYSTEMATICSlumi": [
+        "lumi"
+      ], 
+      "TITLE": "HSCP signal", 
+      "TYPE": "SIGNAL", 
+      "VARIATION": "nominal"
+    }, 
+    "data_obs": {
+      "ALIAS": "Data", 
+      "COLOR": 1, 
+      "LOC": ".//HSCP_$process-SR1.root:h$region", 
+      "NAME": "data_obs", 
+      "SCALE": 1.0, 
+      "SYSTEMATICS": [], 
+      "TITLE": "Data", 
+      "TYPE": "DATA", 
+      "VARIATION": "nominal"
+    }
+  }, 
+  "REGIONS": {
+    "fail": {
+      "BINNING": "default", 
+      "PROCESSES": [
+        "SIGNAME"
+      ]
+    }, 
+    "pass": {
+      "BINNING": "default", 
+      "PROCESSES": [
+        "SIGNAME"
+      ]
+    }
+  }, 
+  "SYSTEMATICS": {
+    "lumi": {
+      "CODE": 0, 
+      "VAL": 1.016
+    }, 
+    "pileup": {
+      "ALIAS": "PUsyst", 
+      "DOWN": ".//HSCP_$process-SR1.root:h$region_$syst_down", 
+      "SIGMA": 1.0, 
+      "UP": ".//HSCP_$process-SR1.root:h$region_$syst_up"
+    }, 
+    "systOnF": {
+      "ALIAS": "Fsyst", 
+      "DOWN": ".//HSCP_$process-SR1.root:h$region_$syst_down", 
+      "SIGMA": 1.0, 
+      "UP": ".//HSCP_$process-SR1.root:h$region_$syst_up"
+    }, 
+    "systOnG": {
+      "ALIAS": "Gsyst", 
+      "DOWN": ".//HSCP_$process-SR1.root:h$region_$syst_down", 
+      "SIGMA": 1.0, 
+      "UP": ".//HSCP_$process-SR1.root:h$region_$syst_up"
+    }, 
+    "systOnMuID": {
+      "ALIAS": "MuonIDSF", 
+      "DOWN": ".//HSCP_$process-SR1.root:h$region_$syst_down", 
+      "SIGMA": 1.0, 
+      "UP": ".//HSCP_$process-SR1.root:h$region_$syst_up"
+    }, 
+    "systOnMuReco": {
+      "ALIAS": "MuonRecoSF", 
+      "DOWN": ".//HSCP_$process-SR1.root:h$region_$syst_down", 
+      "SIGMA": 1.0, 
+      "UP": ".//HSCP_$process-SR1.root:h$region_$syst_up"
+    }, 
+    "systOnMuTrigger": {
+      "ALIAS": "MuonTriggerSF", 
+      "DOWN": ".//HSCP_$process-SR1.root:h$region_$syst_down", 
+      "SIGMA": 1.0, 
+      "UP": ".//HSCP_$process-SR1.root:h$region_$syst_up"
+    }, 
+    "systOnPt": {
+      "ALIAS": "Ptsyst", 
+      "DOWN": ".//HSCP_$process-SR1.root:h$region_$syst_down", 
+      "SIGMA": 1.0, 
+      "UP": ".//HSCP_$process-SR1.root:h$region_$syst_up"
+    }, 
+    "systOnTrigger": {
+      "ALIAS": "Triggersyst", 
+      "DOWN": ".//HSCP_$process-SR1.root:h$region_$syst_down", 
+      "SIGMA": 1.0, 
+      "UP": ".//HSCP_$process-SR1.root:h$region_$syst_up"
+    }
+  }
+}

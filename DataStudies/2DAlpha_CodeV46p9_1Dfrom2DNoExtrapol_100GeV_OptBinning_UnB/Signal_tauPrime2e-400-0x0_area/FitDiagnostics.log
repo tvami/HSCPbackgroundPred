@@ -1,0 +1,108 @@
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+>>> method used is FitDiagnostics
+Warning: Did not find a parameter with name mask_pass_HIGH
+Set Default Value of Parameter r To : 1
+>>> 0 out of 4 channels masked
+
+SimNLL created with 0 channels, 0 generic constraints, 9 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+SimNLL created with 4 channels, 0 generic constraints, 9 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+Running Minos for POI 
+>> Found 22 floating parameters
+>> The following parameters are protected in the event of negative eigenvalues: r
+>> Verifying eigenvalues are all positive (iteration 0)
+Eigenvalue 21 : -0.000393781
+ - -0.998975	r
+ - -0.0428021	systOnG
+ - 0.0142035	systOnTrigger
+ - 0.00367352	lumi
+ - 0.00115713	systOnF
+>> Attempt 0 failed, remove the variable with largest eigenvector component...
+>> Dropping systOnG from the hessian
+>> Verifying eigenvalues are all positive (iteration 1)
+Eigenvalue 20 : -4.17547e-05
+ - -0.999891	r
+ - 0.0142427	systOnTrigger
+ - 0.00368365	lumi
+ - 0.00116032	systOnF
+ - 0.000499473	pileup
+>> Attempt 1 failed, remove the variable with largest eigenvector component...
+>> Dropping systOnTrigger from the hessian
+>> Verifying eigenvalues are all positive (iteration 2)
+Eigenvalue 19 : -2.91079e-06
+ - -0.999992	r
+ - 0.00368477	lumi
+ - 0.00116067	systOnF
+ - 0.000499625	pileup
+ - 0.000225961	Background_fail_SIG_bin_6-1
+>> Attempt 2 failed, remove the variable with largest eigenvector component...
+>> Dropping lumi from the hessian
+>> Verifying eigenvalues are all positive (iteration 3)
+Eigenvalue 18 : -3.11895e-07
+ - -0.999999	r
+ - 0.00116069	systOnF
+ - 0.000499635	pileup
+ - 0.000225965	Background_fail_SIG_bin_6-1
+ - 0.00013901	systOnMuID
+>> Attempt 3 failed, remove the variable with largest eigenvector component...
+>> Dropping systOnF from the hessian
+>> Verifying eigenvalues are all positive (iteration 4)
+Eigenvalue 17 : -5.40291e-08
+ - -1	r
+ - 0.000499636	pileup
+ - 0.000225966	Background_fail_SIG_bin_6-1
+ - 0.00013901	systOnMuID
+ - 9.02487e-05	systOnMuTrigger
+>> Attempt 4 failed, remove the variable with largest eigenvector component...
+>> Dropping pileup from the hessian
+>> Verifying eigenvalues are all positive (iteration 5)
+Eigenvalue 16 : -6.24705e-09
+ - -1	r
+ - 0.000225966	Background_fail_SIG_bin_6-1
+ - 0.00013901	systOnMuID
+ - 9.02487e-05	systOnMuTrigger
+ - -9.05295e-08	Background_rpf_0x0_par0
+>> Attempt 5 failed, remove the variable with largest eigenvector component...
+>> Dropping Background_fail_SIG_bin_6-1 from the hessian
+>> Verifying eigenvalues are all positive (iteration 6)
+>> All eigenvalues are positive
+>> Inverting Hessian...
+>> Matrix inverted
+>> Note: the following parameters were dropped to make the covariance matrix pos-def:
+     - systOnG
+     - systOnTrigger
+     - lumi
+     - systOnF
+     - pileup
+     - Background_fail_SIG_bin_6-1
+
+ --- FitDiagnostics ---
+Best fit r: 0  -0/+5  (68% CL)
+Done in 0.00 min (cpu), 0.00 min (real)
+Printing Message Summary From ... combine_logger.out
+----------------------------------------------
+Messages of type INFO : 19
+Messages of type DEBUG : 2
+Messages of type ERROR : 0
+----------------------------------------------
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+DEBUG: (function: runSpecific) FitDiagnostics.cc: 318 -- Fit B-only, status = 0, numBadNLL = 0, covariance quality = -1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: doFit) FitterAlgoBase.cc: 343 -- Running Minos for POI r
+DEBUG: (function: runSpecific) FitDiagnostics.cc: 443 -- Fit S+B, status = 0, numBadNLL = 0, covariance quality = -1

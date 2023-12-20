@@ -1,0 +1,243 @@
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+>>> method used is FitDiagnostics
+Warning: Did not find a parameter with name mask_pass_HIGH
+Set Default Value of Parameter r To : 1
+>>> 0 out of 4 channels masked
+
+SimNLL created with 0 channels, 0 generic constraints, 9 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+SimNLL created with 4 channels, 0 generic constraints, 9 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+Running Minos for POI 
+>> Found 22 floating parameters
+>> The following parameters are protected in the event of negative eigenvalues: r
+>> Verifying eigenvalues are all positive (iteration 0)
+Eigenvalue 21 : -0.00101209
+ - -0.99738	r
+ - -0.0706809	systOnG
+ - 0.0148767	systOnTrigger
+ - 0.00365585	lumi
+ - 0.00115155	systOnF
+>> Attempt 0 failed, remove the variable with largest eigenvector component...
+>> Dropping systOnG from the hessian
+>> Verifying eigenvalues are all positive (iteration 1)
+Eigenvalue 20 : -4.59829e-05
+ - 0.99988	r
+ - -0.0149892	systOnTrigger
+ - -0.00368351	lumi
+ - -0.00116026	systOnF
+ - -0.000592343	pileup
+>> Attempt 1 failed, remove the variable with largest eigenvector component...
+>> Dropping systOnTrigger from the hessian
+>> Verifying eigenvalues are all positive (iteration 2)
+Eigenvalue 19 : -2.9584e-06
+ - 0.999992	r
+ - -0.00368475	lumi
+ - -0.00116065	systOnF
+ - -0.000592543	pileup
+ - -0.00019645	Background_fail_SIG_bin_6-1
+>> Attempt 2 failed, remove the variable with largest eigenvector component...
+>> Dropping lumi from the hessian
+>> Verifying eigenvalues are all positive (iteration 3)
+Eigenvalue 18 : -3.59533e-07
+ - 0.999999	r
+ - -0.00116068	systOnF
+ - -0.000592555	pileup
+ - -0.000196454	Background_fail_SIG_bin_6-1
+ - -0.000169299	systOnMuID
+>> Attempt 3 failed, remove the variable with largest eigenvector component...
+>> Dropping systOnF from the hessian
+>> Verifying eigenvalues are all positive (iteration 4)
+Eigenvalue 17 : -1.01675e-07
+ - 1	r
+ - -0.000592556	pileup
+ - -0.000196455	Background_fail_SIG_bin_6-1
+ - -0.000169299	systOnMuID
+ - -8.91983e-05	systOnMuTrigger
+>> Attempt 4 failed, remove the variable with largest eigenvector component...
+>> Dropping pileup from the hessian
+>> Verifying eigenvalues are all positive (iteration 5)
+Eigenvalue 16 : -3.44678e-08
+ - 1	r
+ - -0.000196455	Background_fail_SIG_bin_6-1
+ - -0.000169299	systOnMuID
+ - -8.91983e-05	systOnMuTrigger
+ - -1.93531e-07	Background_fail_SIG_bin_5-1
+>> Attempt 5 failed, remove the variable with largest eigenvector component...
+>> Dropping Background_fail_SIG_bin_6-1 from the hessian
+>> Verifying eigenvalues are all positive (iteration 6)
+Eigenvalue 15 : -2.70325e-08
+ - 1	r
+ - -0.000169299	systOnMuID
+ - -8.91983e-05	systOnMuTrigger
+ - -1.93494e-07	Background_fail_SIG_bin_5-1
+ - -1.0689e-07	Background_fail_SIG_bin_4-1
+>> Attempt 6 failed, remove the variable with largest eigenvector component...
+>> Dropping systOnMuID from the hessian
+>> Verifying eigenvalues are all positive (iteration 7)
+Eigenvalue 14 : -2.15463e-08
+ - 1	r
+ - -8.91983e-05	systOnMuTrigger
+ - -1.93494e-07	Background_fail_SIG_bin_5-1
+ - -1.0689e-07	Background_fail_SIG_bin_4-1
+ - -1.02712e-07	Background_fail_LOW_bin_1-1
+>> Attempt 7 failed, remove the variable with largest eigenvector component...
+>> Dropping systOnMuTrigger from the hessian
+>> Verifying eigenvalues are all positive (iteration 8)
+Eigenvalue 13 : -2.00235e-08
+ - 1	r
+ - -1.93494e-07	Background_fail_SIG_bin_5-1
+ - -1.0689e-07	Background_fail_SIG_bin_4-1
+ - -1.02712e-07	Background_fail_LOW_bin_1-1
+ - -7.59647e-08	Background_fail_LOW_bin_3-1
+>> Attempt 8 failed, remove the variable with largest eigenvector component...
+>> Dropping Background_fail_SIG_bin_5-1 from the hessian
+>> Verifying eigenvalues are all positive (iteration 9)
+Eigenvalue 12 : -2.00234e-08
+ - 1	r
+ - -1.0689e-07	Background_fail_SIG_bin_4-1
+ - -1.02673e-07	Background_fail_LOW_bin_1-1
+ - -7.59597e-08	Background_fail_LOW_bin_3-1
+ - 6.36334e-08	Background_fail_LOW_bin_4-1
+>> Attempt 9 failed, remove the variable with largest eigenvector component...
+>> Dropping Background_fail_SIG_bin_4-1 from the hessian
+>> Verifying eigenvalues are all positive (iteration 10)
+Eigenvalue 11 : -2.00234e-08
+ - -1	r
+ - 1.02635e-07	Background_fail_LOW_bin_1-1
+ - 7.59549e-08	Background_fail_LOW_bin_3-1
+ - -6.36357e-08	Background_fail_LOW_bin_4-1
+ - 5.27045e-08	Background_fail_LOW_bin_5-1
+>> Attempt 10 failed, remove the variable with largest eigenvector component...
+>> Dropping Background_fail_LOW_bin_1-1 from the hessian
+>> Verifying eigenvalues are all positive (iteration 11)
+Eigenvalue 10 : -2.00234e-08
+ - 1	r
+ - -7.42539e-08	Background_fail_LOW_bin_3-1
+ - 6.44711e-08	Background_fail_LOW_bin_4-1
+ - -5.22778e-08	Background_fail_LOW_bin_5-1
+ - 4.33738e-08	Background_fail_LOW_bin_2-1
+>> Attempt 11 failed, remove the variable with largest eigenvector component...
+>> Dropping Background_fail_LOW_bin_3-1 from the hessian
+>> Verifying eigenvalues are all positive (iteration 12)
+Eigenvalue 9 : -2.00234e-08
+ - 1	r
+ - 6.45458e-08	Background_fail_LOW_bin_4-1
+ - -5.22396e-08	Background_fail_LOW_bin_5-1
+ - 4.37394e-08	Background_fail_LOW_bin_2-1
+ - -4.00789e-08	Background_fail_SIG_bin_3-1
+>> Attempt 12 failed, remove the variable with largest eigenvector component...
+>> Dropping Background_fail_LOW_bin_4-1 from the hessian
+>> Verifying eigenvalues are all positive (iteration 13)
+Eigenvalue 8 : -2.00234e-08
+ - -1	r
+ - 5.22558e-08	Background_fail_LOW_bin_5-1
+ - -4.35837e-08	Background_fail_LOW_bin_2-1
+ - 4.00816e-08	Background_fail_SIG_bin_3-1
+ - 2.7362e-08	Background_fail_SIG_bin_2-1
+>> Attempt 13 failed, remove the variable with largest eigenvector component...
+>> Dropping Background_fail_LOW_bin_5-1 from the hessian
+>> Verifying eigenvalues are all positive (iteration 14)
+Eigenvalue 7 : -2.00234e-08
+ - 1	r
+ - 4.36481e-08	Background_fail_LOW_bin_2-1
+ - -4.00805e-08	Background_fail_SIG_bin_3-1
+ - -2.73601e-08	Background_fail_SIG_bin_2-1
+ - -1.35495e-08	Background_fail_SIG_bin_1-1
+>> Attempt 14 failed, remove the variable with largest eigenvector component...
+>> Dropping Background_fail_LOW_bin_2-1 from the hessian
+>> Verifying eigenvalues are all positive (iteration 15)
+Eigenvalue 6 : -2.00234e-08
+ - 1	r
+ - -4.00892e-08	Background_fail_SIG_bin_3-1
+ - -2.73752e-08	Background_fail_SIG_bin_2-1
+ - -1.35783e-08	Background_fail_SIG_bin_1-1
+ - -9.12316e-10	systOnMuReco
+>> Attempt 15 failed, remove the variable with largest eigenvector component...
+>> Dropping Background_fail_SIG_bin_3-1 from the hessian
+>> Verifying eigenvalues are all positive (iteration 16)
+Eigenvalue 5 : -2.00234e-08
+ - 1	r
+ - -2.73749e-08	Background_fail_SIG_bin_2-1
+ - -1.35779e-08	Background_fail_SIG_bin_1-1
+ - -9.12316e-10	systOnMuReco
+ - 4.73413e-10	Background_rpf_0x0_par0
+>> Attempt 16 failed, remove the variable with largest eigenvector component...
+>> Dropping Background_fail_SIG_bin_2-1 from the hessian
+>> Verifying eigenvalues are all positive (iteration 17)
+Eigenvalue 4 : -2.00234e-08
+ - 1	r
+ - -1.35773e-08	Background_fail_SIG_bin_1-1
+ - -9.12316e-10	systOnMuReco
+ - 3.84788e-10	Background_rpf_0x0_par0
+ - 0	systOnPt
+>> Attempt 17 failed, remove the variable with largest eigenvector component...
+>> Dropping Background_fail_SIG_bin_1-1 from the hessian
+>> Verifying eigenvalues are all positive (iteration 18)
+Eigenvalue 3 : -2.00234e-08
+ - 1	r
+ - -9.12316e-10	systOnMuReco
+ - 3.0039e-10	Background_rpf_0x0_par0
+ - 0	systOnPt
+>> Attempt 18 failed, remove the variable with largest eigenvector component...
+>> Dropping systOnMuReco from the hessian
+>> Verifying eigenvalues are all positive (iteration 19)
+Eigenvalue 2 : -2.00234e-08
+ - -1	r
+ - -3.0039e-10	Background_rpf_0x0_par0
+ - 0	systOnPt
+>> Attempt 19 failed, remove the variable with largest eigenvector component...
+>> Dropping Background_rpf_0x0_par0 from the hessian
+>> Inverting Hessian...
+>> Matrix inverted
+>> Note: the following parameters were dropped to make the covariance matrix pos-def:
+     - systOnG
+     - systOnTrigger
+     - lumi
+     - systOnF
+     - pileup
+     - Background_fail_SIG_bin_6-1
+     - systOnMuID
+     - systOnMuTrigger
+     - Background_fail_SIG_bin_5-1
+     - Background_fail_SIG_bin_4-1
+     - Background_fail_LOW_bin_1-1
+     - Background_fail_LOW_bin_3-1
+     - Background_fail_LOW_bin_4-1
+     - Background_fail_LOW_bin_5-1
+     - Background_fail_LOW_bin_2-1
+     - Background_fail_SIG_bin_3-1
+     - Background_fail_SIG_bin_2-1
+     - Background_fail_SIG_bin_1-1
+     - systOnMuReco
+     - Background_rpf_0x0_par0
+
+ --- FitDiagnostics ---
+Best fit r: 2.77556e-15  0/+0  (68% CL)
+Done in 0.00 min (cpu), 0.00 min (real)
+Printing Message Summary From ... combine_logger.out
+----------------------------------------------
+Messages of type INFO : 19
+Messages of type DEBUG : 2
+Messages of type ERROR : 0
+----------------------------------------------
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+DEBUG: (function: runSpecific) FitDiagnostics.cc: 318 -- Fit B-only, status = 0, numBadNLL = 0, covariance quality = -1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 188 -- Minimisation configured with Type=Minuit2, Algo=Migrad, strategy=0, tolerance=0.1
+INFO: (function: improveOnce) CascadeMinimizer.cc: 211 -- Minimisation finished with status=0
+INFO: (function: improveOnce) CascadeMinimizer.cc: 216 -- Minimization success! status=0
+INFO: (function: doFit) FitterAlgoBase.cc: 343 -- Running Minos for POI r
+DEBUG: (function: runSpecific) FitDiagnostics.cc: 443 -- Fit S+B, status = 0, numBadNLL = 0, covariance quality = -1

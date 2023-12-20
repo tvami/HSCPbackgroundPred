@@ -1,0 +1,10 @@
+combine -M Significance Signal_ppStau-1029-0x0_area/card.txt -t -1 --expectSignal=1 --toysFrequentist
+combine -M Significance Signal_ppStau-1218-0x0_area/card.txt -t -1 --expectSignal=1 --toysFrequentist
+combine -M Significance Signal_ppStau-200-0x0_area/card.txt -t -1 --expectSignal=1 --toysFrequentist
+combine -M Significance Signal_ppStau-247-0x0_area/card.txt -t -1 --expectSignal=1 --toysFrequentist
+combine -M Significance Signal_ppStau-308-0x0_area/card.txt -t -1 --expectSignal=1 --toysFrequentist
+combine -M Significance Signal_ppStau-432-0x0_area/card.txt -t -1 --expectSignal=1 --toysFrequentist
+combine -M Significance Signal_ppStau-557-0x0_area/card.txt -t -1 --expectSignal=1 --toysFrequentist
+combine -M Significance Signal_ppStau-651-0x0_area/card.txt -t -1 --expectSignal=1 --toysFrequentist
+combine -M Significance Signal_ppStau-745-0x0_area/card.txt -t -1 --expectSignal=1 --toysFrequentist
+combine -M Significance Signal_ppStau-871-0x0_area/card.txt -t -1 --expectSignal=1 --toysFrequentist

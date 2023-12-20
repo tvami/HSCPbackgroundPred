@@ -1,0 +1,11 @@
+v20b and v20d --> 1D exp extrapolation in 2D alph, const Rpf --> did not give better limits
+-----------------------------------------------------------------
+2DAlpha_CodeV46p1_1Dfrom2DNoExtrapol_200GeV is the final results 
+-----------------------------------------------------------------
+2DAlpha_1Dfrom2DNoExtrapol_200GeV_wMuSFs_CR2_unblind --> CR2 
+edit plot.py so slice_str is changed
+python runCR2Stau557.py 2DAlpha_1Dfrom2DNoExtrapol_200GeV_wMuSFs_CR2_unblind configForAllSamples_1Dfrom2DNoExtrapol_200GeV_wMuSFs_CR2_unblindStauOnly.json
+-----------------------------------------------------------------
+2DAlpha_CodeV47p6_1Dfrom2DNoExtrapol_Glu1800Stau557_unblind --> overlaid stau and gluino
+edit plot.py so addSignals is False
+python runGluino1800Stau557With1DVanilla.py 2DAlpha_CodeV47p6_1Dfrom2DNoExtrapol_Glu1800Stau557_unblind configForGlu1800Stau557Samples_1Dfrom2DNoExtrapol_200GeV_wMuSFs_unB.json

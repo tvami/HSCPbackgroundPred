@@ -1,0 +1,11 @@
+,process,region,process_type,title
+0,data_obs,fail,DATA,Data
+1,Signal_gluino-1800,fail,SIGNAL,HSCP gluino 1800 GeV
+2,Signal_ppStau-557,fail,SIGNAL,HSCP stau 557 GeV
+3,Background,fail,BKG,Background
+4,TotalBkg,fail,TOTAL,TotalBkg
+5,data_obs,pass,DATA,Data
+6,Signal_gluino-1800,pass,SIGNAL,HSCP gluino 1800 GeV
+7,Signal_ppStau-557,pass,SIGNAL,HSCP stau 557 GeV
+8,Background_0x0,pass,BKG,Background
+9,TotalBkg,pass,TOTAL,TotalBkg
