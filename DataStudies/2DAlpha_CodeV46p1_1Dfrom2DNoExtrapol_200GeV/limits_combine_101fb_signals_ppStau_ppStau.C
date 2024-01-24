@@ -1,7 +1,7 @@
 void limits_combine_101fb_signals_ppStau_ppStau()
 {
 //=========Macro generated from canvas: climits/climits
-//=========  (Fri Jan 12 00:00:30 2024) by ROOT version 6.14/09
+//=========  (Fri Jan 19 01:33:48 2024) by ROOT version 6.14/09
    TCanvas *climits = new TCanvas("climits", "climits",0,0,700,600);
    gStyle->SetOptFit(1);
    gStyle->SetOptStat(0);
@@ -540,7 +540,7 @@ void limits_combine_101fb_signals_ppStau_ppStau()
    entry->SetMarkerStyle(21);
    entry->SetMarkerSize(1);
    entry->SetTextFont(62);
-   entry=leg->AddEntry("","#sigma^{NNLO+NNLL}_{th}(pp#rightarrow#tilde{#tau}#tilde{#tau})#pm1#sigma","l");
+   entry=leg->AddEntry("","#sigma^{NNLO+NNLL}_{th}(pp#rightarrow#tilde{#tau_{L/R}}#tilde{#tau_{L/R}})#pm1#sigma","l");
    entry->SetLineColor(4);
    entry->SetLineStyle(1);
    entry->SetLineWidth(3);

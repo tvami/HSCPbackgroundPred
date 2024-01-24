@@ -9,3 +9,5 @@ python runCR2Stau557.py 2DAlpha_1Dfrom2DNoExtrapol_200GeV_wMuSFs_CR2_unblind con
 2DAlpha_CodeV47p6_1Dfrom2DNoExtrapol_Glu1800Stau557_unblind --> overlaid stau and gluino
 edit plot.py so addSignals is False
 python runGluino1800Stau557With1DVanilla.py 2DAlpha_CodeV47p6_1Dfrom2DNoExtrapol_Glu1800Stau557_unblind configForGlu1800Stau557Samples_1Dfrom2DNoExtrapol_200GeV_wMuSFs_unB.json
+-----------------------------------------------------------------
+2DAlpha_CodeV46p8_1Dfrom2DNoExtrapol_ZPrimeTauPrimeOfficial --> final tau-prime results

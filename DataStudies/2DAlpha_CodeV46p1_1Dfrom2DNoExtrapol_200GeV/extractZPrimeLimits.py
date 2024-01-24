@@ -8,7 +8,7 @@ scale = 1
 
 #inputFolder = "./2DAlpha_CodeV46p3_1Dfrom2DNoExtrapol_ZPrimeTauPrime/"
 #inputFolder = "./2DAlpha_CodeV46p2_1Dfrom2DNoExtrapol_ZPrimeTauPrimeWithSSM/"
-inputFolder = "./2DAlpha_CodeV46p8_1Dfrom2DNoExtrapol_ZPrimeTauPrimeOfficial"
+inputFolder = "../2DAlpha_CodeV46p8_1Dfrom2DNoExtrapol_ZPrimeTauPrimeOfficial"
 
 outputPoints = []
 
@@ -49,5 +49,5 @@ for ZPrimeMass in [3000,4000,5000,6000,7000]:
 		outputPoints.append(tmpDict)
 
 
-with open("ZPrimeLimits.json", 'w') as f:
+with open("ZPrimeLimits2.json", 'w') as f:
     json.dump(outputPoints, f, indent=4)
