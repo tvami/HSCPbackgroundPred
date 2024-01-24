@@ -473,6 +473,7 @@ def _save_pad_generic(outname, pad, ROOTout, savePDF, savePNG):
         ROOTout.WriteTObject(pad,outname.split('/')[-1])
     if savePDF:
         pad.Print(outname+'.pdf','pdf')
+        pad.Print(outname+'.C','cxx')
     if savePNG:
         pad.Print(outname+'.png','png')
 
