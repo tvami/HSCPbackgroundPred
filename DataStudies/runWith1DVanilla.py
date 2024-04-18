@@ -378,4 +378,5 @@ if __name__ == "__main__":
       #SignalInjection(signal, '0x0', r=0, condor=False)
       #plot_SignalInjection(signal, '0x0', r=0, condor=False)
       #Impacts(signal,'0x0')
+      os.system("cp " + workingArea + "/base.root " + workingArea + "/" + signal + "-0x0_area/.")
       open(workingArea + "/" + signal + "-0x0_area/done", 'wa').close()
